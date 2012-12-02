@@ -1,5 +1,0 @@
-{% autoescape off %}
-
-{{ obj.title|smartypants }}
-
-{% endautoescape %}

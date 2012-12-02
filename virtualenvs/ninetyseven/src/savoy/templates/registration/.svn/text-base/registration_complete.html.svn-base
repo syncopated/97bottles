@@ -1,8 +1,0 @@
-{% extends "base.html" %}
-
-{% block title %}You're almost there.{% endblock %}
-
-{% block content %}
-<h2>You're almost there.</h2>
-<p>In order to complete registration, we need to confirm you entered a valid e-mail address. You should be getting a confirmation e-mail very shortly. It will contain instructions on how to finalize your registration.</p>
-{% endblock %}

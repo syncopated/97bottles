@@ -1,9 +1,0 @@
-{% autoescape off %}
-
-{% if obj.content_object.title %}
-  {{ obj.author_name }} on {{ obj.content_object.title }}
-  {% else %}
-  {{ obj.author_name }} on {{ obj.content_object.name }}
-{% endif %}
-
-{% endautoescape %}

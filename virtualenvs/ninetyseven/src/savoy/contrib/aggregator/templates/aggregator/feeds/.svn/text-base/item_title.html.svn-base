@@ -1,5 +1,0 @@
-{% autoescape off %}
-
-{% filter smartypants %}{{ obj.content_type.name|capfirst }}: {% firstof obj.content_object.title obj.content_object.name obj.content_object %}{% endfilter %}
-
-{% endautoescape %}

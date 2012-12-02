@@ -1,2 +1,0 @@
-<dt><strong>Place:</strong> <a href="{{ place.get_absolute_url }}">{{ place.name }}</a></dt>
-<dd>{{ place.address }}</dd>

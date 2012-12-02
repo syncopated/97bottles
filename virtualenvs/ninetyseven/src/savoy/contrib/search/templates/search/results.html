@@ -1,9 +1,0 @@
-{% extends "base.html" %}
-
-{% block content %}
-  <h2>You searched for "{{ search_string }}".</h2>
-  <dl>
-    {% render_search_results results %}
-  </dl>
-  {% include "snippets/paginator.html" %}
-{% endblock %}
