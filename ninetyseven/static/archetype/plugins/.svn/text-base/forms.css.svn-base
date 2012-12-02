@@ -1,0 +1,11 @@
+/* -------------------------------------------------------------- 
+   FORMS
+-------------------------------------------------------------- */
+
+form  { margin: 0 0 20px 0;}
+form  ul { list-style-type: none;}
+label { display: block; font-weight: bold; }
+label.help { font-weight: normal; color: #999; }
+fieldset { display: block; padding: 9px; margin: 20px 0; border: 1px solid #dfdfdf; }
+legend { color: #666; padding: 0 10px; font-weight: bold; }
+textarea { padding: 5px; }

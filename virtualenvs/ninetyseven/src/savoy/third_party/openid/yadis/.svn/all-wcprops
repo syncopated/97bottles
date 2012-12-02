@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/savoy/!svn/ver/889/trunk/third_party/openid/yadis
+END
+filters.py
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/savoy/!svn/ver/889/trunk/third_party/openid/yadis/filters.py
+END
+manager.py
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/savoy/!svn/ver/889/trunk/third_party/openid/yadis/manager.py
+END
+constants.py
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/savoy/!svn/ver/889/trunk/third_party/openid/yadis/constants.py
+END
+xrires.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/savoy/!svn/ver/889/trunk/third_party/openid/yadis/xrires.py
+END
+discover.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/savoy/!svn/ver/889/trunk/third_party/openid/yadis/discover.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/savoy/!svn/ver/889/trunk/third_party/openid/yadis/__init__.py
+END
+accept.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/savoy/!svn/ver/889/trunk/third_party/openid/yadis/accept.py
+END
+parsehtml.py
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/savoy/!svn/ver/889/trunk/third_party/openid/yadis/parsehtml.py
+END
+xri.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/savoy/!svn/ver/889/trunk/third_party/openid/yadis/xri.py
+END
+services.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/savoy/!svn/ver/889/trunk/third_party/openid/yadis/services.py
+END
+etxrd.py
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/savoy/!svn/ver/889/trunk/third_party/openid/yadis/etxrd.py
+END

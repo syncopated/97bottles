@@ -1,0 +1,2 @@
+<dt><strong>User:</strong> <a href="{{ profile.get_absolute_url }}">{{ profile.person.name }}</a></dt>
+<dd>joined {{ profile.person.user.date_joined|date:"l, F, j, Y \a\t h:iA" }}</dd>

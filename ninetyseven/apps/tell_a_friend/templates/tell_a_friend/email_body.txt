@@ -1,0 +1,17 @@
+Hi there!
+
+{{ user.profile.name }} wants to be your friend on 97bottles.com, a free service for beer lovers of all kinds. 97 Bottles lets you:
+
+* Review, share, and learn about beer
+* Find drinking buddies
+* Get and give beer recommendations
+* Keep track of your favorite brews
+* And more
+
+We hope you'll join. And be sure to buy {{ user.profile.name }} a round, because 97 Bottles is awesome. Sign up here:
+
+http://97bottles.com/account/signup/
+
+Cheers,
+
+-The 97 Bottles team

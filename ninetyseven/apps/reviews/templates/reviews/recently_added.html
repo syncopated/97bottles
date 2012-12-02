@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Recently added reviews{% endblock %}
+
+{% block content %}
+  {% autopaginate review_list 50 %}
+  <h3>Recently added reviews</h3>
+  <table cellspacing="0" class="review-list">
+    <thead>
+      <tr>
+        <th class="review-user">By</th>
+        <th class="beer-name">Name</th>
+        {# <th class="beer-brewery">Brewery</th> #}
+        <th class="beer-rating numeric">Rating</th>
+        <th class="review-link">Link</th>
+        <th class="beer-date-created">Date added</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for review in review_list %}
+        <tr>
+          <td class="review-user"><a href="{% url profile_detail review.created_by.username %}">{{ review.created_by.profile.name|typogrify }}</a></td>
+          <td class="beer-name"><a href="{{ review.beer.get_absolute_url }}">{{ review.beer.name|typogrify }}</a></td>
+          {# <td class="beer-brewery"><a href="{{ review.beer.brewery.get_absolute_url }}">{{ review.beer.brewery|typogrify }}</a></td> #}
+          <td class="review-rating numeric">{{ review.rating }}</td>
+          <td class="review-link"><a href="{{ review.get_absolute_url }}">Read</a></td>
+          <td class="review-date-created">{{ review.date_created|date:"N jS, Y" }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% paginate 2 %}
+{% endblock %}

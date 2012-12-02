@@ -1,0 +1,6 @@
+{% with object as fave %}
+  {% with fave.content_object as beer %}
+    added <a href="{{ beer.get_absolute_url }}">{{ beer.name }}</a>{# , by <a href="{{ brewery.get_absolute_url }}">{{ beer.brewery.name }}</a> #} to {% ifequal fave.user.profile.gender 1 %}his{% endifequal %}{% ifequal fave.user.profile.gender 2 %}her{% endifequal %}{% ifequal fave.user.profile.gender 3 %}their{% endifequal %} <a href="{% url user_faves fave.user.username fave.type.slug %}">{{ fave.type.name }}</a> list.
+  {% endwith %}
+  <span class="timeline-item-timestamp"> {% ifchanged item.timestamp.minute %}{{ item.timestamp|date:"fA"|lower }}{% endifchanged %}</span>
+{% endwith %}

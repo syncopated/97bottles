@@ -1,0 +1,5 @@
+{% with object as fave %}
+  {% with fave.content_object as beer %}
+    <a href="http://97bottles.com{{ fave.user.profile.get_absolute_url }}">{{ fave.user.profile.name }}</a> added <a href="{{ beer.get_absolute_url }}">{{ beer.name }}</a> to {% ifequal fave.user.profile.gender 1 %}his{% endifequal %}{% ifequal fave.user.profile.gender 2 %}her{% endifequal %}{% ifequal fave.user.profile.gender 3 %}their{% endifequal %} <a href="http://97bottles.com{% url user_faves fave.user.username fave.type.slug %}">{{ fave.type.name }}</a>.
+  {% endwith %}
+{% endwith %}

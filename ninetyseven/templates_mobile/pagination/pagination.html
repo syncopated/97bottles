@@ -1,0 +1,12 @@
+{% if is_paginated %}
+<div class="pagination">
+ <ul>
+   {% if page_obj.has_previous %}
+     <li class="previous"><a href="?page={{ page_obj.previous_page_number }}{{ getvars }}" class="prev">&laquo; Previous</a></li>
+   {% endif %}
+   {% if page_obj.has_next %}
+     <li class="next"><a href="?page={{ page_obj.next_page_number }}{{ getvars }}" class="next">Next &raquo;</a></li>
+   {% endif %}
+ </ul>
+</div>
+{% endif %}

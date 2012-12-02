@@ -1,0 +1,8 @@
+{# This template expects a list of Review objects called "review_list". It returns an HTML definition list from the list. #}
+
+<dl class="review-list">
+  {% for review in review_list %}
+    <dt class="{% cycle odd,even %}"><span class="rating">{{ review.rating }}</span> <a href="{{ review.get_absolute_url }}">{{ review.beer.name|typogrify }}</a></dt>
+    <dd class="{% cycle odd,even %}">by <a href="{% url profile_detail review.created_by.username %}">{{ review.created_by.profile.name|typogrify }}</a>{% if review.city %} in {{ review.city.us_bias_name|typogrify }}{% endif %}</dd>
+  {% endfor %}
+</dl>

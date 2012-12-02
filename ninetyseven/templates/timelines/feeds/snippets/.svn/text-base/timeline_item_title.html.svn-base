@@ -1,0 +1,3 @@
+{% with obj.content_object as object %}
+  {% render_template_for object in "timelines/feeds/snippets/title/" %}
+{% endwith %}

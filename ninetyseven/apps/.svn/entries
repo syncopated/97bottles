@@ -1,0 +1,95 @@
+9
+
+dir
+3322
+https://dkr.svn.beanstalkapp.com/ninetyseven/trunk/apps
+https://dkr.svn.beanstalkapp.com/ninetyseven
+
+
+
+2009-07-04T19:53:05.524901Z
+3322
+jcroft
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+96562dff-141d-4f18-a47c-8e8066d33393
+
+beers
+dir
+
+recommender
+dir
+
+invites
+dir
+
+preferences
+dir
+
+relationships
+dir
+
+reviews
+dir
+
+search
+dir
+
+taglines
+dir
+
+__init__.py
+file
+
+
+
+
+2009-06-23T16:27:39.000000Z
+06d8c1fcd907e6cad1583f9d8947882e
+2008-10-31T20:25:48.504621Z
+624
+jcroft
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+564
+
+tell_a_friend
+dir
+
+api
+dir
+
+tags
+dir
+

@@ -1,0 +1,1 @@
+{% with object as beer %}{{ beer.created_by.profile.name }} added {{ beer.name }}, by {{ beer.brewery.name }}{% endwith %}

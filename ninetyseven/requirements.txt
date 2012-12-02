@@ -1,0 +1,12 @@
+http://code.djangoproject.com/svn/django/trunk/
+python-memcached==1.44
+-e git+git://github.com/toastdriven/django-haystack.git@f3276a749beffafb26c11ebc82d44df1b88dcb29#egg=django-haystack
+Whoosh==0.1.23
+django-compress==1.0.1
+django-authopenid==1.0.1
+django-piston==0.2.2
+
+# apps with no setup.py (must be installed manually for now):
+# django-faves
+# django-categorization
+# django-timelines

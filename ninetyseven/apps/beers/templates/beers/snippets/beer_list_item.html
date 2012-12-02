@@ -1,0 +1,4 @@
+{# This template expects a Beer objects called "beer". It returns an HTML definition list item from the object. #}
+
+    <dt class="{% cycle odd,even %}"><span class="rating">{% if beer.rating %}{{ beer.rating }}{% endif %}</span> <a href="{{ beer.get_absolute_url }}">{{ beer.name|typogrify }}</a></dt>
+    {% if beer.brewery %}<dd class="{% cycle odd,even %} brewery"><a href="{{ beer.brewery.get_absolute_url }}">{{ beer.brewery.name|typogrify }}</a></dd>{% endif %}

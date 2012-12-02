@@ -1,0 +1,112 @@
+{% extends "beers/base.html" %}
+
+{% block title %}Add beer{% endblock %}
+
+{% block content %}
+  <h3>Add a beer</h3>
+  
+  <h4>1. First, search for your beer</h4>
+  <p>Just start typing. If you find the beer you're looking for, click on it to learn more, add reviews, etc.</p>
+  <form class="add-beer-form" action="{% url search_beer %}" method="get" accept-charset="utf-8">
+    <fieldset>
+      <legend>Search for a beer</legend>
+      <label for="beer-search">Search</label>
+      <input type="text" name="beer-search" value="" id="beer-search" autocomplete="off" />
+      <label for="beer-search" class="help">Enter keywords to search for a beer.</label>
+    </fieldset>
+  </form>
+  
+  <h4>2. If we don't have it, add it!</h4>
+  <p>Didn't find what you're looking for? Please add it. We need all the help we can get.</p>
+  <form class="add-beer-form" action="" method="post">
+    <fieldset>
+      <legend>Add beer</legend>
+      
+
+      {% for field in beer_form %}
+        {# We have a custom widget for the brewery field .#}
+        {% ifnotequal field.name 'brewery' %}
+          {# We also a custom widget for the color field. #}
+          {% ifequal field.name 'color' %}
+            {{ field.label_tag }}
+            <ul class="beer-color-picker">
+              {% for color in colors %}
+                <li>
+                  <a href="#" id="color={{ color.id }}" style="background-color: {{ color.color }};">
+                    <span class="color-srm">{{ color.srm }} SRM<br />{% if color.example %}{{ color.example }}{% endif %}</span>
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+            <input id="beer-color" name="beer-color" type="hidden" value="" />
+            <label for="id_{{ field.html_name }}" class="help">&nbsp;</label>
+          {% else %}
+            <label for="id_{{ field.html_name }}" class="{% if field.field.required %}required {% endif %}">{% if field.field.required %}<span class="required-asterisk">*</span>{% endif %}{{ field.label }}</label>
+            {{ field }}
+            <label for="id_{{ field.html_name }}" class="help">{{ field.help_text}}</label>
+            {% if field.errors %}{{ field.errors }}{% endif %}
+          {% endifequal %}
+        {% endifnotequal %}
+      {% endfor %}
+      
+      {# Our custom brewery field widget. #}
+      <label for="brewery-search">Brewery</label>
+      <input type="text" name="brewery-search" value="" id="brewery-search" autocomplete="off" />
+      <label class="help">Search for this beer's brewery. If you find it, click it. If not, <a id="add-brewery-link" href="">add a brewery</a>.</label>
+      <input type="hidden" id="id_beer-brewery" name="beer-brewery" value="" />
+      {% if beer_form.brewery.errors %}
+        <ul class="errorlist"><li>You must either select or add a brewery.</li></ul>
+      {% endif %}
+      
+      <fieldset id="add-brewery">
+        <h4>Add brewery for beer</h4>
+        {% for field in brewery_form %}
+          {# We have a custom widget for the city field .#}
+          {% ifnotequal field.name 'city' %}
+            <label for="id_{{ field.html_name }}" class="{% if field.field.required %}required {% endif %}">{% if field.field.required %}<span class="required-asterisk">*</span>{% endif %}{{ field.label }}</label>
+            {{ field }}
+            <label for="id_{{ field.html_name }}" class="help">{{ field.help_text}}</label>
+            {% if field.errors %}<ul class="error-list">{{ field.errors }}</ul>{% endif %}
+          {% endifnotequal %}
+        {% endfor %}
+
+        {# Our custom city field widget. #}
+        <label for="city-search">City</label>
+        <input type="text" name="city-search" value="" id="city-search" autocomplete="off" />
+        <label class="help">Search for this brewery's city. If you find it, click it. If not, <a id="add-city-link" href="">add a city</a>.</label>
+        <input type="hidden" id="id_brewery-city" name="brewery-city" value="" />
+        {% if brewery_form.city.errors %}
+          <ul class="errorlist"><li>You must either select or add a city.</li></ul>
+        {% endif %}
+
+        <fieldset id="add-city">
+          <h4>Add city for brewery</h4>
+          {% for field in city_form %}
+            <label for="id_{{ field.html_name }}" class="{% if field.field.required %}required {% endif %}">{% if field.field.required %}<span class="required-asterisk">*</span>{% endif %}{{ field.label }}</label>
+            {{ field }}
+            <label for="id_{{ field.html_name }}" class="help">{{ field.help_text}}</label>
+            {% if field.errors %}<ul class="error-list">{{ field.errors }}</ul>{% endif %}
+          {% endfor %}
+        </fieldset>
+      </fieldset>
+      
+    </fieldset>
+    
+    <fieldset>
+      <legend>Submit form</legend>
+      <input type="submit" name="sumbit" value="Beer me." class="button" id="sumbit" />
+    </fieldset>
+  </form>
+{% endblock %}
+{% block sidebar %}
+<div class="module">
+	<h3>We Need Your Help</h3>
+	<p>97bottles loves it when folks like you add beers to our system.  So add away.  We ask just three things:</p> 
+	<ol class="add-help">
+		<li><strong>Be Nice.</strong> Please don't write mean or creepy things.</li> 
+		<li><strong>Be Objective.</strong> When adding a beer, you are dispassionate--like a genius beer scientist. You can be a connoisseur and tell us your opinion in a review.</li> 
+		<li><strong>Be Accurate.</strong> Tell it like it is!  Stout is stout!</li>
+	</ol>
+	<p>Thank you!  With your help, we will conquer Earth.</p>
+</div>
+{% endblock %}

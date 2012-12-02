@@ -1,0 +1,1 @@
+{% with object as beer %}<a href="http://97bottles.com{{ beer.created_by.profile.get_absolute_url }}">{{ beer.created_by.profile.name }}</a> added <a href="http://97bottles.com{{ beer.get_absolute_url }}">{{ beer.name }}</a>, by <a href="http://97bottles.com{{ beer.brewery.get_absolute_url }}">{{ beer.brewery.name }}</a>{% endwith %}

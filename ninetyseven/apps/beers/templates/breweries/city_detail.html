@@ -1,0 +1,10 @@
+{% extends "breweries/base.html" %}
+
+{% block title %}{{ city.full_name }}{% endblock %}
+
+{% block content %}
+  <h3>{{ city.full_name }}</h3>
+  {% with city.breweries.all as brewery_list  %}
+    {% include "breweries/snippets/brewery_table.html" %}
+  {% endwith %}
+{% endblock %}

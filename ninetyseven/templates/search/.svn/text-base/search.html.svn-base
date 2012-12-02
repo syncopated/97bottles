@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
+  <h3>Search</h3>
+  {% if query %}<p>You searched for {{ query }}</p>{% endif %}
+  <form id="search-form" method="get" action="">
+    {% for field in form %}
+      {{ field.label_tag }}
+      {{ field }}
+      <label for="{{ field.html_name }}" class="help">{{ field.help_text}}</label>
+      {% if field.errors %}<ul class="error-list">{{ field.errors }}</ul>{% endif %}
+      
+    {% endfor %}
+    <input type="submit" value="Search">
+  </form>
+  
+  {% if query %}
+    {% if page.object_list %}
+      
+      <dl class="search-results">
+        {% for result in page.object_list|dictsort:"content_type" %}
+          {% ifchanged result.content_type %}
+            {% ifequal result.content_type "auth.user" %}<h4>Users</h4>{% endifequal %}
+            {% ifequal result.content_type "beers.beer" %}<h4>Beers</h4>{% endifequal %}
+            {% ifequal result.content_type "beers.brewery" %}<h4>Breweries</h4>{% endifequal %}
+            {% ifequal result.content_type "tagging.tag" %}<h4>Tags</h4>{% endifequal %}
+          {% endifchanged %}
+          {% render_template_for result.object in "search/snippets" %}
+        {% endfor %}
+      </dl>
+      
+    {% else %}
+      <p>No results found.</p>
+    {% endif %}
+  {% endif %}
+{% endblock %}
+
+{% block sidebar %}
+  {% if not user.is_anonymous %}
+    <div class="module light addbeer">
+      <h4><a href="{% url add_beer %}">Add or search for beers</a></h4>
+    </div>
+  {% endif %}
+{% endblock %}

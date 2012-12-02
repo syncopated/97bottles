@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Find your friends on Twitter{% endblock %}
+
+
+{% block content %}
+  
+  {% if friend_list %}
+    {% load relationships %}
+    <h3>Follow your twitter friends on 97 Bottles!</h3>
+    <h4>Search results</h4>
+    {% with friend_list as user_list %}
+      {% include "profiles/snippets/user_list.html" %}
+    {% endwith %}
+    
+
+  {% endif %}
+{% endblock %}
+
+{% block sidebar %}
+	<div class="module">
+	  <h3>Find your Twitter friends</h3>
+	  <form action="" method="get" accept-charset="utf-8" class="sidebar-form">
+	    <fieldset>
+	      <input type="username" name="username" value="" id="username">
+	      <label for="search" class="help">Enter your twitter username.</label>
+	      <input type="submit" value="Search" class="button" />
+	    </fieldset>
+	  </form>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+Hey! {{ invite.user.profile.name }} has invited you to 97 Bottles, where you can:
+
+* Review, share, and learn about beer
+* Find drinking buddies
+* Get and give beer recommendations
+* Keep track of your favorite brews
+
+97bottles is rad. Learn more and sign up using this link:
+
+http://{{ site.domain }}/account/signup/?activation_key={{ invite.activation_key }}

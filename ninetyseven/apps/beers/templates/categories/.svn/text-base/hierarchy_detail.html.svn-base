@@ -1,0 +1,40 @@
+{% extends "beers/base.html" %}
+
+{% block title %}Beers{% endblock %}
+
+{% block content %}
+  {% load beers %}
+  
+  <h3>Mmm&hellip;beer</h3>
+
+  {% get_all_beers as beer_list %}
+  
+  {% with beer_list|dictsortreversed:"rating" as beer_list %}
+    {% autopaginate beer_list 100 %}
+    {% if not invalid_page %}
+      {% include "beers/snippets/beer_table.html" %}
+    {% endif %}
+    {% paginate 4 %}
+  {% endwith %}
+
+{% endblock %}
+
+{% block sidebar %}
+  {{ block.super }}  
+  {% cache 600 hierarchy_category_list %}
+    <div class="module">
+      <h3>Categories</h3>
+      <dl>
+        {% for category in hierarchy.top_level_categories %}
+          <dt><a href="{% url category_detail category.path %}">{{ category.name|typogrify }}</a></dt>
+          {% if category.direct_descendants.all %}
+            {% for category in category.direct_descendants.all %}
+              <dd><a href="{% url category_detail category.path %}">{{ category.name|typogrify }}</a></dd>
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </dl>
+    </div>
+  {% endcache %}
+  {% include "beers/snippets/beer_awards.html" %}
+{% endblock %}

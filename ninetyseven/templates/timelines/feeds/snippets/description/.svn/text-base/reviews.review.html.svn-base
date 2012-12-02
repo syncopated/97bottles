@@ -1,0 +1,15 @@
+{% load reviews %}
+{% with object as review %}
+<p><a href="http://97bottles.com{{ review.created_by.profile.get_absolute_url }}">{{ review.created_by.profile.name }}</a> gave {{ review.rating|a_or_an_for_int }} <a href="http://97bottles.com{{ review.get_absolute_url }}">{{ review.rating }}</a> rating to <a href="http://97bottles.com{{ review.beer.get_absolute_url }}">{{ review.beer.name }}</a></p>
+
+<dl>
+  <dt>Beer review</dt>
+  <dd class="rating"><strong>Rating:</strong> {{ review.rating }}</dd>
+  <dd class="created_by"><strong>By:</strong> <a href="http://97bottles.com/{% url profile_detail review.created_by.username %}">{{ review.created_by.profile.name|typogrify }}</a></dd>
+  <dd class="drank"><strong>Where and how:</strong> from a {{ review.vessel.name|typogrify }} {% if review.city %} in <a href="http://97bottles.com/{{ review.city.get_absolute_url }}">{{ review.city.us_bias_name }}</a> {% endif %}</em></dd>
+  <dd class="date"><strong>Date:</strong> {{ review.date_created|date:"N jS, Y \a\t P" }}</dd>
+  <dd class="comment"><strong>Comment:</strong> {{ review.comment|striptags|markdown|typogrify }}</dd>
+  {% tags_for_object obj as tag_list %}
+  <dd class="characteristics"><strong>Characteristics:</strong> {% for tag in tag_list %}<a href="http://97bottles.com/tags/{{ tag|urlencode }}/">{{ tag.name }}</a> {% endfor %}</dd>
+</dl>
+{% endwith %}

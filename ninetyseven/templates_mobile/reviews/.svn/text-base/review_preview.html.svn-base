@@ -1,0 +1,21 @@
+{% extends "beers/base.html" %}
+
+{% block title %}
+  Review preview
+{% endblock %}
+
+{% block content %}
+  {% if review_form.errors %}
+  <div id="error-box">
+    <p>There were errors in your submission</p>
+    <ul>
+        {% for field in review_form %}
+        {% for error in field.errors%}{% if field.errors %}<li class="error"><strong>{{field.name|capfirst}}</strong>: {{ error }}</li>{% endif %}{% endfor %}
+        {% endfor %}
+    </ul>
+  </div>
+  {% else %}
+    <h3>Preview your review</h3>
+  {% endif %}
+  {% include "reviews/review_form_mobile.html" %}
+{% endblock %}

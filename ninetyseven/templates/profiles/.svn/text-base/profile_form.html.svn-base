@@ -1,0 +1,131 @@
+{% extends "profiles/base.html" %}
+
+{% block title %}Edit your profile{% endblock %}
+
+{% block extra-stylesheets %}
+  <link rel="stylesheet" href="/static/ninetyseven/assets/css/swanky-purse/jquery-ui-1.7.1.custom.css" type="text/css" media="screen" charset="utf-8" />
+{% endblock %}
+
+{% block content %}
+  <h3>Edit your profile</h3>
+  
+  <form action="" method="post" enctype="multipart/form-data" class="profile-form">
+      <div id="user-info">
+        <fieldset>
+        	<h4>Your information</h4>
+          {% for field in user_form %}
+            {{ field.label_tag }}
+            {{ field }}
+            <label for="{{ field.html_name }}" class="help">{{ field.help_text}}</label>
+            {% if field.errors %}<ul class="error-list">{{ field.errors }}</ul>{% endif %}
+          {% endfor %}
+          {% for field in profile_form %}
+            {% ifnotequal field.name 'city' %}
+              {% ifnotequal field.name 'mobile_number' %}
+                {% ifnotequal field.name 'mobile_provider' %}
+                  {{ field.label_tag }}
+                  {{ field }}
+                  <label for="{{ field.html_name }}" class="help">{{ field.help_text}}</label>
+                  {% if field.errors %}<ul class="error-list">{{ field.errors }}</ul>{% endif %}
+                {% endifnotequal %}
+              {% endifnotequal %}
+            {% endifnotequal %}
+          {% endfor %}
+          {# Our custom city field widget. #}
+
+	          <label for="city-search">Your City</label>
+	          <input type="text" name="city-search" value="" id="city-search" autocomplete="off" />
+	          <label class="help">You currently live in <strong>{{ profile.city }}</strong><br />
+	          To change your location, type a new city name in the box above. If you find your city, [click it]. If you can't find it, <a id="add-city-link" href="">click here</a> to add a new city.</label>
+	          <input type="hidden" id="id_profile-city" name="profile-city" value="{{ profile.city.id }}" />
+	          <script type="text/javascript" charset="utf-8">
+	            $("#city-search-results a").click(function(e){
+	              e.preventDefault();
+	              $("#id_profile-city").attr({value: this.id});
+	              $("#city-search").attr({value: this.text});
+	              $(".live-search-results").slideUp(300);
+	            });
+	          </script>
+
+	          <fieldset id="add-city">
+	            <legend>Add city</legend>
+	            {% for field in city_form %}
+	              {{ field.label_tag }}
+	              {{ field }}
+	              <label for="id_{{ field.html_name }}" class="help">{{ field.help_text}}</label>
+	              {% if field.errors %}<ul class="error-list">{{ field.errors }}</ul>{% endif %}
+	            {% endfor %}
+	          </fieldset>
+
+        </fieldset>
+      </div>
+    
+      <div id="other-profiles">
+        <fieldset>
+        	<h4>Your other profiles</h4>
+          <p class="description">Add the name of your favorite services (such as Flickr and Facebook) and your username below and they'll show up next to your 97Bottles profile! To add more, just save your profile and edit it again.</p>
+          {{ service_formset.management_form }}
+           <table>
+            <tr>
+              {% for field in service_formset.forms.0 %}
+                {% if not field.is_hidden %}<th>{{ field.label }}</th>{% endif %}
+              {% endfor %}
+            </tr>
+            {% for form in service_formset.forms %}
+              <tr>
+                {% for field in form %}
+                  {% if not field.is_hidden %}
+                    <td>{{ field }}</td>
+                  {% else %}
+                    {{ field }}
+                  {% endif %}
+                {% endfor %}
+              </tr>
+            {% endfor %}
+          </table>
+        </fieldset>
+      </div>
+    
+      <div id="personal-links">
+        <fieldset>
+        	<h4>Personal links</h4>
+          <p class="description">Add the Name and URL of your company, blog, or other personal site below and it'll show up next to your 97 Bottles profile! To add more, just save your profile and edit it again.</p>
+          {{ link_formset.management_form }}
+          
+          <table>
+            <tr>
+              {% for field in link_formset.forms.0 %}
+                {% if not field.is_hidden %}<th>{{ field.label }}</th>{% endif %}
+              {% endfor %}
+            </tr>
+            {% for form in link_formset.forms %}
+              <tr>
+                {% for field in form %}
+                  {% if not field.is_hidden %}
+                    <td>{{ field }}</td>
+                  {% else %}
+                    {{ field }}
+                  {% endif %}
+                {% endfor %}
+              </tr>
+            {% endfor %}
+          </table>
+        </fieldset>
+      </div>
+    	<input type="hidden" name="id_user" value="{{ request.user.id }}" id="id_user">
+    <p><input class="button" type="submit" value="Save profile"></p>
+  </form>
+{% endblock %}
+{% block sidebar %}
+	{{ block.super }}
+	
+	<div class="module">
+		<h3>Preferences</h3>
+		<ul>
+			<li><a href="{% url auth_password_change %}">Change your password</a></li>
+		  <li><a href="{% url preferences_edit %}">Change your preferences</a></li>
+			<li><a href="{% url user_associate %}">Link an OpenID with your account</a></li>
+			<!--<li><a href="{% url user_dissociate %}">Stop using OpenID</a></li>-->
+		</ul>
+	</div>
+{% endblock %}

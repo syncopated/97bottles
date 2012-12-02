@@ -1,0 +1,10 @@
+{% extends "comments/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Thanks for commenting" %}!{% endblock %}
+
+{% block content %}
+  <h3>{% trans "Thank you for commenting" %}!</h3>
+  <p>We love the feedback. Click around to <a href="{{ comment.content_object.get_absolute_url }}#{{ comment.id }}">view your comment</a>, <a href="{% url add_beer %}">add</a> or <a href="/beers/">review some beers</a>, or go back to the <a href="/">home page</a>.</p>
+  <p>Cheers!</p>
+{% endblock %}

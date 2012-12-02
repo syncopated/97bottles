@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Search results for "{{ search_string }}"{% endblock %}
+
+{% block content %}
+{% load pagination_tags %}
+    <h2>Search results for <strong>{{ search_string }}</strong></h2>
+    {% if results %}
+        <ul id="listing">
+            {% autopaginate results 10 %}
+            {% for item in results %}
+            <li class="{% cycle odd,even %}">
+                  {% render_template_for item.object in "search/snippets" %}
+            </li>
+            {% endfor %}
+        </ul>
+        {% paginate %}
+    {% else %}
+        <p>Drat! We found no beers by that name. Fancy another try? Search below.</p>
+    {% endif %}
+{% endblock %}

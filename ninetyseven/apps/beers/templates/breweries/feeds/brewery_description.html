@@ -1,0 +1,9 @@
+{% autoescape off %}
+  <h2>{{ obj.name|typogrify }}</h2>
+  <dl>
+    <dt>Details</dt>
+    {% if obj.rating %}<dd class="rating"><strong>Rating:</strong> {{ obj.rating }}</dd>{% endif %}
+    <dd class="adr city"><strong>City:</strong> <a href="http://97bottles.com/{{ obj.city.get_absolute }}">{{ obj.city.us_bias_name }}</a></dd>
+    <dd class="url"><strong>URL:</strong> {{ obj.url|urlize }}</dd>
+  </dl>
+{% endautoescape %}

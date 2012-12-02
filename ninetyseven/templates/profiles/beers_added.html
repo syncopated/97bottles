@@ -1,0 +1,11 @@
+{% extends "profiles/base.html" %}
+
+{% block title %}Beers added by {{ profile.name }}{% endblock %}
+
+
+{% block content %}
+  
+  <h3>Beers added by {{ profile.name }}</h3>
+  {% include "beers/snippets/beer_table.html" %}
+
+{% endblock %}

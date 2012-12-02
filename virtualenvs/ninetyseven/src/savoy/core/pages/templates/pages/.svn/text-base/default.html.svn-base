@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>{{ page.title }}</h2>
+  <h4>{{ page.subhead }}</h4>
+  {{ page.primary_content_rendered_markup }}
+  {{ page.secondary_content_rendered_markup }}
+  {{ page.fine_print_rendered_markup }}
+{% endblock %}

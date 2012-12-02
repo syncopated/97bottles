@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Your OpenID is verified!{% endblock %}
+
+{% block page-title %}<h2>Your OpenID is verified!</h2>{% endblock %}
+
+{% block content-wrapper %}
+  <div class="module light prepend-4">
+    <h3>OpenID authentication successful!</h3>
+    <p>There are two ways to use OpenID. You can:</p>
+  	<p>1) Associate it with an existing account or<br />
+  	   2) Associate it with an new account (you can create a new account below)</p>
+    
+    <h4>I already have a username and password (an account), but I want to associate my OpenID with it.</h4>
+  	<p>Cool! Thanks for being our friend. Verify your username and password (below) and we'll associate your OpenID with your account. This means you'll be able to sign in using OpenID OR your username and password.</p>
+    <form name="fverify" action="{% url user_register %}" method="POST" class="sign-up-form">
+      {{ form.next }}
+      <fieldset>
+        <legend>An exisiting account</legend>
+        <label for "id_username" class="required"><span class="required-asterisk">*</span>Username</label>{{ form2.username }}<br />
+        <label for "id_passwordl" class="required"><span class="required-asterisk">*</span>Password</label>{{ form2.password }}<br />
+        <input type="submit" class="button" name="bverify" value="Verify">
+      </fieldset>
+    </form>
+    
+  	<h4>I don't have a username and password (an account), but I want one!</h4>
+  	<p>Create an account by choosing a username and password, below. Your OpenID will be automatically associated with it!</p>
+  	<form name="fregister" action="{% url user_register %}" method="POST" class="sign-up-form">
+      {{ form.next }}
+      <fieldset>
+        <legend>A new account</legend>
+        <label for "id_username" class="required"><span class="required-asterisk">*</span>Username</label>{{ form1.username }}<br />
+        <label for "id_email" class="required"><span class="required-asterisk">*</span>Email</label>{{ form1.email }}<br />
+        <input type="submit" class="button" name="bnewaccount" value="Create account">
+      </fieldset>
+    </form>
+  
+  
+    {% if form1.errors %}
+      <p class="errors">Please correct errors below:</p>
+      <ul>
+        {% if form1.username.errors %} 
+          <li class="error">{{ form1.username.errors|join:", " }}</li>
+        {% endif %}
+        {% if form1.email.errors %} 
+          <li class="error">{{ form1.email.errors|join:", " }}</li>
+        {% endif %}
+      </ul>
+    {% endif %}
+    
+    {% if form2.errors %}
+      <p class="errors">Please correct errors below:</p>
+      <ul>
+        {% if form2.username.errors %} 
+          <li class="error">{{ form2.username.errors|join:", " }}</li>
+        {% endif %}
+        {% if form2.password.errors %} 
+          <li class="error">{{ form2.password.errors|join:", " }}</li>
+        {% endif %}
+      </ul>
+    {% endif %}
+  </div>
+
+
+{% endblock %}
+
+  
+

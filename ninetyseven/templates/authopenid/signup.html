@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Sign up{% endblock %}
+
+{% block page-title %}<h2>Sign up</h2>{% endblock %}
+
+{% block content-wrapper %}
+	<div class="module light">
+		<h3>Sign up for 97 Bottles</h3>
+	  {% if form.errors %}
+	    <p class="errors">Please correct errors below:</p>
+	    <ul>
+	      {% if form.username.errors %} 
+	        <li class="error">{{ form.username.errors|join:", " }}</li>
+	      {% endif %}
+	      {% if form.email.errors %} 
+	        <li class="error">{{ form.email.errors|join:", " }}</li>
+	      {% endif %}
+	      {% if form.password2.errors %} 
+	        <li class="error">{{ form.password2.errors|join:", " }}</li>
+	      {% endif %}
+	    </ul>
+	  {% endif %}
+	
+	  <form action="{% url registration_register %}" method="post" accept-charset="utf-8" class="sign-up-form">
+	    <fieldset>
+	      <legend>Standard sign up</legend>
+	      <label for="id_username" class="required"><span class="required-asterisk">*</span>Create a username</label>
+	      {{ form.username }}
+	      <label for="id_username" class="help">Make up a username. No spaces, please!</label>
+	      <label for="id_email" class="required"><span class="required-asterisk">*</span>Your email</label>
+	      {{ form.email }}
+	      <label for="id_email" class="help">Enter your email address. We won't publish it.</label>
+	      <br />
+	      <label for="id_password1" class="required"><span class="required-asterisk">*</span>Create a password</label>
+	      {{ form.password1 }}
+	      <label for="id_password1" class="help">Make up a password. No spaces, please!</label>
+	      <label for="id_password2" class="required"><span class="required-asterisk">*</span>Confirm your password</label>
+	      {{ form.password2 }}
+	      <label for="id_password2" class="help">Please re-enter your password so we can confirm it.</label>
+	      <input type="submit" class="button" value="Sign up" />
+	    </fieldset>
+	  </form>
+  </div>
+	<div class="module light">
+		<h3>Sign up using Open ID</h3>
+	  <form name="fopenid" action="{% url user_signin %}" method="post" class="sign-up-form">
+	    <fieldset>
+	      <legend>Sign up using OpenID</legend>
+	      <label for="id_openid_url" class="required"><span class="required-asterisk">*</span>OpenID URL</label>
+	      {{ form2.openid_url }}
+	      <label for="id_openid_url" class="help">Enter your OpenID URL</label>
+	      <input name="bsignin" type="submit" class="button" value="Sign up using OpenID"><br />
+	    </fieldset>
+	  </form>
+  </div>
+{% endblock %}
+{% block sidebar %}
+	<div class="module">
+		<h3>Why join 97 Bottles?</h3>
+		<p>If you like <a href="{% url award_beer_list_high-rated %}">great beer</a> and <a href="{% url people_index %}">good people</a>, 97 Bottles is for you. By becoming a member, you'll be able to create and add your own reviews, recommend and share beers with your friends, build a to-drink list, learn a ton about thousands of types of beer, and more. The best part? It's totally free!</p>
+
+		<p>Check out <a href="{% url blog_index %}">our blog</a> or peep our <a href="/pages/about/">about page</a> to learn more!</p>
+	</div>
+{% endblock %}

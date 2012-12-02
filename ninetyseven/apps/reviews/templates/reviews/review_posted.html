@@ -1,0 +1,7 @@
+{% extends "beers/base.html" %}
+
+{% block title %}Review posted{% endblock %}
+
+{% block content %}
+  <p>Thanks for your review. You may <a href="{{ review.get_absolute_url }}">view your review</a>.</p>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Noobs{% endblock %}
+
+{% block content %}
+  <h3>Noobs</h3>
+  {% if user_list %}
+    {% include "profiles/snippets/user_list.html" %}
+  {% endif %}
+{% endblock %}
+
+{% block sidebar %}
+	<div class="module">
+		<h3>What are Noobs?</h3>
+		<p>Noobs are the newest members of 97bottles. Wet behind the ears? Sure. But we still love them. Say hello, and treat'em nice!</p>
+	</div>
+{% endblock %}

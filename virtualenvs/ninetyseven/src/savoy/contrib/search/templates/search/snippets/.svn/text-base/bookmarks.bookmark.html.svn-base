@@ -1,0 +1,2 @@
+<dt><strong>Bookmark:</strong> <a href="{{ bookmark.get_absolute_url }}">{{ bookmark.title }}</a></dt>
+<dd>{{ bookmark.date_published|date:"l, F, j, Y \a\t h:iA" }}</dd>

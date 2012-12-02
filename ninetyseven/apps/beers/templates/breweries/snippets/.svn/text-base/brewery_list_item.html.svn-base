@@ -1,0 +1,3 @@
+
+    <dt class="{% cycle odd,even %}"><span class="rating">{% if brewery.rating %}{{ brewery.rating }}{% endif %}</span> <a href="{{ brewery.get_absolute_url }}">{{ brewery.name|typogrify }}</a></dt>
+    <dd class="city {% cycle odd,even %}"><a href="{{ brewery.city.get_absolute_url }}">{{ brewery.city.us_bias_name }}</a></dd>

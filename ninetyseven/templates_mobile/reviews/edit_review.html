@@ -1,0 +1,8 @@
+{% extends "beers/base.html" %}
+
+{% block title %}Edit beer{% endblock %}
+
+{% block content %}
+  <h3>Edit your review on <a class="get-btn" href="{{ beer.get_absolute_url }}">{{ beer.name }}</a></h3>
+  {% include "reviews/review_form_mobile.html" %}
+{% endblock %}

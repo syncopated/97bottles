@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/9/trunk/faves/templates/faves
+END
+user_faves.html
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/9/trunk/faves/templates/faves/user_faves.html
+END
+fave_done.html
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/6/trunk/faves/templates/faves/fave_done.html
+END
+unfave_done.html
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/5/trunk/faves/templates/faves/unfave_done.html
+END

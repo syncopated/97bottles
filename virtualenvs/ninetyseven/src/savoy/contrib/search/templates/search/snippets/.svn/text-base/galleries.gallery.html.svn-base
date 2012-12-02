@@ -1,0 +1,2 @@
+<dt><strong>Photo gallery:</strong> <a href="{{ gallery.get_absolute_url }}">{{ gallery.title }}</a></dt>
+<dd>{{ gallery.date_published|date:"l, F, j, Y \a\t h:iA" }}</dd>

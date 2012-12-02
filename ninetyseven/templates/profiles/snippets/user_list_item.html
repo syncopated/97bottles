@@ -1,0 +1,18 @@
+    {% if user %}
+      <dt class="{% cycle odd,even %} {% if user|IN:top_contributors %}beer-lord{% endif %} {% if user|IN:noobs %}noob{% endif %}">
+        {% load relationships %}
+        {% get_relationship request.user user as relationship %}
+      
+        {% if user.profile.avatar %}
+            <a href="{% url profile_detail user.username %}"><img class="user-avatar" src="{{ user.profile.avatar.url|thumbnail:"30x30" }}" title="{{ user.profile.name }}'s avatar" /></a>
+        {% else %}
+          {% with "http://97bottles.com/static/ninetyseven/assets/img/core/default-avatar.png" as default_avatar %}
+            <a href="{% url profile_detail user.username %}"><img class="user-avatar" src="{{ default_avatar|thumbnail:"30x30" }}" title="{{ user.profile.name }}'s avatar" /></a>
+          {% endwith %}
+        {% endif %}
+
+        <a href="{% url profile_detail user.username %}" {% ifequal request.user user %}rel="me"{% endifequal %} {% if relationship %}rel="{% if relationship.is_reciprocal %}acquaintance{% else %}contact{% endif %}"{% endif %}>{{ user.profile.name|typogrify }}</a>
+        {% include "profiles/snippets/follow_link.html" %}
+      </dt>
+      <dd class="user-data {% cycle odd,even %} {% if user|IN:top_contributors %}beer-lord{% endif %} {% if user|IN:noobs %}noob{% endif %}"><a href="{% url user_reviews_added user.username %}">{{ user.review_created.all|length }} reviews</a>, <a href="{% url user_beers_added user.username %}">{{ user.beer_created.all|length }} beers added</a></dd>
+    {% endif %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block full-title %}97 Bottles: Review, recommend, and learn about beer.{% endblock %}
+
+{% block after-search-content %}
+    <ul id="actions" class="rndr">
+    {% if user.is_authenticated %}
+    {% load faves %}
+        <li><a href="{% with "favorites" as fave_type_slug %}{% url user_faves user.username fave_type_slug %}{% endwith %}">Favorites</a></li>
+        <li><a href="{% with "to-dos" as fave_type_slug %}{% url user_faves user.username fave_type_slug %}{% endwith %}">To Drink</a></li>
+        <li><a href="{% url user_beers_recommended user.username %}">Recommendations</a></li>
+    {% endif %}
+        <li><a href="{% url feeling_lucky %}">Feeling Lucky?</a></li>
+    </ul>
+{% endblock %}

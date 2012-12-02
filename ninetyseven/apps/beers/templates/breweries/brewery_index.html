@@ -1,0 +1,32 @@
+{% extends "breweries/base.html" %}
+
+{% block title %}Breweries{% endblock %}
+
+{% block content %}
+  {% load beers %}
+  
+  <h3>Breweries</h3>
+  {% with brewery_list|dictsortreversed:"rating" as brewery_list %}
+    {% autopaginate brewery_list 100 %}
+    {% if not invalid_page %}
+      {% include "breweries/snippets/brewery_table.html" %}
+    {% endif %}
+    {% paginate 4 %}
+  {% endwith %}
+{% endblock %}
+
+{% block sidebar %}
+  
+  {{ block.super }}
+  
+  {% cache 600 country_list %}
+    <div class="module">
+      <h3>By location</h3>
+      <ul class="link-list">
+        {% for country in country_list %}
+          <li><a href="/breweries/{{ country.code }}/">{{ country.name }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endcache %}
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}{{ show.title }} Episodes{% endblock %}
+
+{% block content %}
+  <h2>{{ show.title }} Episodes</h2>
+  {% for episode in show.episode_set.all %}
+    <li><a href="{{ episode.get_absolute_url }}">{{ episode.title }}</a></li>
+  {% endfor %}
+{% endblock %}

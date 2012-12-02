@@ -1,0 +1,234 @@
+@import url("/static/ninetyseven/assets/css/base.css");
+
+/* 97 FONT EMBED
+------------------------------------------------------------- */
+
+@font-face {
+	font-family: "Trade Gothic LT";
+	src: url('/static/ninetyseven/assets/img/core/Trade-Gothic-LT.ttf');
+}
+
+@font-face {
+	font-family: "Trade Gothic LT";
+	font-weight: bold;
+	src: url('/static/ninetyseven/assets/img/core/Trade-Gothic-LT-Bold.ttf');
+}
+
+/* 97 ELEMENT STYLES
+------------------------------------------------------------- */
+
+body { 
+  background-color: #dcd48b;
+  background-image: none;
+  color: #2f1c0f;
+  margin: 0;
+  padding: 0;
+}
+
+#header {
+  border-top: 5px solid #2f1c0f;
+  border-bottom: 1px solid #703f06;
+  height: 70px;
+  padding: 0 10px;
+  background-image: url('/static/ninetyseven/assets/img/core/mobile/header-background.jpg');
+  background-repeat: repeat-x;
+}
+
+#content-wrapper {
+  padding: 10px;
+}
+
+h1 {
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: 80px;
+  height: 70px;
+  overflow: hidden;
+  position: relative;
+}
+
+h1 a {
+  display: block;
+  width: 80px;
+  height: 0;
+  padding-top: 70px;
+  overflow: hidden;
+  background-image: url('/static/ninetyseven/assets/img/core/mobile/header-logo.png');
+  background-repeat: no-repeat;
+}
+
+#primary-nav {
+  width: 200px;
+  float: right;
+  text-align: right;
+}
+
+
+ul#primary-nav {
+  list-style-type: none;
+  margin: 10px 0 0 0;
+  background-image: url('/static/ninetyseven/assets/img/core/module-background.jpg');
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-box-shadow: 2px 2px 2px #3d2304;
+  border: 3px solid #9e7e2e;
+  float: right;
+  width: 200px;
+}
+ ul#primary-nav li {
+  float: left;
+  width: 100px;
+  font-family: "Trade Gothic", "Trade Gothic LT Std", "Trade Gothic LT", TradeGothic, TradeGothicLT, TradeGothicLTStd, "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 37px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+ }
+ 
+ ul#primary-nav li a {
+   display: block;
+   width: 100px;
+   color: #301c0e;
+   padding: 3px 0 2px 0;
+ }
+ 
+ body.beer ul#primary-nav li.beer a,
+ body.brewery ul#primary-nav li.brewery a,
+ body.people ul#primary-nav li.people a,
+ body.timeline ul#primary-nav li.timeline a,
+ ul#primary-nav li a:hover,
+ ul#primary-nav li a:active {
+   background-color: #301c0e;
+   color: #dcd48b;
+   text-shadow: 0 0 0 #301c0e;
+ }
+ 
+ body.beer ul#primary-nav li.beer a,
+ ul#primary-nav li.first a:hover,
+ ul#primary-nav li.first a:active {
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   -webkit-border-top-right-radius: 0;
+   -webkit-border-bottom-right-radius: 0;
+   -moz-border-radius-bottomright: 0;
+   -moz-border-radius-topright: 0;
+ }
+ 
+ body.timeline ul#primary-nav li.timeline a,
+ ul#primary-nav li.last a:hover,
+ ul#primary-nav li.last a:active {
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   -webkit-border-top-left-radius: 0;
+   -webkit-border-bottom-left-radius: 0;
+   -moz-border-radius-bottomleft: 0;
+   -moz-border-radius-topleft: 0;
+ }
+
+
+#search, body[orient="landscape"] #search {
+  background: transparent url('/static/ninetyseven/assets/img/core/mobile/search-background.png') no-repeat left top;
+  width: 304px;
+  height: 26px;
+  margin: 0;
+}
+
+body[orient="landscape"] #search {
+  background: transparent url('/static/ninetyseven/assets/img/core/mobile/search-background-landscape.png') no-repeat left top;
+  width: 464px;
+}
+
+#search #q, body[orient="landscape"] #search #q {
+  border: 0;
+  border-style: none;
+  background-color: transparent;
+  background-image: none;
+  color: #703f06;
+  font: bold 14px "Trade Gothic", "Trade Gothic LT Std", "Trade Gothic LT", TradeGothic, TradeGothicLT, TradeGothicLTStd, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 2px 0 0 10px;
+  width: 242px;
+  padding: 4px 0 0 14px;
+}
+
+body[orient="landscape"] #search #q {
+  width: 402px;
+}
+
+
+.module {
+  background-color: #2f1c0f;
+  border: 3px solid #2f1c0f;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-box-shadow: 2px 2px 2px #3d2304;
+  padding: 20px 10px 20px 10px;
+  margin: 0 0 20px 0;
+  background-image: url('/static/ninetyseven/assets/img/core/module-background-dark.png');
+  background-position: top left;
+  background-repeat: repeat;
+}
+
+.module h3 {
+  position: relative;
+  top: -1px;
+  margin-left: -12px;
+  margin-right: -12px;
+  width: auto;
+  padding: 5px 12px 7px 12px;
+}
+
+.beer-actions {
+  display: block;
+  border: none;
+  margin: 10px 0;
+  position: static;
+}
+
+.beer-actions a {
+  float: none;
+}
+
+
+form.review-form fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+form.review-form {
+  padding-left: 0;
+  width: 0;
+}
+
+form.review-form input {
+  clear: both;
+}
+
+form.review-form label {
+  float: none;
+  width: auto;
+  margin-left: 0;
+  text-align: left;
+  font-family: "Trade Gothic", "Trade Gothic LT Std", "Trade Gothic LT", TradeGothic, TradeGothicLT, TradeGothicLTStd, "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 5px 0;
+  text-transform: uppercase;
+  clear: left;
+}
+
+form.review-form label.help {
+  float: none;
+  width: auto;
+  margin-left: 0;
+  margin-bottom: 20px;
+  text-align: left;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 11px;
+  padding: 0;
+  text-transform: none;
+}
+
+form.review-form textarea { width: 260px; }

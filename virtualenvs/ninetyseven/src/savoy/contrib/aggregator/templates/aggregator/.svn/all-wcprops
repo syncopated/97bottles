@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/savoy/!svn/ver/1214/trunk/contrib/aggregator/templates/aggregator
+END
+day.html
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/savoy/!svn/ver/1121/trunk/contrib/aggregator/templates/aggregator/day.html
+END
+today.html
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/savoy/!svn/ver/1121/trunk/contrib/aggregator/templates/aggregator/today.html
+END
+year.html
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/savoy/!svn/ver/1121/trunk/contrib/aggregator/templates/aggregator/year.html
+END
+archive.html
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/savoy/!svn/ver/1121/trunk/contrib/aggregator/templates/aggregator/archive.html
+END
+month.html
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/savoy/!svn/ver/1121/trunk/contrib/aggregator/templates/aggregator/month.html
+END
+search.html
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/savoy/!svn/ver/1201/trunk/contrib/aggregator/templates/aggregator/search.html
+END

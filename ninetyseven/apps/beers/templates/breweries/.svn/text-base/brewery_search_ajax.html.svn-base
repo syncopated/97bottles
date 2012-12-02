@@ -1,0 +1,21 @@
+{% autoescape off %}
+  <h4>Search results</h4>
+  {% if brewery_list %}
+    <dl id="brewery-search-results">
+      {% for brewery in brewery_list %}
+        <dt><a class="add-brewery-to-form" id="{{ brewery.id }}" href="{{ brewery.get_absolute_url }}">{{ brewery.name }}</a></dt>
+        <dd>{{ brewery.city }}</dd>
+      {% endfor %}
+    </dl>
+    <script type="text/javascript">
+      $("#brewery-search-results a").click(function(e){
+        $("#id_beer-brewery").val($(this).attr("id"));
+        $("#brewery-search").val($(this).text()).blur();
+        $(".live-search-results").slideUp(300);
+        e.preventDefault();
+      });
+    </script>
+  {% else %}
+    <p>There are no results.</p>
+  {% endif %}
+{% endautoescape %}

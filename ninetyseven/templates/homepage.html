@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+
+{% block full-title %}97 Bottles: Review, recommend, and learn about beer.{% endblock %}
+
+{% block layout-wrapper %}
+  {% load beers %}
+  {% load reviews %}
+  <div class="container">
+    <div class="column span-16 first">
+      <div id="featured-beer" class="module light">
+        <h3>Now on tap</h3>
+        <div id="beer-details" class="prepend-4 span-10 append-2 first last">
+          {% with interesting_beer as beer %}
+          {% if not user.is_anonymous %}
+            <div class="beer-actions">
+                {% load faves %}
+                {% get_fave by user on beer of type to-dos as todos %}
+                {% if todos %}
+                  <a href="{% get_unfave_url beer 'to-dos' %}" class="todolist" title="Remove this beer from your to-drink list.">un-to-drink</a>
+                {% else %}
+                  <a href="{% get_toggle_fave_url beer 'to-dos' %}" class="todolist" title="Add this beer to your to-drink list.">to-drink</a>
+                {% endif %}
+                
+                {% get_fave by user on beer of type nasty as fave %}
+                {% if fave %}
+                  <a class="nasty" href="{% get_unfave_url beer 'nasty' %}">un-nasty</a> 
+                {% else %}
+                  <a class="nasty" href="{% get_toggle_fave_url beer 'nasty' %}">nasty</a>
+                {% endif %}
+                
+                {% get_fave by user on beer of type favorites as fave %}
+                {% if fave %}
+                  <a class="favoriter" href="{% get_unfave_url beer 'favorites' %}">unfavorite</a> 
+                {% else %}
+                  <a  class="favoriter" href="{% get_toggle_fave_url beer 'favorites' %}">favorite</a>
+                {% endif %}
+                <a class="recommend" href="#">Recommend</a>
+            </div>
+            <div class="recommend-to-friend">
+              <form action="{% url user_recommendation_submit beer.id %}" method="post" accept-charset="utf-8" class="recommend-to-friend-form">
+                {% for field in interesting_beer_user_recommendation_form %}
+                  <label for="id_{{ field.html_name }}" class="{% if field.field.required %}required {% endif %}">to</label>
+                  {{ field }}
+                  <label for="id_{{ field.html_name }}" class="help">{{ field.help_text}}</label>
+                  {% if field.errors %}{{ field.errors }}{% endif %}
+                {% endfor %}
+                <input type="submit" value="Send" class="send-button">
+              </form>
+            </div>
+          {% endif %}
+            <a href="{{ beer.get_absolute_url }}"><img title="Preferred vessel: {{ beer.preferred_vessel }} 
+Color: {{ beer.color.srm }} SRM" src="{{ beer.vessel_image.image.url|thumbnail:"134" }}" class="pull-4" /></a>
+            <div class="awards">
+              {% if beer.is_high_rated %} <a href="{% url award_beer_list_high-rated %}"><img src="/static/ninetyseven/assets/img/core/awards/award-high-rated.png" alt="Awesome!" title="Awesome!" /></a> {% endif %}
+              {% if beer.is_skunky %} <a href="{% url award_beer_list_skunky %}"><img src="/static/ninetyseven/assets/img/core/awards/award-skunky.png" alt="Skunky" title="Skunky" /></a> {% endif %}
+              {% if beer.is_girlie %} <a href="{% url award_beer_list_girlie %}"><img src="/static/ninetyseven/assets/img/core/awards/award-girlie.png" alt="Chicks dig it!" title="Chicks dig it!" /></a> {% endif %}
+              {% if beer.is_high_alcohol %} <a href="{% url award_beer_list_high-alcohol %}"><img src="/static/ninetyseven/assets/img/core/awards/award-high-alcohol.png" alt="High alcohol" title="High alcohol" /></a> {% endif %}
+              {% if beer.is_staff_pick %} <a href="{% url award_beer_list_staff-pick %}"><img src="/static/ninetyseven/assets/img/core/awards/award-staff.png" alt="Staff pick" title="Staff pick" /></a> {% endif %}
+          </div>
+            <div class="prepend-2">
+              <dl>
+                <dt>Beer details</dt>
+                {% if beer.rating %}<dd class="rating"><strong>Rating:</strong> {{ beer.rating }}</dd>{% endif %}
+                <dd class="name"><h2><a href="{{ beer.get_absolute_url }}">{{ beer.name|typogrify }}</h2></a></dd>
+                {% if beer.brewery %}<dd class="brewery"><strong>Brewery:</strong> <a href="{{ beer.brewery.get_absolute_url }}">{{ beer.brewery.name|typogrify }}</a> &middot; {{ beer.brewery.city.us_bias_name }}</dd>{% endif %}
+                {% if beer.variety %}
+                  <dd class="variety">
+                    <strong>Variety:</strong>
+                    {% for category in beer.variety.all_parent_categories %}
+                      <a href="{% url category_detail category.path %}">{{ category.name|typogrify }}</a> &middot;
+                    {% endfor %}
+                    <a href="{% url category_detail beer.variety.path %}">{{ beer.variety.name|typogrify }}</a>
+                  </dd>
+                {% endif %}
+                {% get_beer_review_for_user beer user as current_user_review %}
+                {% if current_user_review %}<dd><em><a href="{{ current_user_review.get_absolute_url }}">You gave this beer a <span class="reviewed-rating">{{ current_user_review.rating }}</span></a> on {{ current_user_review.date_created|date:"N jS, Y" }}</em></dd>{% endif %}
+              </dl>
+            </div>
+            <div class="prepend-2">
+              {{ beer.description|markdown|truncatewords_html:"30"|typogrify }}
+              <ul class="link-list inline">
+                <li class="home-more-link"><a href="{{ beer.get_absolute_url }}">Beer profile</a></li>
+                <li class="home-review-link"><a href="{{ beer.get_absolute_url }}#add-review">What do you think?</a></li>
+              </ul>
+            </div>  
+          {% endwith %}
+        </div>
+      </div>
+    </div>
+    <div class="column span-7 prepend-1 last">
+      {% if user.is_authenticated %}
+        <div id="mini-profile" class="module dark">
+          {% load relationships %}
+          {% load faves %}
+          {% get_relationships_for_user user as relationships %}
+          {% get_faves_for_user user of type favorites as favorites %}
+          {% get_faves_for_user user of type to-dos as todos %}        
+          <h3>About you</h3>
+          {% if user.profile.avatar %}
+              <a rel="me" href="{% url profile_detail user.username %}"><img id="profile-avatar" src="{{ user.profile.avatar.url|thumbnail:"64x64" }}" title="{{ user.profile.name }}'s avatar" /></a>
+          {% else %}
+            {% with "http://97bottles.com/static/ninetyseven/assets/img/core/default-avatar.png" as default_avatar %}
+              <a rel="me" href="{% url profile_detail user.username %}"><img id="profile-avatar" src="{{ default_avatar|thumbnail:"64x64" }}" title="{{ user.profile.name }}'s avatar" /></a>
+            {% endwith %}
+          {% endif %}
+          <dl class="user-details">
+            <dt><a rel="me" href="{% url profile_detail user.username %}">{{ user.profile.name|truncate_characters:"10" }}</a></dt>
+            <dd>{% if user.profile.city %}<em>{{ user.profile.city.us_bias_name|typogrify }}</em>{% else %}&nbsp;{% endif %}</dd>
+          </dl>
+          <ul class="link-list user-links">
+            <li><a rel="me" href="{% url user_relationships user.username %}#friends"><span class="aggregate">{{ relationships.friends|length }}</span>Friends</a></li>
+            <li> <a rel="me" href="{% url user_relationships user.username %}#following"><span class="aggregate">{{ relationships.following|length }}</span>Following</a></li>
+            <li> <a rel="me" href="{% url user_relationships user.username %}#followers"><span class="aggregate">{{ relationships.followers|length }}</span>Followers</a></li>
+            <li><a rel="me" href="{% url user_reviews_added user.username %}"><span class="aggregate">{{ user.review_created.count }}</span>Reviews</a></li>
+            {# <li><a rel="me" href="{% url user_beers_added user.username %}"><span class="aggregate">{{ user.beer_created.count }}</span>Beers added</a></li> #}
+            <li><a rel="me" href="{% with "favorites" as fave_type_slug %}{% url user_faves user.username fave_type_slug %}{% endwith %}"><span class="aggregate">{{ favorites|length }}</span>Favorites</a></li>
+            <li><a rel="me" href="{% with "to-dos" as fave_type_slug %}{% url user_faves user.username fave_type_slug %}{% endwith %}"><span class="aggregate">{{ todos|length }}</span>To-drink list</a></li>
+            <li><a rel="me" href="{% url user_beers_recommended user.username %}"><span class="aggregate">{{ user.info.incoming_user_recommendations|length }}</span> Beer recommendations</a></li>
+          </ul>
+          <p class="edit-profile"><a rel="me" href="{% url profile_edit %}">Edit your profile</a></p>
+        </div>
+      {% else %}
+        <div id="homepage-sign-in" class="module dark">        
+          <h3>Sign in or Sign up!</h3>
+          <form name="fauth" action="{% url user_signin %}" method="post" class="homepage-sign-in-form">
+            <input type="hidden" name="next" value="/" id="id_next" />
+            <fieldset>
+              <legend>Sign in with username and password</legend>
+              <label for="id_username">Username</label>
+              <input id="id_username" type="text" class="required login" name="username" maxlength="30" /><br />
+              <label for="id_password">Password</label>
+              <input id="id_password" type="password" class="required login" name="password" maxlength="128" /><br />
+              <label class="help"><a href="{% url auth_password_reset %}">Forgot your password?</a> or <a id="openid-homepage" href="#">login using OpenID</a></label>
+              <input type="submit" name="blogin" value="Sign in" class="button">
+            </fieldset> 
+          </form>
+          <form name="fopenid" action="{% url user_signin %}" method="post" class="homepage-sign-in-form">
+              <input type="hidden" name="next" value="/" id="id_next" />
+              <label for="id_openid_url">OpenId</label>
+              <input id="id_openid_url" class="required login" name="openid_url" /><br />
+              <label class="help"><a id="normal-login-homepage" href="#">Login using your username/password</a></label>
+              <input name="bsignin" type="submit" value="Sign in" class="button">
+          </form>
+          
+          
+          <p>97bottles is a free service for beer lovers to review, recommend, and learn about beer&mdash;with their friends. Start using the site, learn more or become a member today!</p>
+          <p class="sign-up">Don't have an account? <a href="{% url registration_register %}">Sign up!</a></p>  
+        </div>
+       {% endif %}
+    </div>
+    <div class="column span-7 append-1 first">
+      <div class="module">
+        {% if most_recent_reviews %}
+          <h3><a href="http://feeds2.feedburner.com/97bottlescomNewestReviews" class="subscribe-icon" title="Subscribe to the newest reviews" ><img src="/static/ninetyseven/assets/img/core/rss.png" alt="subscribe" /></a>Newest reviews</h3>
+          {% with most_recent_reviews as review_list %}
+            {% include "reviews/snippets/review_list.html" %}
+          {% endwith %}
+        {% endif %}
+        <p class="more"><a href="{% url recently_added_reviews %}">More reviews</a></p>
+      </div>
+    </div>
+    <div class="column span-8">
+      <div class="floating-logo-wrapper"><div class="floating-logo"></div></div>
+      <div class="module">
+        {% if user.info.recommended_beers or user.info.recommended_beers_by_tags %}
+          <h3>Beers recommended for you</h3>
+          {% with user.info.recommended_beers|slice:":7" as beer_list %}
+            {% include "beers/snippets/beer_list.html" %}
+          {% endwith %}
+          <p class="more"><a href="{% url user_beers_recommended user.username %}">More beers for you</a></p>
+        {% else %}
+          {% get_most_interesting_beers 7 as most_interesting_beers %}
+          {% if most_interesting_beers %}
+            <h3>Unique and noteworthy</h3>
+            {% with most_interesting_beers as beer_list %}
+              {% include "beers/snippets/beer_list.html" %}
+            {% endwith %}
+            <p class="more">{% with "beer" as hierarchy_slug %}<a href="{% url hierarchy_detail hierarchy_slug %}">More beers</a>{% endwith %}</p>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+    <div class="column span-7 prepend-1 last">
+      <div class="module timeline-mini">
+        {% load timelines %}
+        <h3><a href="http://feeds2.feedburner.com/97bottlescomNewestTimelineItems" class="subscribe-icon" title="Subscribe to the latest activity" ><img src="/static/ninetyseven/assets/img/core/rss.png" alt="subscribe" /></a>Beer log</h3>
+        {% get_timeline_items limit 5 as items %}
+        {% include "timelines/snippets/timeline_list_grouped_by_day.html" %}
+        <p class="more"><a href="{% url timelines_archive %}">More beer log</a></p>
+      </div>
+    </div>
+  </div>
+{% endblock %}

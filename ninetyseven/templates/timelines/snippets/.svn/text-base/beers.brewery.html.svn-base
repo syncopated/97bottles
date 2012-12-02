@@ -1,0 +1,4 @@
+{% with object as brewery %}
+  added <a href="{{ brewery.get_absolute_url }}">{{ brewery.name }}</a>.
+  <span class="timeline-item-timestamp"> {% ifchanged item.timestamp.minute %}{{ item.timestamp|date:"fA"|lower }}{% endifchanged %}</span>
+{% endwith %}

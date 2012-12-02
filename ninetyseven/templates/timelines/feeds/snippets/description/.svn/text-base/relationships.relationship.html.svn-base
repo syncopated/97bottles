@@ -1,0 +1,5 @@
+{% with object as relationship %}
+  {% load relationships %}
+  {% get_relationship relationship.to_user relationship.from_user as is_reciprocal %}
+  <a href="http://97bottles.com{{ relationship.from_user.profile.get_absolute_url }}">{{ relationship.from_user.profile.name }}</a> followed <a href="http://97bottles.com{{ relationship.to_user.profile.get_absolute_url }}">{{ relationship.to_user.profile.name }}</a>.{% if is_reciprocal %} They are now friends.{% endif %}
+{% endwith %}

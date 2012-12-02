@@ -1,0 +1,129 @@
+{% extends "profiles/base.html" %}
+
+{% block title %}{{ profile.name }}{% endblock %}
+
+{% block extra-scripts %}{% endblock %}
+
+{% load beers %}
+{% load faves %}
+
+
+{% block content-wrapper %}
+  {% load relationships %}
+  
+  <div class="module dark vcard">
+    <h3>{% ifequal profile.user user %}<a href="{% url profile_detail profile.user.username %}">Your</a>{% else %}<a href="{% url profile_detail profile.user.username %}">{{ profile.name }}</a>'s {% endifequal %} profile</h3>
+    <span class="hide fn">{{ profile.name }}</span>
+      {% if profile.avatar %}
+        <img id="profile-avatar" src="{{ profile.avatar.url|thumbnail:"100x100" }}" title="{{ profile.name }}'s avatar" />
+      {% else %}
+        {% with "http://97bottles.com/static/ninetyseven/assets/img/core/default-avatar.png" as default_avatar %}
+          <img id="profile-avatar" src="{{ default_avatar|thumbnail:"100x100" }}" title="{{ profile.name }}'s avatar" />
+        {% endwith %}
+      {% endif %}
+    <div id="profile-details">
+      {% if not user.is_anonymous %}
+	      <div class="follow-unfollow">
+	        {% ifnotequal user profile.user %}
+	          {% get_relationship user profile.user as relationship %}
+	          {% if relationship %}
+	            <a class="follow-link" href="{% url relationship_follow_unfollow profile.user.id %}">unfollow</a>
+	          {% else %}
+	            <a class="follow-link" href="{% url relationship_follow_unfollow profile.user.id %}">follow</a>
+	          {% endif %}
+	        {% else %}
+	           <a href="{% url profile_edit %}">Edit account</a>
+	        {% endifnotequal %}
+	      </div>
+      {% endif %}
+      <div id="profile-info">
+        <dl class="user-details adr">
+          <dt><h2>{{ profile.name }}</h2></dt>
+          {% if profile.one_line_description %}<dd class="one-line-description"><em>{{ profile.one_line_description|typogrify }}</em></dd>{% endif %}
+          {% if profile.city %}<dd><em>{{ profile.city.us_bias_name|typogrify }}</em></dd><dd class="hide locality">{{ profile.city.city }}</dd><dd class="hide region">{{ profile.city.state }}</dd><dd class="hide region">{{ profile.city.province }}</dd><dd class="hide country-name">{{ profile.city.country }}</dd>{% endif %}
+        </dl>
+        {{ profile.bio|markdown|typogrify }}
+
+      </div>
+    </div>
+  </div>
+  <div class="column span-7 append-1">
+    <div class="module timeline-mini">
+      {% load timelines %}
+      <h3><a href="http://97bottles.com/feeds/beer-log-for-person/{{ profile.user.username }}/" class="subscribe-icon" title="Subscribe to {{ profile.name}}'s beer log" ><img src="/static/ninetyseven/assets/img/core/rss.png" alt="subscribe" /></a> {% ifequal profile.user user %}<a href="{% url timelines_archive_user username=profile.user.username %}">Your beer log</a>{% else %}<a href="{% url timelines_archive_user username=profile.user.username %}">{{ profile.name }}'s beer log</a>{% endifequal %}</h3>
+      {% get_timeline_items limit 5 foruser profile.user as items %}
+      {% with profile.user as timeline_for %}
+        {% include "timelines/snippets/timeline_list_grouped_by_day.html" %}
+      {% endwith %}
+      <p class="more"><a href="{% url timelines_archive_user username=profile.user.username %}">More beer log</a></p>
+    </div>
+  </div>
+  <div class="column span-8 last">
+    <div class="module">
+      {% if profile.user.info.recommended_beers or profile.user.info.recommended_beers_by_tags %}
+        <h3>Beers recommended for {% ifequal profile.user user %}you{% else %}{{ profile.name }}{% endifequal %}</h3>
+        {% with profile.user.info.recommended_beers|slice:":7" as beer_list %}
+          {% include "beers/snippets/beer_list.html" %}
+        {% endwith %}
+        <p class="more"><a href="{% url user_beers_recommended profile.user.username %}">More beers for {% ifequal profile.user user %}you{% else %}{{ profile.name }}{% endifequal %}</a></p>
+      {% else %}
+        {% get_most_interesting_beers 7 as most_interesting_beers %}
+        {% if most_interesting_beers %}
+          <h3>Unique and noteworthy</h3>
+          {% with most_interesting_beers as beer_list %}
+            {% include "beers/snippets/beer_list.html" %}
+          {% endwith %}
+          <p class="more">{% with "beer" as hierarchy_slug %}<a href="{% url hierarchy_detail hierarchy_slug %}">More beers</a>{% endwith %}</p>
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block sidebar %}
+  {% ifequal profile.user user %}
+    <div class="module">
+      <h3>Tell your friends!</h3>
+      <p>Do you love 97 Bottles? Tell people! Enter an email address and we'll send your friend a welcome email.</p>
+      <form action="{% url tell_a_friend %}" method="post" class="sidebar-form">
+        {% for field in tell_a_friend_form %}
+          <label for="id_{{ field.html_name }}" class="{% if field.field.required %}required {% endif %}">{% if field.field.required %}<span class="required-asterisk">*</span>{% endif %}Email</label>
+          {{ field }}<br />
+          {% if field.help_text %}<label for="{{ field.html_name }}" class="help">{{ field.help_text}}</label>{% endif %}
+          {% if field.errors %}{{ field.errors }}{% endif %}
+        {% endfor %}
+        <input type="submit" class="button" value="Submit" />
+      </form>
+    </div>
+  {% endifequal %}
+  {{ block.super }}
+  {% if profile.services.all or profile.links.all%}
+    <div class="module">
+      <h3>Links</h3>
+      <ul class="link-list">
+      	{% if profile.services.all %}
+	        {% for service in profile.services.all %}
+	          <li><a rel="me" href="{{ service.service_url }}">{{ service.title }}</a></li>
+	        {% endfor %}
+        {% endif %}
+        {% if profile.links.all  %}
+	        {% for link in profile.links.all %}
+	          <li><a rel="me" href="{{ link.url }}">{{ link.title }}</a></li>
+	        {% endfor %}
+				{% endif %}
+      </ul>
+    </div>
+  {% endif %}
+
+  
+  {% if profile.user.info.similar_users %}
+    <div class="module">
+      <h3>Users like {% ifequal user profile.user %}you{% else %}{{ profile.name }}{% endifequal %}</h3>
+      {% with profile.user.info.similar_users|slice:":5" as user_list %}
+        {% include "profiles/snippets/user_list.html" %}
+      {% endwith %}
+    </div>
+  {% endif %}
+  
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% autoescape off %}
+  <dl>
+    <dt>Beer review</dt>
+    <dd class="rating"><strong>Rating:</strong> {{ obj.rating }}</dd>
+    <dd class="created_by"><strong>By:</strong> <a href="http://97bottles.com/{% url profile_detail obj.created_by.username %}">{{ obj.created_by.profile.name|typogrify }}</a></dd>
+    <dd class="drank"><strong>Where and how:</strong> from a {{ obj.vessel.name|typogrify }} {% if obj.city %} in <a href="http://97bottles.com/{{ obj.city.get_absolute_url }}">{{ obj.city.us_bias_name }}</a> {% endif %}</em></dd>
+    <dd class="date"><strong>Date:</strong> {{ obj.date_created|date:"N jS, Y \a\t P" }}</dd>
+    <dd class="comment"><strong>Comment:</strong> {{ obj.comment|striptags|markdown|typogrify }}</dd>
+    {% tags_for_object obj as tag_list %}
+    <dd class="characteristics"><strong>Characteristics:</strong> {% for tag in tag_list %}<a href="http://97bottles.com/tags/{{ tag|urlencode }}/">{{ tag.name }}</a> {% endfor %}</dd>
+  </dl>
+{% endautoescape %}

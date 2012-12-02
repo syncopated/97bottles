@@ -1,0 +1,30 @@
+{% extends "beers/base.html" %}
+
+{% block title %}{{ award.name }} beers{% endblock %}
+
+{% block content %}
+  {% load beers %}
+  
+  <h3>{{ award.name }} beers</h3>
+  <div class="award-list-icon">
+		{% ifequal award.slug "high-rated" %}<img src="/static/ninetyseven/assets/img/core/awards/award-high-rated.png" alt="Awesome!" title="Awesome!" />{% endifequal %}
+		{% ifequal award.slug "skunky" %}<img src="/static/ninetyseven/assets/img/core/awards/award-skunky.png" alt="Skunky" title="Skunky" />{% endifequal %}
+		{% ifequal award.slug "girlie" %}<img src="/static/ninetyseven/assets/img/core/awards/award-girlie.png" alt="Chicks dig it!" title="Chicks dig it!" />{% endifequal %}
+		{% ifequal award.slug "high-alcohol" %}<img src="/static/ninetyseven/assets/img/core/awards/award-high-alcohol.png" alt="High alcohol" title="High alcohol" />{% endifequal %}
+		{% ifequal award.slug "staff-pick" %}<img src="/static/ninetyseven/assets/img/core/awards/award-staff.png" alt="Staff pick" title="Staff pick" />{% endifequal %}
+	</div>
+				
+  {% include "beers/snippets/beer_table.html" %}
+{% endblock %}
+
+{% block sidebar %}	
+	<div class="module">
+		<h3>{{ award.name }}</h3>
+		{% ifequal award.slug "high-rated" %}{% fragment "award-high-rated" %}{% endifequal %}
+		{% ifequal award.slug "skunky" %}{% fragment "award-skunky" %}{% endifequal %}
+		{% ifequal award.slug "girlie" %}{% fragment "award-girlie" %}{% endifequal %}
+		{% ifequal award.slug "high-alcohol" %}{% fragment "award-high-alcohol" %}{% endifequal %}
+		{% ifequal award.slug "staff-pick" %}{% fragment "award-staff-pick" %}{% endifequal %}
+	</div>
+	{% include "beers/snippets/beer_awards.html" %}
+{% endblock %}

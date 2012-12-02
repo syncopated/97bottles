@@ -1,0 +1,4 @@
+{% with object as recommendation %}
+  recommended <a href="{{ recommendation.beer.get_absolute_url }}">{{ recommendation.beer.name }}</a> to <a href="{% url profile_detail recommendation.to_user.username %}">{{ recommendation.to_user.profile.name }}</a>.  
+  <span class="timeline-item-timestamp"> {% ifchanged item.timestamp.minute %}{{ item.timestamp|date:"fA"|lower }}{% endifchanged %}</span>
+{% endwith %}

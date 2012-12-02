@@ -1,0 +1,15 @@
+<li id="c{{ comment.id }}">
+  <div class="comment-author-name">
+    {% if comment.author_url %}
+      <a href="{{ comment.author_url }}" title="{{ comment.author_url }}">{{ comment.author_name|striptags|fix_ampersands|typogrify }}</a>
+    {% else %}
+      {{ comment.author_name|striptags|fix_ampersands|typogrify }}
+    {% endif %}
+  </div>
+  {% if user.is_staff %}
+    <div class="comment-administrative-tools"><a href="/admin/comments/comment/{{ comment.id }}/">Edit</a> | <a href="/admin/comments/comment/{{ comment.id }}/delete/">Delete</a></div>
+    <div class="comment-ip-address">IP Address: {{ comment.author_ip_address }}</div>
+  {% endif %}
+  <div class="comment-date-submitted">{{ comment.date_submitted|date:"N jS, Y" }} at {{ comment.date_submitted|date:"P" }}</div>
+  <div class="comment-body">{{ comment.body|striptags|fix_ampersands|urlize|markdown|typogrify }}</div>
+</li>

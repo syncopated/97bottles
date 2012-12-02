@@ -1,0 +1,32 @@
+{% load comments i18n %}
+<form action="{% comment_form_target %}" class="comment-form" method="post">
+  {% for field in form %}
+    {% if field.is_hidden %}
+      {{ field }}
+    {% else %}
+      {% if user.is_authenticated %}
+        {% ifequal field.name "name" %}<input type="hidden" name="name" value="{{ user.profile.name }}" id="id_name">{% endifequal %}
+        {% ifequal field.name "email" %}<input type="hidden" name="email" value="{{ user.email }}" id="id_email">{% endifequal %}
+        {% ifnotequal field.name "name" %}{% ifnotequal field.name "email" %}{% ifnotequal field.name "url" %}
+        {% ifequal field.name "honeypot" %}<div style="display:none;">{% endifequal %}
+        <label for="id_{{ field.html_name }}" class="{% if field.field.required %}required {% endif %}">{% if field.field.required %}<span class="required-asterisk">*</span>{% endif %}{{ field.label }}</label>
+        {{ field }}<br />
+        <label for="{{ field.html_name }}" class="help">{{ field.help_text}}</label>
+        {% if field.errors %}{{ field.errors }}{% endif %}
+        {% ifequal field.name "honeypot" %}</div>{% endifequal %}
+        {% endifnotequal %}{% endifnotequal %}{% endifnotequal %}
+      {% else %}
+        {% ifequal field.name "honeypot" %}<div style="display:none;">{% endifequal %}
+        <label for="id_{{ field.html_name }}" class="{% if field.field.required %}required {% endif %}">{% if field.field.required %}<span class="required-asterisk">*</span>{% endif %}{{ field.label }}</label>
+        {{ field }}<br />
+        <label for="{{ field.html_name }}" class="help">{{ field.help_text}}</label>
+        {% if field.errors %}{{ field.errors }}{% endif %}
+        {% ifequal field.name "honeypot" %}</div>{% endifequal %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  <p class="submit">
+    <input type="submit" name="post" class="submit-post button" value="{% trans "Post" %}" />
+    <input type="submit" name="preview" class="submit-preview button" value="{% trans "Preview" %}" />
+  </p>
+</form>

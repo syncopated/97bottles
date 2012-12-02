@@ -1,0 +1,14 @@
+{% extends "beers/base.html" %}
+
+{% block title %}
+  Beers characterized as "{{ tag }}"
+{% endblock %}
+
+{% block extra-scripts %}
+  {% include "beers/snippets/beer_table_javascript.html" %}
+{% endblock %}
+
+{% block content %}
+  <h3>Beers characterized as "{{ tag }}"</h3>
+  {% include "beers/snippets/beer_table.html" %}
+{% endblock %}

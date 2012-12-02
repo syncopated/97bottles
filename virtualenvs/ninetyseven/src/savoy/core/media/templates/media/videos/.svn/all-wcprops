@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/savoy/!svn/ver/1200/trunk/core/media/templates/media/videos
+END
+video_archive_month.html
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/savoy/!svn/ver/1200/trunk/core/media/templates/media/videos/video_archive_month.html
+END
+video_archive_day.html
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/savoy/!svn/ver/1200/trunk/core/media/templates/media/videos/video_archive_day.html
+END
+video_archive.html
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/savoy/!svn/ver/1200/trunk/core/media/templates/media/videos/video_archive.html
+END
+video_archive_year.html
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/savoy/!svn/ver/1200/trunk/core/media/templates/media/videos/video_archive_year.html
+END
+video_detail.html
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/savoy/!svn/ver/1200/trunk/core/media/templates/media/videos/video_detail.html
+END

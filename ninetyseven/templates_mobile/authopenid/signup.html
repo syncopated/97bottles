@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+    <p>You may signup using an OpenID, if you have one. If not, no problem. Just use the "standard sign up" form below.</p>
+    {% if form.errors %}
+      <p class="errors">Please correct errors below:</p>
+      <ul>
+        {% if form.username.errors %} 
+          <li class="error">{{ form.username.errors|join:", " }}</li>
+        {% endif %}
+        {% if form.email.errors %} 
+          <li class="error">{{ form.email.errors|join:", " }}</li>
+        {% endif %}
+        {% if form.password2.errors %} 
+          <li class="error">{{ form.password2.errors|join:", " }}</li>
+        {% endif %}
+        {% if form2.openid_url.errors %}
+          <li class="error">{{ form2.openid_url.errors|join:", " }}</li>
+        {% endif %}
+      </ul>
+    {% endif %}
+
+    <form action="{% url registration_register %}" method="post" accept-charset="utf-8">
+        <dl id="signup">
+            <dt><label for="id_username">Choose a Username:</label></dt>
+            <dd>{{ form.username }}</dd>
+            <dd class="help"><label for="id_username">Select a username. No spaces, please.</label></dd>
+            <dt><label for="id_email">Enter Your Email Address:</label></dt>
+            <dd>{{ form.email }}</dd>
+            <dd class="help"><label for="id_email">Enter your e-mail address. It will never be published.</label></dd>
+            <dt><label for="id_password1">Choose a Password:</label></dt>
+            <dd>{{ form.password1 }}</dd>
+            <dd class="help"><label for="id_password1">Choose a password. No spaces, please.</label></dd>
+            <dt><label for="id_password2">Confirm Your Password:</label></dt>
+            <dd>{{ form.password2 }}</dd>
+            <dd class="help"><label for="id_password2">For verification, please re-enter your password.</label></dd>
+        </dl>
+        <p><input type="submit" class="rndr button" value="Sign up" /></p>
+    </form>
+
+    <form name="fopenid" action="{% url user_signin %}" method="post">
+        <dl id="openid">
+            <dt><label for="id_openid_url">OpenID URL:</label></dt>
+            <dd>{{ form2.openid_url }}</dd>
+            <dd class="help"><label for="id_openid_url">Enter your OpenID URL</label></dd>
+        </dl>
+        <p><input name="bsignin" type="submit" class="rndr button" value="Sign up using OpenID"></p>
+    </form>
+    
+{% endblock %}

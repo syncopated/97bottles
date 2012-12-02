@@ -1,0 +1,64 @@
+ad,aixas,Aix<E0>s,06,,42.4833333,1.4666667
+ad,aixirivali,Aixirivali,06,,42.4666667,1.5
+ad,aixirivall,Aixirivall,06,,42.4666667,1.5
+ad,aixirvall,Aixirvall,06,,42.4666667,1.5
+ad,aixovall,Aixovall,06,,42.4666667,1.4833333
+ad,andorra,Andorra,07,,42.5,1.5166667
+ad,andorra la vella,Andorra la Vella,07,20430,42.5,1.5166667
+ad,andorra-vieille,Andorra-Vieille,07,,42.5,1.5166667
+ad,andorre,Andorre,07,,42.5,1.5166667
+ad,andorre-la-vieille,Andorre-la-Vieille,07,,42.5,1.5166667
+ad,andorre-vieille,Andorre-Vieille,07,,42.5,1.5166667
+ad,ansalonga,Ansalonga,04,,42.5666667,1.5166667
+ad,anyos,Any<F3>s,05,,42.5333333,1.5333333
+ad,arans,Arans,04,,42.5833333,1.5166667
+ad,arinsal,Arinsal,04,,42.5666667,1.4833333
+ad,aubinya,Aubiny<E0>,06,,42.45,1.5
+ad,auvinya,Auvinya,06,,42.45,1.5
+ad,bicisarri,Bi<E7>isarri,06,,42.4833333,1.4666667
+ad,bixessarri,Bixessarri,06,,42.4833333,1.4666667
+ad,bixisarri,Bixisarri,06,,42.4833333,1.4666667
+ad,canillo,Canillo,02,3292,42.5666667,1.6
+ad,casas vila,Casas Vila,03,,42.5333333,1.5666667
+ad,certers,Certers,06,,42.4666667,1.5
+ad,certes,Cert<E9>s,06,,42.4666667,1.5
+ad,eixirivall,Eixirivall,06,,42.4666667,1.5
+ad,el pui,El Pui,04,,42.55,1.5166667
+ad,els bons,Els Bons,03,,42.5333333,1.5833333
+ad,el serrat,El Serrat,04,,42.6166667,1.55
+ad,els plans,Els Plans,02,,42.5833333,1.6333333
+ad,el tarter,El Tarter,02,,42.5833333,1.65
+ad,el tremat,El Tremat,03,,42.55,1.5833333
+ad,el vilar,El Vilar,02,,42.5666667,1.6
+ad,encamp,Encamp,03,11224,42.5333333,1.5833333
+ad,engordany,Engordany,08,,42.5166667,1.55
+ad,ercs,Ercs,04,,42.5666667,1.5
+ad,ercz,Ercz,04,,42.5666667,1.5
+ad,erez,Erez,04,,42.5666667,1.5
+ad,erts,Erts,04,,42.5666667,1.5
+ad,escaldas,Escaldas,08,,42.5,1.5333333
+ad,escaldes,Escaldes,08,,42.5,1.5333333
+ad,escas,Esc<E0>s,04,,42.55,1.5166667
+ad,fontaneda,Fontaneda,06,,42.45,1.4666667
+ad,juberri,Juberri,06,,42.4333333,1.5
+ad,juverri,Juverri,06,,42.4333333,1.5
+ad,la cortinada,La Cortinada,04,,42.5666667,1.5166667
+ad,la costa,La Costa,02,,42.5833333,1.6333333
+ad,l'aldosa,L'Aldosa,02,,42.5833333,1.6333333
+ad,l'aldosa,L'Aldosa,05,,42.55,1.5333333
+ad,la macana,La Ma<E7>ana,04,,42.55,1.5166667
+ad,la massana,La Massana,04,7211,42.55,1.5166667
+ad,las escadas,Las Escadas,08,,42.5,1.5333333
+ad,la vieja,la Vieja,07,,42.5,1.5166667
+ad,les bons,Les Bons,03,,42.5333333,1.5833333
+ad,les escaldes,Les Escaldes,08,15854,42.5,1.5333333
+ad,llors,Llors,04,,42.6,1.5333333
+ad,llorta,Llorta,04,,42.6,1.5333333
+ad,llorts,Llorts,04,,42.6,1.5333333
+ad,llumeneres,Llumeneres,06,,42.4666667,1.5166667
+ad,lors,Lors,04,,42.6,1.5333333
+ad,lo serrat,Lo Serrat,04,,42.6166667,1.55
+ad,mas d'alins,Mas d'Alins,06,,42.4333333,1.45
+ad,mas de ribafeta,Mas de Ribafeta,04,,42.5666667,1.4833333
+ad,meritxell,Meritxell,02,,42.55,1.6
+ad,molleres,Molleres,03,,42.55,1.5833333

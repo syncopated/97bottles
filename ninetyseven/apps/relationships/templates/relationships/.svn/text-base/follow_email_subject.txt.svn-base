@@ -1,0 +1,1 @@
+[97 Bottles] {% if relationship.is_reciprocal %}You and {{ relationship.from_user.profile.name }} are now following each other on {{ site.name }}!{% else %}{{ relationship.from_user.profile.name }} is now following you on {{ site.name }}!{% endif %}

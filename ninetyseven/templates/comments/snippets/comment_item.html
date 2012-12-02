@@ -1,0 +1,26 @@
+<li id="{{ comment.id }} {% if comment.user|IN:top_contributors %}beer-lord{% endif %} {% if comment.user|IN:noobs %}noob{% endif %}">
+  {% if comment.user.profile.avatar %}
+    <a href="{% url profile_detail comment.user %}">
+      <img class="user-avatar" src="{{ comment.user.profile.avatar.url|thumbnail:"67x67" }}" title="{{ comment.name }}'s avatar" style="width: 67px; height: 67px;" />
+      {% if comment.user|IN:top_contributors %}
+        <img class="beer-lord-badge" src="/static/ninetyseven/assets/img/core/beer-lord-badge.png" title="{{ comment.name }} is a Beer Lord!" />
+      {% endif %}
+    </a>
+    <dl>
+      <dt><h2><a href="{% url profile_detail comment.user %}">{{ comment.name }}</a></h2></dt>
+      <dd class="comment-number"><a href="{{ entry.get_absolute_url }}#{{ comment.id }}">{{ forloop.counter }}</a></dd>
+      <dd class="date">{{ comment.submit_date|date:"N jS, Y" }}</dd>
+      <dd class="comment-body">{{ comment.comment|urlizetrunc:50|markdown|typogrify }}</dd>
+    </dl>
+  {% else %}
+    {% with "http://97bottles.com/static/ninetyseven/assets/img/core/default-avatar.png" as default_avatar %}
+      {% if comment.user_url %}<a href="{{ comment.user_url }}"><img class="user-avatar" src="{{ default_avatar|thumbnail:"67x67" }}" title="{{ comment.name }}'s avatar" /></a>{% else %}<img class="user-avatar" src="{{ default_avatar|thumbnail:"67x67" }}" title="{{ comment.name }}'s avatar" />{% endif %}
+    {% endwith %}
+    <dl>
+      <dt>{% if comment.user_url %}<h2><a href="{{ comment.user_url }}">{{ comment.name }}</a></h2>{% else %}<h2>{{ comment.name }}</h2>{% endif %}</dt>
+      <dd class="comment-number"><a href="{{ entry.get_absolute_url }}#{{ comment.id }}">{{ forloop.counter }}</a></dd>
+      <dd class="date">{{ comment.submit_date|date:"N jS, Y" }}</dd>
+      <dd class="comment-body">{{ comment.comment|urlizetrunc:50|markdown|typogrify }}</dd>
+    </dl>
+  {% endif %}
+</li>

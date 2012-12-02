@@ -1,0 +1,71 @@
+{% extends "beers/base.html" %}
+
+{% block title %}{{ category }}{% endblock %}
+
+
+{% block content %}
+  {% load beers %}
+  {% load reviews %}
+  
+  <h3>
+    {% if category.parent_category %}
+      {% for category in category.all_parent_categories %}
+        <a href="{% url category_detail category.path %}">{{ category.name }}</a> &middot; 
+      {% endfor %}
+    {% endif %}
+    {{ category.name }}
+  </h3>
+
+  {% get_beers_for_variety category as beer_list %}
+  {% with beer_list|dictsortreversed:"rating" as beer_list %}
+    {% autopaginate beer_list 100 %}
+    {% if not invalid_page %}
+      {% include "beers/snippets/beer_table.html" %}
+    {% endif %}
+    {% paginate 4 %}
+  {% endwith %}
+
+{% endblock %}
+
+{% block sidebar %}
+
+  {{ block.super }}
+  
+  <div class="module">
+  	<h3>{% if category.direct_descendants.all %}Categories{% else %}About {{ category.name }}{% endif %}</h3>
+    {{ category.description|markdown|urlize }}
+    <dl>
+      {% for category in category.direct_descendants.all %}
+        <dt><a href="{% url category_detail category.path %}">{{ category.name }}</a></dt>
+        {% if category.direct_descendants.all %}
+          <dd>
+            {% for category in category.direct_descendants.all %}
+              <a href="{% url category_detail category.path %}">{{ category.name }}</a>{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+          </dd>
+        {% endif %}
+      {% endfor %}
+    </dl>
+  </div>
+  
+  {% get_most_recent_beers 10 from category as most_recent_beers %}
+  {% if most_recent_beers %}
+    <div class="module">
+      <h3>Most recent {{ category.name }}s</h3>
+      {% with most_recent_beers as beer_list %}
+        {% include "beers/snippets/beer_list.html" %}
+      {% endwith %}
+    </div>
+  {% endif %}
+
+  {% get_most_recent_reviews 10 from category as most_recent_reviews %}
+  {% if most_recent_reviews %}
+    <div class="module">
+      <h3>Most recent {{ category.name }} reviews</h3>
+      {% with most_recent_reviews as review_list %}
+        {% include "reviews/snippets/review_list.html" %}
+      {% endwith %}
+    </div>
+  {% endif %}
+  
+{% endblock %}

@@ -1,0 +1,3 @@
+{% with profile.user as user %}
+  {% include "profiles/snippets/user_list_item.html" %}
+{% endwith %}

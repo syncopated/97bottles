@@ -1,0 +1,20 @@
+<table>
+  <tr>
+    {% for day in calendar_headers %}
+      <th>{{ day|date:"D"|slice:":2" }}</th>
+    {% endfor %}
+  </tr>
+  {% for week in calendar %}
+    <tr>
+      {% for day in week %}
+        <td class="{% if not day.in_month %}not-in-month {% endif %}{% if day.is_today %}today {% endif %}{% if day.is_active %}active {% endif %}">
+          {% if not day.in_future %}
+            <a href="{% url aggregator_day day.day|date:"Y",day.day|date:"b",day.day|date:"d" %}">{{ day.day|date:"j" }}</a>
+          {% else %}
+            {{ day.day|date:"j" }}
+          {% endif %}
+        </td>
+      {% endfor %}
+    </tr>
+  {% endfor %}
+</table>

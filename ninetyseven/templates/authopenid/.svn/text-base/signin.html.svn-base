@@ -1,0 +1,72 @@
+{% autoescape off %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>97bottles: Sign in</title>
+      <link rel="stylesheet" href="/static/archetype/screen.css" type="text/css" media="screen" charset="utf-8" />
+      <link rel="stylesheet" href="/static/archetype/plugins.css" type="text/css" media="screen" charset="utf-8" />
+      <link rel="stylesheet" href="/static/ninetyseven/assets/css/base.css" type="text/css" media="screen" charset="utf-8" />
+      {% load compressed %}
+      {% compressed_js 'jquery' %}
+      {% compressed_js 'all' %}
+  </head>
+  <body class="sign-in">
+		<div class="container">
+		  <div class="column span-6 prepend-2 first" style="position: relative; margin-top: 80px;">
+		    <h2 class="logo"><a href="{% url homepage %}" title="Homepage">97bottles</a></h2>
+		    <h2 class="sign-in-tagline">Bottoms up!</h2>
+		  </div>
+		  <div class="column span-12 prepend-1" style="margin-top: 100px;">
+			  <div class="module light">
+			  	<h3>User sign in</h3>
+			  	<br />
+				  {% if msg %}<p class="error">{{ msg }}</p>{% endif %}
+				  
+				  {% if form2.errors %}
+				    <p class="errors">Please correct errors below:</p>
+				    <ul>
+              <li>Your username or password were incorrect.</li>
+				    </ul>
+				  {% endif %}
+				  <form name="fauth" action="{% url user_signin %}" method="post" class="sign-in-form">
+				    {{ form2.next }}
+				    <fieldset>
+				      <legend>Sign in with username and password</legend>
+				      <label for="id_username">Username</label>
+				      {{ form2.username }}
+				      <label for="id_password">Password</label>
+				      {{ form2.password }}
+				      <br /><input type="submit" name="blogin" class="button" value="Sign in">
+				    </fieldset>	
+				  </form>
+				  <form name="fopenid" action="{% url user_signin %}" method="post" class="sign-in-form">
+				    {{ form1.next }}
+				    <fieldset>
+				      <legend>Sign in using OpenID</legend><br />
+				      <label for="id_openid_url">OpenId</label>
+				      {{ form1.openid_url }}
+				      <input name="bsignin" type="submit" value="Sign in using OpenID" class="button">
+				    </fieldset>
+				  </form>
+					<p class="more"><a href="{% url auth_password_reset %}">Forgot your password?</a></p>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+		  
+		</div>
+		<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<script type="text/javascript">
+		try {
+		var pageTracker = _gat._getTracker("UA-6396023-2");
+		pageTracker._trackPageview();
+		} catch(err) {}</script>
+
+  </body>
+</html>
+{% endautoescape %}

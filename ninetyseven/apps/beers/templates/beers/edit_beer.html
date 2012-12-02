@@ -1,0 +1,38 @@
+{% extends "beers/base.html" %}
+
+{% block title %}Edit beer{% endblock %}
+
+{% block content %}
+  <h3>Edit {{ beer.name }}</h3>
+  <form class="add-beer-form" action="" method="post">
+    <fieldset>
+      <legend>Edit beer</legend>
+      {% for field in beer_form %}
+        {# We have a custom widget for the color field. #}
+        {% ifequal field.name 'color' %}
+          {{ field.label_tag }}
+          <ul class="beer-color-picker">
+            {% for color in colors %}
+              <li {% ifequal beer.color color %}class="selected"{% endifequal %}>
+                <a href="#" id="color={{ color.id }}" style="background-color: {{ color.color }};">
+                  <span class="color-srm">{{ color.srm }} SRM<br />{% if color.example %}{{ color.example }}{% endif %}</span>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+          <input id="beer-color" name="beer-color" type="hidden" value="{{ beer.color.id }}" />
+          <label for="id_{{ field.html_name }}" class="help">&nbsp;</label>
+        {% else %}
+          <label for="id_{{ field.html_name }}" class="{% if field.field.required %}required {% endif %}">{{ field.label }}</label>
+          {{ field }}
+          <label for="id_{{ field.html_name }}" class="help">{{ field.help_text}}</label>
+          {% if field.errors %}{{ field.errors }}{% endif %}
+        {% endifequal %}
+      {% endfor %}
+    </fieldset>
+    <fieldset>
+      <legend>Submit form</legend>
+      <input type="submit" name="sumbit" value="Beer me." class="button" id="sumbit" />
+    </fieldset>
+  </form>
+{% endblock %}

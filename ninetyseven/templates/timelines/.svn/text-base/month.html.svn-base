@@ -1,0 +1,17 @@
+{% extends "timelines/base.html" %}
+
+{% block title %}Beer log: {{ month|date:"F, Y"}}{% if timeline_for %} for {{ timeline_for }}{% endif %}{% endblock %}
+
+{% block content %}
+  <h3>Timeline: {{ month|date:"F, Y"}}{% if timeline_for %} for {{ timeline_for }}{% endif %}</h3>
+  {% autopaginate items 30 %}
+  {% include "timelines/snippets/timeline_list_grouped_by_day.html" %}
+  {% paginate 4 %}
+{% endblock %}
+
+{% block sidebar %}
+  <div class="module">
+    <h3>Filter by type</h3>
+    {% include "timelines/snippets/model_chooser.html" %}
+  </div>
+{% endblock %}

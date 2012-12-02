@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title%}Your account{% endblock %}
+
+{% block content %}
+  <h2>Your account</h2>
+  
+  <ul>
+    {% if user.is_anonymous %}
+      <li><a href='/accounts/login/'>Login</a></li>
+      <li><a href='/accounts/register/'>Register</a></li>
+      <li><a href='/accounts/password/reset/'>Reset your password</a></li>
+    {% else %}
+      <li><a href='/accounts/profile/'>Your Profile</a></li>
+      <li><a href='/accounts/logout/'>Logout</a></li>
+      <li><a href='/users/edit/{{ user.username}}/'>Edit your profile</a></li>
+      <li><a href='/accounts/password/change/'>Change your password</a></li>
+    {% endif %}
+  </ul>
+
+{% endblock %}

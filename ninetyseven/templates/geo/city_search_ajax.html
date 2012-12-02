@@ -1,0 +1,24 @@
+{% autoescape off %}
+  <h4>Search results</h4>
+  {% if city_list %}
+    <ul id="city-search-results">
+      {% for city in city_list %}
+        <li><a class="add-city-to-form" id="{{ city.id }}" href="{{ city.get_absolute_url }}">{{ city }}</a></li>
+      {% endfor %}
+    </ul>
+    <script type="text/javascript">
+      $("#city-search-results").find("a").each(function(){
+	      $(this).click(function(e){
+	        var city_id = $(this).attr("id"); 
+	        var city_name = $(this).text();
+	        $("#id_brewery-city, #id_review-city, #id_profile-city").val(city_id);
+	        $("#city-search").val(city_name).blur();
+	        $(".live-search-results").slideUp(300);
+	        e.preventDefault();
+	      });
+      });
+    </script>
+  {% else %}
+    <p>There are no results.</p>
+  {% endif %}
+{% endautoescape %}

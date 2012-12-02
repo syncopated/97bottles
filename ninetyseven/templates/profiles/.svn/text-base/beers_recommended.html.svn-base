@@ -1,0 +1,58 @@
+{% extends "profiles/base.html" %}
+
+{% block title %}Beers recommended for {% ifequal profile.user user %}you{% else %}{{ profile.name }}{% endifequal %}{% endblock %}
+
+{% block content %}
+  {% load faves %}
+  
+  <h3>Beers recommended for {% ifequal profile.user user %}you{% else %}{{ profile.name }}{% endifequal %}</h3>
+  {% if user_recommendations or recommended_beers_by_users or recommended_beers_by_tags %}
+    {% if user_recommendations %}
+      <h4>From {% ifequal profile.user user %}your{% else %}{{ profile.name }}'s{% endifequal %} friends</h4>
+      <p>The beers below have been recommended to {% ifequal profile.user user %}you{% else %}{{ profile.name }}{% endifequal %} directly, by friends.</p>
+      <table>
+        <tr>
+          <th>Beer</th>
+          <th>By</th>
+          <th>Date</th>
+          {% ifequal profile.user user %}
+            <th>Accept</th>
+            <th>Archive</th>
+          {% endifequal %}
+        </tr>
+        {% for recommendation in user_recommendations %}
+          <tr>
+            <td><a href="{{ recommendation.beer.get_absolute_url }}">{{ recommendation.beer.name }}</a></td>
+            <td><a href="{% url profile_detail recommendation.from_user.username %}">{{ recommendation.from_user.profile.name }}</a></td>
+            <td>{{ recommendation.date_created|date:"N jS, Y" }}</td>
+            {% ifequal profile.user user %}
+              <td><a href="{% url user_recommendation_approve recommendation.id %}">To-drink</a></td>
+              <td><a href="{% url user_recommendation_dismiss recommendation.id %}">Archive</a></td>
+            {% endifequal %}
+          </tr>
+        {% endfor %}
+      </table>
+    {% endif %}
+  
+    {% if recommended_beers_by_users %}
+      <h4>By similar users</h4>
+      <p>The beers below are recommended to {% ifequal user profile.user %}you{% else %}{{ profile.name }}{% endifequal %} based on {% ifequal user profile.user %}your{% else %}{{ profile.name }}'s{% endifequal %} reviews and flags and their relationship to other users of 97 Bottles. In short, people who liked the beers {% ifequal user profile.user %}you{% else %}{{ profile.name }}{% endifequal %} liked were also fans of these.</p>
+      {% with recommended_beers_by_users|slice:":15" as beer_list %}
+          {% with "recommendations" as recommendations %}
+            {% include "beers/snippets/beer_table.html" %}
+          {% endwith %}
+      {% endwith %}
+    {% endif %}
+    {% if recommended_beers_by_tags %}
+      <h4>By beer characteristics</h4>
+      <p>The beers below are recommended to {% ifequal user profile.user %}you{% else %}{{ profile.name }}{% endifequal %} based on the characteristics of the beers {% ifequal user profile.user %}you{% else %}{{ profile.name }}{% endifequal %} liked. To put it simply, if {% ifequal user profile.user %}you{% else %}{{ profile.name }}{% endifequal %} liked beers which have a coffee flavor, you should find more coffee-flavored beers below.</p>
+      {% with recommended_beers_by_tags|slice:":15" as beer_list %}
+        {% with "recommendations" as recommendations %}
+          {% include "beers/snippets/beer_table.html" %}
+        {% endwith %}
+      {% endwith %}
+    {% endif %}
+  {% else %}
+    <p>{% ifequal user profile.user %}You have{% else %}{{ profile.name }} has{% endifequal %} no recommendations at this time. To generate recommendations, {% ifequal user profile.user %}you need{% else %}{{ profile.name }} needs{% endifequal %} to review beers and/or flag beers as favorites, to-drink, or nasty.</p>
+  {% endif %}
+{% endblock %}

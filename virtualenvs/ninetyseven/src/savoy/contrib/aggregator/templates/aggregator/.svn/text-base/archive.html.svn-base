@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Content aggregator{% endblock %}
+
+{% block content %}
+  {% autopaginate items 30 %}
+  {% if not invalid_page %}
+    {% if items %}
+      {% for item in items %}
+        {% ifchanged item.timestamp.day %}
+          <h3><a href="{% url aggregator_day item.timestamp.year,item.timestamp|date:"b",item.timestamp|date:"d" %}">{{ item.timestamp|date:"F jS, Y" }}</a></h3>
+        {% endifchanged %}
+        {% with item.content_object as object %}
+          {% render_template_for object in "aggregator/snippets/" %}
+        {% endwith %}
+      {% endfor %}
+    {% else %}
+      <p>There are no items.</p>
+    {% endif %}
+  {% endif %}
+{% paginate 2 %}
+{% endblock %}
+
+{% block sidebar %}
+  <h5>{% now "F" %}</h5>
+  {% calendar %}
+  {% include "aggregator/snippets/model_chooser.html" %}
+  <h5>Content archives</h5>
+  <ul>
+    {% for year in date_list %}
+      <li><a href="{% url aggregator_archive %}{{ year|date:"Y" }}/">{{ year|date:"Y" }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "blogs/base.html" %}
+
+{% block title %}Entries for {{ year }}{% endblock %}
+
+{% block content %}
+	{% load comments %}
+  <h3><a href="/blog/feeds/latest-entries" class="subscribe-icon" title="Subscribe to the 97 Bottles blog"><img src="/static/ninetyseven/assets/img/core/rss.png" alt="subscribe" /></a><a href="{% url blog_index %}">{{ blog.title }}</a>: Entries for {{ year }}</h3>
+  {% for entry in entry_list %}
+    {% get_comment_list for entry as comment_list %}
+    <a class="entry-author-avatar" href="{% url profile_detail entry.author.user.username %}"><img class="user-avatar" src="{{ entry.author.user.profile.avatar.url|thumbnail:"75x75" }}" title="Posted by {{ entry.author.name }}" style="width: 75px; height: 75px;" /></a>
+		<div class="entry-details span-12 prepend-3 last">
+	    <h2><a href="{{ entry.get_absolute_url }}">{{ entry.title|typogrify }}</a></h2>
+	    <p class="entry-meta">{{ entry.date_published|date:"N jS, Y" }} &middot; Posted by <a href="{% url profile_detail entry.author.user.username %}">{{ entry.author }}</a> &middot; <a href="{{ entry.get_absolute_url }}#comments">{{ comment_list|length }} Comment{{ comment_list|length|pluralize }}</a></p>	  
+	    {{ entry.intro_rendered_markup }}
+	  </div>
+    <div class="two-caps">&nbsp;</div>
+  {% endfor %}
+{% endblock %}
+
+{% block sidebar %}
+	{{ block.super }}
+	<div class="module">
+  	<h3>{{ year }}</h3>	
+	  <ul>
+	    {% for month in date_list %}
+	      <li><a href="{% url blog_archive_month month.year month|date:"b" %}">{{ month|date:"F" }}</a></li>
+	    {% endfor %}
+	  </ul>
+  </div>
+  {# Use this if SINGLE_BLOG_URLS = False #}
+  {# <ul> #}
+  {#   {% for month in date_list %} #}
+  {#     <li><a href="{% url blog_archive_month blog.slug month.year month|date:"b" %}">{{ month|date:"F" }}</a></li> #}
+  {#   {% endfor %} #}
+  {# </ul> #}
+{% endblock %}

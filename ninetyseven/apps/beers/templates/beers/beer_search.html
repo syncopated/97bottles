@@ -1,0 +1,29 @@
+{% extends "beers/base.html" %}
+
+{% block title %}Search beers{% endblock %}
+
+{% block extra-scripts %}
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+      $('#search').liveSearch({ajaxURL: '{% url search_beer %}?search='});
+    });
+  </script>
+{% endblock %}
+
+{% block content %}
+  <h2>Search beers</h2>
+  {% if beer_list %}
+    <ul>
+      {% for beer in beer_list %}
+        <li><a href="{{ beer.get_absolute_url }}">{{ beer.name }}</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <div id="search-results"></div>
+  <form action="{% url search_beer %}" method="get" accept-charset="utf-8">
+    <fieldset>
+      <input type="text" name="search" value="" id="search" autocomplete="off">
+    </fieldset>
+    <input type="submit" value="Search" />
+  </form>
+{% endblock %}

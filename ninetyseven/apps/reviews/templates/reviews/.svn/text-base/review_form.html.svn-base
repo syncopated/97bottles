@@ -1,0 +1,41 @@
+{% if not user.is_anonymous %}
+  <form class="review-form" action="{% if review %}{% url edit_review review.id %}{% else %}{% url post_review %}{% endif %}" method="post">
+    <fieldset>
+        <div id="ui-slidey" class="slider-bg">
+            <div class="slider ui-slider-handle"></div>
+        </div>
+        <div id="slider-value">{% if review.rating %}{{ review.rating }}{% else %}0{% endif %}</div>
+      {% for field in review_form %}
+        {% ifnotequal field.name 'city'  %}
+          <label for="id_{{ field.html_name }}" class="{% if field.field.required %}required {% endif %}">{% if field.field.required %}<span class="required-asterisk">*</span>{% endif %}{{ field.label }}</label>
+          {{ field }}<br />
+          <label for="{{ field.html_name }}" class="help">{{ field.help_text}}</label>
+          {% if field.errors %}
+            {{ field.errors }}
+          {% endif %}
+        {% endifnotequal %}
+      {% endfor %}
+      
+      {# Our custom city field widget. #}
+      <label for="city-search">City</label>
+      <input type="text" name="city-search" value="{% if review.city %}{{ review.city }}{% else %}{% if user.profile.city %}{{ user.profile.city }}{% endif %}{% endif %}" id="city-search" autocomplete="off" />
+      <label class="help">Search for the city you drank this beer in. If you find it, click it. If not, <a id="add-city-link" href="">add a city</a>.</label>
+      <input type="hidden" id="id_review-city" name="review-city" value="{% if review.city %}{{ review.city.id }}{% else %}{% if user.profile.city %}{{ user.profile.city.id }}{% endif %}{% endif %}" />
+      <fieldset id="add-city">
+        <h4>Add city</h4>
+        {% for field in city_form %}
+          {{ field.label_tag }}
+          {{ field }}
+          <label for="id_{{ field.html_name }}" class="help">{{ field.help_text}}</label>
+          {% if field.errors %}<ul class="error-list">{{ field.errors }}</ul>{% endif %}
+        {% endfor %}
+      </fieldset>    
+    </fieldset>
+    <input type="hidden" name="beer" value="{{ beer.id }}" id="id_beer" />
+    <input type="submit" class="button" id="post" name="post" value="{% if review %}Save{% else %}Post{% endif %}" />
+    {% if review %}<input type="submit" class="button" id="delete" name="delete" value="Delete" />{% endif %}
+  </form>
+{% else %}
+  <p>Halt! You have to be <a href="{% url user_signin %}">signed in</a> to add a review.</p>
+  <p>Don't have an account? <a href="{% url registration_register %}">Sign up for one</a>!</p>
+{% endif %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Send an invite{% endblock %}
+
+{% block content %}
+  <h3>Send an invite</h3>
+  <p>Invite your friends to 97 Bottles! As 97 Bottles is in limited beta right now, only folks with an invite may sign up. If you know a beer drinker who'd like to give 97 Bottles a trial run and might be willing to provide us some constructive feedback, please invite them!</p>
+  <form class="profile-form" action="{% url send_invite %}" method="post">
+    <fieldset>
+      {% for field in invite_form %}
+        <label for="id_{{ field.html_name }}" class="{% if field.field.required %}required {% endif %}">{{ field.label }}</label>
+        {{ field }}<br />
+        <label for="{{ field.html_name }}" class="help">{{ field.help_text}}</label>
+        {% if field.errors %}
+          {{ field.errors }}
+        {% endif %}
+      {% endfor %}
+      <input class="button" type="submit" value="Send invite">
+    </fieldset>
+  </form>
+{% endblock %}
+
+{% block sidebar %}
+  {% load invites %}
+  {% get_invites for user as invite_list %}
+	<div class="module">
+		<h3>Invites</h3>
+		<p>You have <span class="invites-remaining">{{ invite_list|length }}</span> invites remaining.</p>
+	</div>
+{% endblock %}

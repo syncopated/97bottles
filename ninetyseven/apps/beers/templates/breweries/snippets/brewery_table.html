@@ -1,0 +1,22 @@
+{# This template expects a list of Brewery objects called "brewery_list". It returns an HTML table from the list. #}
+
+<table cellspacing="0" class="brewery-list">
+  <thead>
+    <tr>
+      <th class="brewery-rating numeric">Rating</th>
+      <th class="brewery-name">Name</th>
+      <th class="brewery-city">City</th>
+      <th class="brewery-num-beers numeric">Beers</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for brewery in brewery_list|dictsortreversed:"rating" %}
+      <tr class="{% cycle odd,even %}">
+        <td class="brewery-rating numeric">{% if brewery.rating %}{{ brewery.rating }}{% endif %}</td>
+        <td class="brewery-name"><a href="{{ brewery.get_absolute_url }}">{{ brewery.name|typogrify }}</a></td>
+        <td class="brewery-city">{{ brewery.city.us_bias_name|typogrify }}</td>
+        <td class="brewery-num-beers numeric">{{ brewery.beers.count }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>

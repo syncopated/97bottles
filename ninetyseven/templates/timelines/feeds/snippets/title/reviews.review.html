@@ -1,0 +1,2 @@
+{% load reviews %}
+{% with object as review %}{{ review.created_by.profile.name }} gave {{ review.rating|a_or_an_for_int }} {{ review.rating }} rating to {{ review.beer.name }}{% endwith %}

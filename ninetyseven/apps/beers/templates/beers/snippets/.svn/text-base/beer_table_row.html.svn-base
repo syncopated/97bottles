@@ -1,0 +1,36 @@
+{# This template expects a Beer objects called "beer". It returns an HTML table row from the object. #}
+
+{% load faves %}
+
+{% get_fave by user on beer of type no-thanks as nothanks %}
+<tr class="{% cycle odd,even %}">
+  <td class="beer-rating numeric">{% if beer.rating %}{{ beer.rating }}{% endif %}</td>
+  <td class="beer-name"><a href="{{ beer.get_absolute_url }}">{{ beer.name|typogrify }}</a></td>
+  <td class="beer-brewery"><a href="{{ beer.brewery.get_absolute_url }}">{{ beer.brewery|typogrify }}</a></td>
+  <td class="beer-num-reviews numeric">{{ beer.reviews.count }}</td>
+  {# <td class="beer-interestingness numeric">{% if beer.interestingness %}{{ beer.interestingness }}{% endif %}</td> #}
+  <td class="beer-abv numeric">{% if beer.alcohol_by_volume %}{{ beer.alcohol_by_volume }}{% endif %}</td>
+  {# <td class="beer-date-created">{{ beer.date_created|date:"N jS, Y" }}</td> #}
+  {# <td class="beer-created-by"><a href="{% url profile_detail beer.created_by.username %}">{{ beer.created_by.profile.name|typogrify }}</a></td> #}
+
+  {% if recommendations %}
+    {% ifequal profile.user user %}
+      <td>
+        {% get_fave by user on beer of type to-dos as fave %}
+        {% if fave %}
+          <a class="remove-from-todolist" href="{% get_toggle_fave_url beer 'to-dos' %}">un-to-drink</a>
+        {% else %}
+          <a class="add-to-todolist" href="{% get_toggle_fave_url beer 'to-dos' %}">to-drink</a>
+        {% endif %}
+      </td>
+      <td>
+        {% get_fave by user on beer of type no-thanks as fave %}
+        {% if fave %}
+          <a class="nothanks" href="{% get_toggle_fave_url beer 'no-thanks' %}">un-no-thanks</a>
+        {% else %}
+          <a class="nothanks" href="{% get_toggle_fave_url beer 'no-thanks' %}">no thanks</a>
+        {% endif %}
+      </td>
+    {% endifequal %}
+  {% endif %}
+</tr>

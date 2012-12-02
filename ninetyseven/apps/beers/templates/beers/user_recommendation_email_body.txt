@@ -1,0 +1,12 @@
+Hey, {{ user_recommendation.to_user.profile.name }}!
+
+{{ user_recommendation.from_user.profile.name }} has recommended {{ user_recommendation.beer.name }}, by {{ user_recommendation.beer.brewery.name }}, to you! 
+
+Check out all your recommendations here:
+http://{{ site.domain }}{% url user_beers_recommended user_recommendation.to_user.username %}
+
+Or, check out {{ user_recommendation.from_user.profile.name }}'s profile here:
+http://{{ site.domain }}{% url profile_detail user_recommendation.from_user.username %}
+
+Bottoms up,
+The 97bottles.com crew

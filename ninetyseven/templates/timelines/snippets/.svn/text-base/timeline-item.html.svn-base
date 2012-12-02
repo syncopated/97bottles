@@ -1,0 +1,5 @@
+<div class="timeline-item {{ item.content_type.name }}">
+  {% with item.content_object as object %}
+    {% render_template_for object in "timelines/snippets/" %}
+  {% endwith %}
+</div>

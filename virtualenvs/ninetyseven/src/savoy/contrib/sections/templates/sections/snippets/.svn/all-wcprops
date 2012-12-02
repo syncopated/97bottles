@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/savoy/!svn/ver/1200/trunk/contrib/sections/templates/sections/snippets
+END
+bookmarks.bookmark.html
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/savoy/!svn/ver/1127/trunk/contrib/sections/templates/sections/snippets/bookmarks.bookmark.html
+END
+media.document.html
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/savoy/!svn/ver/1200/trunk/contrib/sections/templates/sections/snippets/media.document.html
+END
+geo.place.html
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/savoy/!svn/ver/1127/trunk/contrib/sections/templates/sections/snippets/geo.place.html
+END
+media.audio.html
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/savoy/!svn/ver/1200/trunk/contrib/sections/templates/sections/snippets/media.audio.html
+END
+podcasts.show.html
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/savoy/!svn/ver/1200/trunk/contrib/sections/templates/sections/snippets/podcasts.show.html
+END
+events.eventtime.html
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/savoy/!svn/ver/1127/trunk/contrib/sections/templates/sections/snippets/events.eventtime.html
+END
+events.event.html
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/savoy/!svn/ver/1127/trunk/contrib/sections/templates/sections/snippets/events.event.html
+END
+media.video.html
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/savoy/!svn/ver/1200/trunk/contrib/sections/templates/sections/snippets/media.video.html
+END
+galleries.gallery.html
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/savoy/!svn/ver/1200/trunk/contrib/sections/templates/sections/snippets/galleries.gallery.html
+END
+blogs.entry.html
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/savoy/!svn/ver/1127/trunk/contrib/sections/templates/sections/snippets/blogs.entry.html
+END
+media.embeddedmedia.html
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/savoy/!svn/ver/1200/trunk/contrib/sections/templates/sections/snippets/media.embeddedmedia.html
+END
+media.photo.html
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/savoy/!svn/ver/1127/trunk/contrib/sections/templates/sections/snippets/media.photo.html
+END
+podcasts.episode.html
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/savoy/!svn/ver/1200/trunk/contrib/sections/templates/sections/snippets/podcasts.episode.html
+END
+blogs.blog.html
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/savoy/!svn/ver/1200/trunk/contrib/sections/templates/sections/snippets/blogs.blog.html
+END

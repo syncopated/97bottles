@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>{% block full-title %}97 Bottles: {% block title %}{% if page %}{{ page.title }}{% endif %}{% endblock %}{% endblock %}</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1, user-scalable=no, maximum-scale=1">
+    <link rel="apple-touch-icon" href="/static/ninetyseven/assets/mobile/siteimages/touch-icon.png" />
+    {% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="/static/ninetyseven/assets/mobile/styles/iphone.css" />
+    {% endblock %}
+    {% block extra-stylesheets %}{% endblock %}   
+    {% block scripts %}
+    <script src="/static/ninetyseven/assets/mobile/js/mobile.js" type="text/javascript"></script>
+    {% endblock %}
+    {% block extra-scripts %}{% endblock %}
+</head>
+<body id="{% block body-id %}home{% endblock %}">
+    <div id="header">
+        <h1><a href="/" title="Homepage" class="ir">97bottles</a></h1>
+    {% block navigation %}
+        <ul>
+            {% if user.is_authenticated %}
+            <li><a href="{% url user_signout %}">Sign Out</a></li>
+            {% else %}
+            <li><a href="{% url registration_register %}">Sign Up</a></li>
+            <li><a href="{% url user_signin %}">Sign In</a></li>
+            {% endif %}
+            <li><a href="#">Desktop Site</a></li>
+        </ul>
+    {% endblock %}
+    </div>
+
+    <div id="content">	
+        {% block content %}{% endblock %}    
+        {% block search-wrapper %}
+        <div id="search" class="rndr">
+            <form method="get" action="/search/">
+                <input type="hidden" name="models" id="models" value="beers.beer" />
+                <dl>
+                    <dt><label for="search-box">Find/Review a Beer</label></dt>
+                    <dd><input type="text" name="q" value="Search..." id="search-box" /><input type="submit" class="rndr" id="post" value="Go" /></dd>
+                </dl>
+            </form>
+        </div>
+        {% endblock %}
+        {% block after-search-content %}{% endblock %}
+    </div>
+
+    <div id="site-info">
+        <p>97 Bottles encourages you to drink legally and responsibly.<br/>Don't be an asshat.</p>
+        <p>&copy; {% now "Y" %} Blue Flavor All rights reserved </p>
+    </div>
+</body>
+</html>

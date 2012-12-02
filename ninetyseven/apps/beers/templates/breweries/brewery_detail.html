@@ -1,0 +1,48 @@
+{% extends "breweries/base.html" %}
+
+{% block title %}{{ brewery.name }}{% endblock %}
+{% block description %}{{ brewery.name }}{% endblock %}
+
+
+{% block content-wrapper %}
+  <div class="module light vcard">
+  	<h3>Brewery</h3>
+    <img title="Default brewery icon" src="/static/ninetyseven/assets/img/core/default-brewery-icon.png" class="brewery-image" />
+    <div id="brewery-details" class="prepend-6 span-10 append-2 first last">
+      <dl>
+        <dt>Brewery details</dt>
+        {% if brewery.rating %}<dd class="rating"><strong>Rating:</strong> {{ brewery.rating }}</dd>{% endif %}
+        <dd class="name org fn"><h1>{{ brewery.name|typogrify }}</h1></dd>
+        <dd class="adr city"><strong>City:</strong>{{ brewery.city }}</dd>
+        <dd class="hide locality">{{ brewery.city.city }}</dd>
+        <dd class="hide region">{{ brewery.city.state }}</dd>
+        <dd class="hide region">{{ brewery.city.province }}</dd>
+        <dd class="hide country-name">{{ brewery.city.country }}</dd>
+        <dd class="url"><strong>URL:</strong> {{ brewery.url|urlize }}</dd>
+      </dl>
+      <p class="edit-brewery"><a href="{% url edit_brewery brewery.id %}">Edit</a></p>
+    </div>
+  </div>
+  
+  <div class="module">
+    <h3><a href="http://97bottles.com/feeds/latest-beers-for-brewery/{{ brewery.id }}/" title="Subscribe to beers added to this brewery" class="subscribe-icon"><img src="/static/ninetyseven/assets/img/core/rss.png" alt="subscribe" /></a>Beers</h3>
+    {% with brewery.beers.all as beer_list %}
+      {% include "beers/snippets/beer_table.html" %}
+    {% endwith %}
+  </div>
+{% endblock %}
+{% block sidebar %}
+
+  {{ block.super }}
+
+	<div class="module">
+		<h3>Top rated breweries</h3>
+		{% load beers %}
+  	{% get_highest_rated_breweries 7 as top_rated_breweries %}
+  	{% with top_rated_breweries as brewery_list %}
+        {% include "breweries/snippets/brewery_list.html" %}
+    {% endwith %}
+    <p class="more"><a href="{% url brewery_index %}">More breweries</a></p>
+	</div>
+{% endblock %}
+

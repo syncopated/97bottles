@@ -1,0 +1,6 @@
+{# This snippet expects a beer object, given by the search results page #}
+{% with object as beer %}
+    <a href="{{ beer.get_absolute_url }}">{% if beer.rating %}<h4 class="ranking">{{ beer.rating }}</h4>{% endif %}
+        <h3 class="name">{{ beer.name }}</h3>
+    {% if beer.brewery_name %}<h5 class="brewery">{{ beer.brewery_name }}</h5>{% endif %}</a>
+{% endwith %}

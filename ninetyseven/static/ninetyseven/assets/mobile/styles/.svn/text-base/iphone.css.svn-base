@@ -1,0 +1,215 @@
+/* ----------------------------------------------------------------------------
+Kevin Tamura.
+http://www.blueflavor.com.com
+Visual design copyright 2009. All Rights Reserved. 
+
+COLORS:
+tan: dcd48b
+dark tan: baa465
+dark brown: 2f1c0f
+brown: 78470f
+lite brown: 9e7e2e
+Burgandy: 85200b
+------------------------------------------------------------------------------- */
+
+/* @group Reset */
+* { margin: 0; padding: 0; line-height: 1.6; font-style: normal; font-weight: normal; }
+body { font: normal 81.5% 'Helvetica', Arial, sans-serif; color: #1e0c00; background: #dcd48b; }
+/* @end */
+
+/* @group Block Elements */
+h2{margin: 0 0 10px 0;font: 24px Georgia, "Times New Roman", Times, serif; line-height: 24px;}
+	#list h2{margin-bottom: 15px;font-size: 18px;font-family: 'Helvetica', Arial, sans-serif;}
+	
+	li h3{margin: 0 0 0 32px;font: 18px Georgia, "Times New Roman", Times, serif; line-height: 24px; color: #2f1c0f;}
+	
+	li h4 {float: left ;font: 16px Georgia, "Times New Roman", Times, serif; color:#85200b }
+	#city-box h4 {margin-bottom: 10px;border-bottom: 1px solid #2f1c0f;font-size: 18px;font-family: 'Helvetica', Arial, sans-serif;}
+	
+	
+	li h5{margin: 0 0 0 32px; color: #2f1c0f;}
+
+
+p, ul, dl, ol { margin: 0 0 1.6em; font-size: 14px;   }
+	#site-info p {margin: 0 0 .5em 0; font-size: 10px; }
+	#signin #site-info p {color: #dcd48b;}
+	#signin-box p {margin: 0 10px 10px 10px;line-height: 1em;}
+	#signin-box p a {font-weight: bold;}
+	#already-reviewed p{margin: 0 0 0 55px;}
+	
+ul{list-style: none; clear: both;}
+	ul#city-search-results {margin: 0 0 5px 0;}
+	ul#city-search-results li{ padding: 10px 0; margin: 0;font-size: 13px;}
+
+ul#listing{margin-bottom: 10px;}
+
+#listing li{position: relative;padding: 5px 8px; border-top: 1px solid #78470f;}
+	#listing li:last-of-type{border-bottom: 1px solid #78470f;}
+	#listing li.even{background: #baa465; opacity: .9;}
+	
+#signin-box dl{margin: 10px;}	
+
+#review dl{margin-bottom: 0;}
+
+#listing li dl {margin: 0 0 0 50px;}
+	#listing li dl dt, #listing li dd{margin: 0 0 0 55px;}
+	#listing li dd.rating{position: absolute; top: 0;margin: 0;}
+
+dt label{margin: 0 0 18px 0;font-size: 13px; line-height: 13px;font-weight: bold;}
+	#beer-meta dt{display: none;}
+	#signin-box dt{margin: 0 0 5px 0;}
+
+dd{margin: 0 0 0 130px;}
+	dd.icon{float: left; margin: 0;}
+			dd.icon img {width: 65px; height:65px ;border: 2px solid #2f1c0f;}
+	dd.name h2{ }
+	dd.rating {float: left; margin: 0 0 0 10px; text-align: center; font: 36px Georgia, "Times New Roman", Times, serif; color: #85200b;}
+	#listing dd.comment{margin: 0 0 0 -50px; overflow: visible;}
+
+	#search dd {margin-left: 0;}
+	#signin-box dd{margin: 0 0 5px 0;}
+	
+.user-avatar{float: left;}
+
+a{color: #85200b; text-decoration: none;}
+	a#get-more-reviews, .pagination a.next, .pagination a.prev, a.get-btn, a#close-city-box {padding: 5px 8px; background-color: #2f1c0f; color: #dcd48b; -webkit-border-radius: 5px; font-size: 10px; font-weight: bold;letter-spacing: 1px;text-transform: uppercase;}
+
+/* @group Inline */
+strong{font-weight: bold;}
+
+em{font-style: italic;}
+/* @end */
+
+
+/* @end */
+
+/* @group Structure */
+/*  =Header */
+#header{position: relative;height: 80px; padding: 2px 10px; border-bottom: 4px solid #2f1c0f; background: #2f1c0f url(../siteimages/bg-wood.jpg) repeat-x 0 0;}
+
+#header h1 {width: 96px; padding: 0; margin: 0;line-height: 75px;}
+	#header h1 a{display: block; width: 96px; height: 75px; margin-top: ;background: url(../siteimages/logo-mobile.png) no-repeat 50% 50% transparent;}
+
+#header ul {position: absolute; top: 10px;right: 10px; list-style: none;}
+	#header ul li{float: left;margin: 0 10px 0 0;}
+		#header ul li a{display: block; padding: 0 5px;color: #dcd48b;font-size: 11px;line-height: 50px;}
+			
+/* Content */			
+#content {min-height: 100px;padding: 10px; background: url(../siteimages/stain2.png) no-repeat 80% 50%;}
+		
+/* =page nav */
+#page-nav{clear: both; float: left; overflow: hidden;width: 99.5%;padding: 0; margin: 0 0 18px 0;border: 2px solid #2f1c0f;background: #baa465; list-style: none; z-index: 1000; position: relative;}
+#page-nav li {display: inline; float: left;width: 33%; padding: 0;margin: 0; border-left: 1px solid #a59058; border-right: 1px solid #dcd48b;font-size: 13px; text-align: center;text-transform: uppercase;}
+	#page-nav li:first-of-type{border-left: none;}
+	#page-nav li:last-of-type{border-right: none;}
+	#page-nav li a{display: block;color: #2f1c0f; font-weight: bold; line-height: 30px;d}
+	#page-nav #active{padding: 0;background: #78470f;}
+		#page-nav #active a{color: #dcd48b;}
+		
+/* Actions */
+#actions {margin: 0 0 10px 0;border: 2px solid #2f1c0f;background: #baa465 url(../siteimages/texture2.png) no-repeat 100% 120%; list-style: none;}
+#actions li {border-bottom: 1px solid #dcd48b;}
+	#actions li:last-of-type {border-bottom: none;}
+	#actions li a {display: block;padding: 0 10px;font-size: 13px; font-weight: bold;line-height: 30px;text-transform: uppercase; color: #2f1c0f;}
+
+/* serch */
+#search {clear: left;padding: 10px; margin: 0 0 10px 0;border: 2px solid #2f1c0f; background: #baa465 url(../siteimages/texture1.png) no-repeat 100% 0;}
+
+#search-box {width: 70%; padding: 5px; margin: 10px 10px 0 0; border: 2px solid #2f1c0f;background-color: #dcd48b;font-size: 13px;line-height: 18px;}
+
+#post {height: 24px ; font-size: 13px; font-weight: bold; line-height: 24px;text-transform: uppercase; }
+
+/* Foot */
+#site-info {padding: 0 0 10px 0;margin: 20px 0 0 0;background: url(../siteimages/stain1.png) no-repeat 0 110%; overflow: visible; text-align: center;}
+	#signin #site-info{margin: 10px 0 0 0;}
+
+/* Sign In*/
+#signin {clear: left;background: #2f1c0f url(../siteimages/bg-wood.jpg) repeat 0 0;}
+
+#signin h1{width: 138px; height: 108px; margin: 0 auto;background: transparent url(../siteimages/logo-big.png) no-repeat 50% 50%;}
+
+#signin-box{padding: 0 0 5px 0; margin: 0 auto;border: 2px solid #2f1c0f; background: #baa465 url(../siteimages/texture1.png) no-repeat 100% 0;}
+
+#signin-box #id_username, #signin-box #id_password, #signin-box #id_openid_url{width: 99%; margin: 0; background: dcd48b; border: 2px solid #9e7e2e;font-size: 13px; line-height: 24px;}
+
+#signin-box #enter{float: right;padding: 5px; border: 2px solid #2f1c0f;background: #9e7e2e; font-size: 11px; font-weight: bold;line-height: 11px; text-transform: uppercase; }
+
+/* @group forms */
+
+.review-form{border: none;}
+
+.review-form dd, #signup dd, #openid dd{margin: 0;}
+
+#id_review-rating, #id_review-comment, #id_review-characteristics, #city-search, #id_city-city, #id_city-province, #id_username, #id_email, #id_password, #id_password1, #id_password2, #id_openid_url, #city-search-form {width: 90%; padding: 3px;margin: 0; background: dcd48b; border: 2px solid #2f1c0f;font-size: 13px; line-height: 18px;}
+	#city-search-form{width: 70%;}
+
+.help {display: block; margin: 0 0 10px 0;font-size: 11px; font-style: italic;color: #311e0f;}
+
+#id_review-rating{width: 10%;}
+
+/* @end */
+
+/* @group Loading */
+
+#loading{ width: 130px; height: 130px; margin: 0 auto;background:transparent url(../siteimages/black-bg.png) repeat 0 0; text-align: center; -webkit-border-radius: 10px;}
+
+#loading img{padding: 15px;}
+
+/* @end */
+
+/* @group Pagination */
+
+.pagination{margin: 5px 0 15px; text-align: center;}
+	.pagination .disabled, .pagination .current{}
+	.pagination .page{padding: 1px 4px; margin: 0 2px; border: 1px solid #2f1c0f;background: #baa465;color:#2f1c0f}
+	.pagination ul {float: left;}
+	.pagination li{float: left;}
+		.pagination li.previous{margin: 0 15px 0 0;}
+	
+		
+/* @end */
+
+#error-box{ padding: 10px 10px 0; margin: 10px; border: solid #9e1411; background-color:#fff; border-width: 1px 0;color:#9e1411; opacity: 0.6;}
+	#error-box p{padding: 0; margin-left: 0;}
+	#error-box ul{margin: 0 0 1.5em 2em; list-style-type: disc; opacity: 1;}
+/* @end */
+
+/* @group City search */
+
+#city-box{padding: 10px; margin: 0 auto; background:transparent url(../siteimages/bg-tan.png) repeat 0 0;  border: 2px solid #2f1c0f;-webkit-border-radius: 10px; width: 200px; height: 250px;}
+
+/* @end */
+
+/* @group Already Reviewed */
+
+#already-reviewed{position: relative;padding: 5px 10px; margin: 5px 0 20px 0;border: solid #2f1c0f; border-width: 1px 0; background: #baa465 url(../siteimages/texture2.png) no-repeat 100% 90%; color: #2f1c0f; ;}
+
+img#caps{position: absolute; top: -5px; left: -5px;}
+
+/* @end */
+
+/* @group Tools */
+.ir {text-indent: -1000em; overflow: hidden;}
+
+.rndr {-webkit-border-radius: 5px;}
+
+.button{height: 24px; margin-bottom: 20px;font-size: 13px; font-weight: bold; line-height: 24px;text-transform: uppercase; vertical-align: top;}
+
+.clearfix:after {content:"."; display:block; clear:both; visibility:hidden; line-height:0; height:0;}
+
+.clearfix {display:inline-block;}
+
+html[xmlns] .clearfix {display:block;}
+
+* html .clearfix {height:1%;}
+
+/* @end */
+
+/* @Javascript Styles */
+.hidden-element {
+  display: none;
+}
+
+.active-element {
+  display: block;
+}

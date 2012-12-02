@@ -1,0 +1,10 @@
+{% extends "beers/base.html" %}
+
+{% block title %}
+  Beer added
+{% endblock %}
+
+{% block content %}
+  <h2>Thanks for adding a beer.</h2>
+  <p>Check out your beer's new page: <a href="{{ beer.get_absolute_url }}">{{ beer.name }}</a>. Note that it may take a few minutes for your beer to appear in the lists on the site, due to caching.</p>
+{% endblock %}

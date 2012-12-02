@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 32
+/savoy/!svn/ver/1249/trunk/utils
+END
+anyetree.py
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/savoy/!svn/ver/770/trunk/utils/anyetree.py
+END
+path.py
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/savoy/!svn/ver/1186/trunk/utils/path.py
+END
+slugs.py
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/savoy/!svn/ver/1249/trunk/utils/slugs.py
+END
+geonames.py
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/savoy/!svn/ver/768/trunk/utils/geonames.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/savoy/!svn/ver/2/trunk/utils/__init__.py
+END
+date_sort.py
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/savoy/!svn/ver/744/trunk/utils/date_sort.py
+END
+importers.py
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/savoy/!svn/ver/1098/trunk/utils/importers.py
+END
+text_parsing.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/savoy/!svn/ver/804/trunk/utils/text_parsing.py
+END

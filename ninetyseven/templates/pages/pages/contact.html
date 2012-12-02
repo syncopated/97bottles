@@ -1,0 +1,98 @@
+{% extends "pages/default.html" %}
+
+{% block extra-stylesheets %}
+{% endblock %}
+
+{% block extra-scripts %}
+  <script type="text/javascript" src="http://www.formspring.com/forms/js/2/yui.js"></script>
+  <script type="text/javascript" src="http://www.formspring.com/forms/js/2/scripts.js"></script>
+{% endblock %}
+
+{% block content %}
+  <h3>{{ page.title }}</h3>
+  <h4>{{ page.subhead }}</h4>
+  {{ page.primary_content_rendered_markup }}
+  <form method="post" enctype="multipart/form-data" action="http://www.formspring.com/forms/index.php" class="fsForm fsSingleColumn" id="fsForm507545" name="fsForm507545">
+    <input type="hidden" name="form" value="507545" /> <input type="hidden" name="viewkey" value="yFEhzoVZcT" /> <input type="hidden" name="hidden_fields" id="hidden_fields507545" value="" /> <input type="hidden" name="_submit" value="1" /> <input type="hidden" name="incomplete" id="incomplete507545" value="" />
+    <div class="fsPage" id="fsPage507545-1">
+      <table class="fsTable" cellspacing="0" cellpadding="0">
+        <tbody>
+          <tr valign="top" id="fsRow507545-1" class="fsRow fsFieldRow fsLastRow" style="">
+            <td class="fsRowOpen">
+              &nbsp;
+            </td>
+            <td class="fsRowBody fsCell fsFieldCell fsFirst fsLast fsText fsLabelVertical" colspan="1" id="fsCell5133723">
+              <label class="fsLabel fsRequiredLabel required" for="field5133723"><span class="required-asterisk">*</span> Name</label> <input type="text" id="field5133723" name="field5133723" size="50" value="{{ user.profile.name }}" class="fsField fsRequired" />
+            </td>
+            <td class="fsRowClose">
+              &nbsp;
+            </td>
+          </tr>
+          <tr valign="top" id="fsRow507545-2" class="fsRow fsFieldRow fsLastRow" style="">
+            <td class="fsRowOpen">
+              &nbsp;
+            </td>
+            <td class="fsRowBody fsCell fsFieldCell fsFirst fsLast fsEmail fsLabelVertical" colspan="1" id="fsCell5133724">
+              <label class="fsLabel fsRequiredLabel required" for="field5133724"><span class="required-asterisk">*</span> Email</label> <input type="text" id="field5133724" name="field5133724" size="50" value="{{ user.email }}" class="fsField fsRequired emailRequired" />
+            </td>
+            <td class="fsRowClose">
+              &nbsp;
+            </td>
+          </tr>
+          <tr valign="top" id="fsRow507545-3" class="fsRow fsFieldRow fsLastRow" style="">
+            <td class="fsRowOpen">
+              &nbsp;
+            </td>
+            <td class="fsRowBody fsCell fsFieldCell fsFirst fsLast fsTextarea fsLabelVertical" colspan="1" id="fsCell5133726">
+              <label class="fsLabel fsRequiredLabel required" for="field5133726"><span class="required-asterisk">*</span> Comments</label> 
+              <textarea id="field5133726" name="field5133726" rows="10" cols="40" class="fsField fsRequired">
+</textarea>
+            </td>
+            <td class="fsRowClose">
+              &nbsp;
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+      <input id="fsSubmitButton507545" class="fsSubmitButton button" type="submit" value="Send" onclick="form507545.submitForm(); return false;" /><br /><br />
+    <script type="text/javascript">
+//<![CDATA[
+    <!--
+
+    var form507545;
+    var form507545Load = function() {
+
+      form507545 = new FSForm(507545);
+
+
+      form507545.logicFields = [];
+
+
+      form507545.calcFields = [];
+
+      form507545.lastPage = 1;
+
+      form507545.init();
+
+    };
+
+    var oldonload507545 = window.onload;
+    window.onload = typeof window.onload == 'function' ?
+      function() { oldonload507545(); form507545Load(); } : 
+      window.onload = form507545Load;
+
+    //-->
+    //]]>
+    </script>
+  </form><img src="http://www.formspring.com/forms/count.php?507545" alt="Form View Counter" width="1" height="1" border="0" />
+  {{ page.fine_print_rendered_markup }}
+{% endblock %}
+{% block sidebar %}
+	{% if page.secondary_content %}
+		<div class="module">
+	  	{{ page.secondary_content_rendered_markup }}
+	  </div>
+	  {% include "snippets/newsletter.html" %}
+  {% endif %}
+{% endblock %}

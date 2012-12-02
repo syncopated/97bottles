@@ -1,0 +1,10 @@
+<div class="module">
+  <h3>Awards</h3>
+  <ul>
+    <li><a href="{% url award_beer_list_high-rated %}">Awesome!</a></li>
+    <li><a href="{% url award_beer_list_skunky %}">Skunky</a></li>
+    <li><a href="{% url award_beer_list_girlie %}">Chicks dig it!</a></li>
+      <li><a href="{% url award_beer_list_high-alcohol %}">High alcohol</a></li>
+    <li><a href="{% url award_beer_list_staff-pick %}">Staff pick</a></li>
+  </ul>
+</div>

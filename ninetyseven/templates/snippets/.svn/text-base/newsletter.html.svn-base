@@ -1,0 +1,10 @@
+<div class="module">
+	<h3>Sign up for our newsletter!</h3>
+	<p> Want to get regular email updates and tips about beers you'll love, becoming an expert beer reviewer, 97 Bottles events and happenings, and more? Subscribe to our newsletter and stay in the loop!</p>
+	<form action="http://blueflavor.createsend.com/t/y/s/ilktjr/" method="post" class="sidebar-form">
+		<label for="ilktjr-ilktjr" class="required"><span class="required-asterisk">*</span>Email</label>
+		<input type="text" name="cm-ilktjr-ilktjr" id="ilktjr-ilktjr" /><br />
+		<input type="submit" value="Subscribe" class="button"/>
+	</form>
+	<p class="more">*Don't worry. We won't spam you.</p>
+</div>

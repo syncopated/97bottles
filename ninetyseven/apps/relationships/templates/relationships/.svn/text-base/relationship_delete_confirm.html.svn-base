@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+
+{% block title %}Remove confirm{% endblock %}
+
+{% block content %}
+  <h3>Unfollow {{ to_user }}</h3>
+  <form action="{% url relationship_stop_follow to_user_id=to_user.id %}" method="post">
+    <p>Are you sure you want to unfollow {{ to_user }}?
+      <button type="submit" name="submit" value="Indeed">Indeed</button></p>
+  </form>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Content aggregator: {{ day|date:"F jS, Y"}}{% endblock %}
+
+{% block content %}
+  {% autopaginate items 30 %}
+  {% if items %}
+    {% for item in items %}
+      {% with item.content_object as object %}
+        {% render_template_for object in "aggregator/snippets/" %}
+      {% endwith %}
+    {% endfor %}
+  {% else %}
+    <p>There are no items from this day.</p>
+  {% endif %}
+  {% paginate 2 %}
+{% endblock %}
+
+{% block sidebar %}
+  <h5>{{ day|date:"F"}}</h5>
+  {% calendar day.year day.month day %}
+  {% include "aggregator/snippets/model_chooser.html" %}  
+{% endblock %}

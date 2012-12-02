@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}{{ gallery.title }}{% endblock %}
+{% block page-title %}{{ gallery.title }}{% endblock %}
+
+{% block content %}
+  {% if gallery.description %}
+    {{ gallery.description|markdown|typogrify }}
+  {% endif %}
+  {% for galleryphoto in gallery.galleryphoto_set.all %}
+    <a href="{{ galleryphoto.get_absolute_url }}"><img src="{{ galleryphoto.photo.flickr_photo.square_image_url }}" /></a>
+  {% endfor %}
+{% endblock %}

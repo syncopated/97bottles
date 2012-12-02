@@ -1,0 +1,25 @@
+{% if relationship.is_reciprocal %}
+
+Hey, {{ relationship.to_user.profile.name }}!
+
+Now {{ relationship.from_user.profile.name }} is following you, too!  This means you're friends. Sweet!
+
+Check out {{ relationship.from_user.profile.name }}'s profile here:
+http://{{ site.domain }}{% url profile_detail relationship.from_user.username %}
+
+Bottoms up,
+The 97bottles.com crew
+
+{% else %}
+
+Hey, {{ relationship.to_user.profile.name }}!
+
+{{ relationship.from_user.profile.name }} is now following you on {{ site.name }}. This means {{ relationship.from_user.profile.name }} can see your updates and learn about your favorite beers.
+
+Want to see {{ relationship.from_user.profile.name }}'s profile or follow him or her? Check it out:
+http://{{ site.domain }}{% url profile_detail relationship.from_user.username %}
+
+Bottoms up,
+The {{ site.name }} crew
+
+{% endif %}

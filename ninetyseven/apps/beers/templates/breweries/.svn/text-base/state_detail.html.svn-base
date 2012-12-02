@@ -1,0 +1,27 @@
+{% extends "breweries/base.html" %}
+
+{% block title %}{{ state }}{% endblock %}
+
+{% block content %}
+  <h3>Breweries in {{ state }}</h3>
+  {% with brewery_list|dictsortreversed:"rating" as brewery_list %}
+    {% autopaginate brewery_list 100 %}
+    {% if not invalid_page %}
+      {% include "breweries/snippets/brewery_table.html" %}
+    {% endif %}
+    {% paginate 4 %}
+  {% endwith %}
+{% endblock %}
+
+{% block sidebar %}
+  {% if city_list %}
+    <div class="module">
+      <h3>Cities</h3>
+      <ul>
+        {% for city in city_list|dictsort:"city" %}
+          <li><a href="{{ city.get_absolute_url }}">{{ city.city }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+{% endblock %}

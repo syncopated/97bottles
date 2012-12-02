@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Successful{% endblock %}
+
+{% block content %}
+  {% if relationship %}
+    <h3>Follow successful</h3>
+    <p>You are now following {{ relationship.to_user.profile.name }}.</p>
+  {% else %}
+    <h3>Unfollow successful</h3>
+  {% endif %}
+{% endblock %}

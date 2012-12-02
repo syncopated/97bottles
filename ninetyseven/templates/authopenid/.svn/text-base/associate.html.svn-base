@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block head %}
+{% block title %}Add your Open ID URL{% endblock %}
+
+{% endblock %}
+
+
+{% block content %}
+<h3>Add your Open ID URL below, and we'll hook you up!</h3>
+{% if msg %}
+<br />
+	<p class="warning">{{ msg }}</p>
+{% endif %}
+
+<div class="login">
+
+<form name="fopenid" action="" method="post" class="sign-up-form">
+    {% if form.errors %}
+      {{ form.errors }}
+    {% endif %}
+    <input type="hidden" name="next" value="{{ next }}" />
+	<fieldset>
+		<legend>{% trans "Add a new OpenID URL" %}</legend>
+      <label for="id_openid_ul">{% trans "OpenId URL :" %}</label>
+      {{ form.openid_url }}
+      <input name="bassociate" type="submit" class="button" value="{% trans "Go!" %}">
+	</fieldset>
+</form>	
+</div>	
+{% endblock %}
+
+{% block sidebar %}
+<div class="module">
+  <h3>Help?</h3>
+  <ul>
+   <li><a href="http://openid.net/get/">I don't have an Open ID URL, but I want one!</a></li>
+   <li><a href="http://openid.net/get/">What is OpenID?!</a></li>
+  </ul>
+</div>
+{% endblock %}
+

@@ -1,0 +1,34 @@
+{% extends "timelines/base.html" %}
+
+{% block title %}Beer log: {{ year }}{% if timeline_for %} for {{ timeline_for }}{% endif %}{% endblock %}
+
+{% block content %}
+  <h3>Timeline: {{ year }}{% if timeline_for %} for {{ timeline_for }}{% endif %}</h3>
+  {% autopaginate items 30 %}
+  {% include "timelines/snippets/timeline_list_grouped_by_day.html" %}
+  {% paginate 4 %}
+{% endblock %}
+
+{% block sidebar %}
+  <div class="module">
+    <h3>Filter by type</h3>
+    {% include "timelines/snippets/model_chooser.html" %}
+  </div>
+  
+  <div class="module">
+    <h3>{{ year }} by month</h3>
+    <ul>
+      {% for month in date_list %}
+      {% if timeline_for %}
+        <li><a href="{% url timelines_month_user username=timeline_for.username,year=month.year,month=month|date:"b" %}">{{ month|date:"F" }}</a></li>
+      {% else %}
+        {% if following_timeline %}
+          <li><a href="{% url timelines_following_month username=user.username,year=month.year,month=month|date:"b" %}">{{ month|date:"F" }}</a></li>
+        {% else %}
+          <li><a href="{% url timelines_month month.year,month|date:"b" %}">{{ month|date:"F" }}</a></li>
+        {% endif %}
+      {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

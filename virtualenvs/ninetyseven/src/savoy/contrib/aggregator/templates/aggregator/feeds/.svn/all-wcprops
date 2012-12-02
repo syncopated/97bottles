@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/savoy/!svn/ver/1122/trunk/contrib/aggregator/templates/aggregator/feeds
+END
+item_title.html
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/savoy/!svn/ver/1121/trunk/contrib/aggregator/templates/aggregator/feeds/item_title.html
+END
+item_description.html
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/savoy/!svn/ver/1121/trunk/contrib/aggregator/templates/aggregator/feeds/item_description.html
+END

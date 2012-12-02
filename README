@@ -1,0 +1,13 @@
+Dear future 97bottle developer,
+
+This directory contains everything that was on the Eldarion servers for
+97bottles. I remember it was a bit difficult to get setup, but finally got
+it going. I've included the virtual environment as there are dependencies in
+there (used at the time 97bottles was hosted with Eldarion). I am sure they've
+since been updated and that is something to look into when working on the
+code base.
+
+I won't be of much help to the code base as I've never even looked at it.
+
+Good luck,
+Brian Rosner

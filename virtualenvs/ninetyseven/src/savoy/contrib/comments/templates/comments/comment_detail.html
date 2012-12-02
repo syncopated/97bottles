@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}{{ comment.author_name|typogrify }} on {{ comment.content_object.title|typogrify }}{% endblock %}
+
+{% block content %}
+  <h2>{{ comment.author_name|typogrify }} on {{ comment.content_object.title|typogrify }}</h2>
+  <h3>{{ comment.date_submitted|date:"F jS, Y" }} at {{ comment.date_submitted|date:"P" }}</h3>
+  {{ comment.body|striptags|fix_ampersands|urlize|markdown|typogrify }}
+{% endblock %}

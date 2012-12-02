@@ -1,0 +1,6 @@
+{% with object as relationship %}
+  {% load relationships %}
+  {% get_relationship relationship.to_user relationship.from_user as is_reciprocal %}
+  {{ relationship.from_user.profile.name }} followed {{ relationship.to_user.profile.name }}.{% if is_reciprocal %} They are now friends.{% endif %}
+{% endwith %}
+

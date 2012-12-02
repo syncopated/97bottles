@@ -1,0 +1,14 @@
+{% load relationships %}
+{% get_relationship request.user user as relationship %}
+
+{% if request.user.is_authenticated %}
+  {% ifnotequal request.user user %}
+    {% if relationship %}
+      <a class="follow-link" href="{% url relationship_follow_unfollow user.id %}">unfollow</a>
+    {% else %}
+      <a class="follow-link" href="{% url relationship_follow_unfollow user.id %}">follow</a>
+    {% endif %}
+  {% else %}
+    <span class="follow-link">you</span>
+  {% endifnotequal %}
+{% endif %}

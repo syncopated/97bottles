@@ -1,0 +1,40 @@
+{% extends "comments/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Preview your comment" %}{% endblock %}
+
+{% block content %}
+  {% load comments %}
+  {% if form.errors %}
+    <h3>{% blocktrans count form.errors|length as counter %}Please correct the error below{% plural %}Please correct the errors below{% endblocktrans %}</h3>
+    {% else %}
+    <h3>{% trans "Preview your comment" %}</h3>
+    <div id="comments">
+      <ol class="comment-list">
+        <li>
+  {% if user.profile.avatar %}
+    <a href="{% url profile_detail user %}"><img class="user-avatar" src="{{ user.profile.avatar.url|thumbnail:"67x67" }}" title="{{ user.profile.name }}'s avatar" style="width: 67px; height: 67px;" /></a>
+    <dl>
+      <dt><h2><a href="{% url profile_detail user %}">{{ user.profile.name }}</a></h2></dt>
+      <dd class="comment-number"><a>0</a></dd>
+      <dd class="date">{% now "N jS, Y" %}</dd>
+      <dd class="comment-body">{{ comment|urlizetrunc:50|markdown|typogrify }}</dd>
+    </dl>
+  {% else %}
+    {% with "http://97bottles.com/static/ninetyseven/assets/img/core/default-avatar.png" as default_avatar %}
+      {% if form.user_url.data %}<a href="{{ form.user_url.data }}"><img class="user-avatar" src="{{ default_avatar|thumbnail:"67x67" }}" title="{{ form.name.data }}'s avatar" /></a>{% else %}<img class="user-avatar" src="{{ default_avatar|thumbnail:"67x67" }}" title="{{ form.name.data }}'s avatar" />{% endif %}
+    {% endwith %}
+    <dl>
+      <dt>{% if form.user_url.data %}<h2><a href="{{ form.user_url.data }}">{{ form.name.data }}</a></h2>{% else %}<h2>{{ form.name.data }}</h2>{% endif %}</dt>
+      <dd class="comment-number"><a>0</a></dd>
+      <dd class="date">{% now "N jS, Y" %}</dd>
+      <dd class="comment-body">{{ comment|urlizetrunc:50|markdown|typogrify }}</dd>
+    </dl>
+  {% endif %}
+</li>
+      </ol>
+    </div>
+    <p>{% trans "Make changes" %}:</p>
+	{% endif %}
+  {% include "comments/form.html" %}
+{% endblock %}

@@ -1,0 +1,314 @@
+[
+  {
+    "pk": 1, 
+    "model": "beers.vessel", 
+    "fields": {
+      "updated_by": null, 
+      "date_updated": "2008-10-02 01:20:55", 
+      "created_by": null, 
+      "date_created": "2008-10-02 01:20:55", 
+      "slug": "pint-glass", 
+      "name": "Pint glass"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "beers.vessel", 
+    "fields": {
+      "updated_by": null, 
+      "date_updated": "2008-10-02 01:23:42", 
+      "created_by": null, 
+      "date_created": "2008-10-02 01:23:42", 
+      "slug": "stein", 
+      "name": "Stein (Mug)"
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "beers.vessel", 
+    "fields": {
+      "updated_by": null, 
+      "date_updated": "2008-10-02 01:23:50", 
+      "created_by": null, 
+      "date_created": "2008-10-02 01:23:50",  
+      "slug": "bottle", 
+      "name": "Bottle"
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "beers.vessel", 
+    "fields": {
+      "updated_by": null, 
+      "date_updated": "2008-10-02 01:23:55", 
+      "created_by": null, 
+      "date_created": "2008-10-02 01:23:55", 
+      "slug": "can", 
+      "name": "Can"
+    }
+  },  
+  {
+    "pk": 7, 
+    "model": "beers.vessel", 
+    "fields": {
+      "updated_by": null, 
+      "date_updated": "2008-10-02 10:21:58", 
+      "created_by": null, 
+      "date_created": "2008-10-02 10:21:58", 
+      "slug": "goblet", 
+      "name": "Goblet"
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "beers.vessel", 
+    "fields": {
+      "updated_by": null, 
+      "date_updated": "2008-10-02 10:22:37", 
+      "created_by": null, 
+      "date_created": "2008-10-02 10:22:37", 
+      "slug": "tulip", 
+      "name": "Tulip"
+    }
+  }, 
+  
+  
+   
+  {
+    "pk": 1, 
+    "model": "beers.brewerytype", 
+    "fields": {
+      "name": "Microbrewery", 
+      "slug": "microbrewery"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "beers.brewerytype", 
+    "fields": {
+      "name": "Macrobrewery", 
+      "slug": "macrobrewery"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "beers.brewerytype", 
+    "fields": {
+      "name": "Brewpub", 
+      "slug": "brewpub"
+    }
+  }, 
+
+
+
+  {
+    "pk": 1, 
+    "model": "beers.beercolor", 
+    "fields": {
+      "color": "#f8f753", 
+      "ebc": 4, 
+      "example": "Light Yellow (Pale lager)", 
+      "srm": 2
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "beers.beercolor", 
+    "fields": {
+      "color": "#f6f513", 
+      "ebc": 6, 
+      "example": "Medium Yellow (Pilsener)", 
+      "srm": 3
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "beers.beercolor", 
+    "fields": {
+      "color": "#ece61a", 
+      "ebc": 8, 
+      "example": "Straw Gold (Blond Ale)", 
+      "srm": 4
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "beers.beercolor", 
+    "fields": {
+      "color": "#d5bc26", 
+      "ebc": 12, 
+      "example": "Deep Gold (Vienna Lager)", 
+      "srm": 6
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "beers.beercolor", 
+    "fields": {
+      "color": "#bf923b", 
+      "ebc": 16, 
+      "example": "Light Amber (Wiessbier)", 
+      "srm": 8
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "beers.beercolor", 
+    "fields": {
+      "color": "#bf813a", 
+      "ebc": 20, 
+      "example": "Copper (English pale ale)", 
+      "srm": 10
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "beers.beercolor", 
+    "fields": {
+      "color": "#bc6733", 
+      "ebc": 26, 
+      "example": "Red/Brown (American Amber)", 
+      "srm": 13
+    }
+  }, 
+  {
+    "pk": 15, 
+    "model": "beers.beercolor", 
+    "fields": {
+      "color": "#8D4C32", 
+      "ebc": 33, 
+      "example": "Light Brown (Dark Lager)", 
+      "srm": 17
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "beers.beercolor", 
+    "fields": {
+      "color": "#5d341a", 
+      "ebc": 39, 
+      "example": "Nut Brown (English Brown Ale)", 
+      "srm": 20
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "beers.beercolor", 
+    "fields": {
+      "color": "#261716", 
+      "ebc": 47, 
+      "example": "Dark Brown (Munich Dunkel Lager)", 
+      "srm": 24
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "beers.beercolor", 
+    "fields": {
+      "color": "#0f0b0a", 
+      "ebc": 57, 
+      "example": "Light Black (Porter)", 
+      "srm": 29
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "beers.beercolor", 
+    "fields": {
+      "color": "#080707", 
+      "ebc": 69, 
+      "example": "Dark Black (Stout)", 
+      "srm": 35
+    }
+  }, 
+  {
+    "pk": 14, 
+    "model": "beers.beercolor", 
+    "fields": {
+      "color": "#000000", 
+      "ebc": 138, 
+      "example": "Full Black (Imperial stout)", 
+      "srm": 70
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "beers.batch", 
+    "fields": {
+      "name": "Year-Round Micro", 
+      "slug": "year-round-micro"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "beers.batch", 
+    "fields": {
+      "name": "Year-Round Macro", 
+      "slug": "year-round-macro"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "beers.batch", 
+    "fields": {
+      "name": "Winter Seasonal", 
+      "slug": "winter-seasonal"
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "beers.batch", 
+    "fields": {
+      "name": "Spring Seasonal", 
+      "slug": "spring-seasonal"
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "beers.batch", 
+    "fields": {
+      "name": "Summer Seasonal", 
+      "slug": "summer-seasonal"
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "beers.batch", 
+    "fields": {
+      "name": "Autumn Seasonal", 
+      "slug": "autumn-seasonal"
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "beers.batch", 
+    "fields": {
+      "name": "Special Release", 
+      "slug": "special-release"
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "beers.batch", 
+    "fields": {
+      "name": "Limited/Rotational Release", 
+      "slug": "limitedrotational-release"
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "beers.batch", 
+    "fields": {
+      "name": "Unique/One-time Release", 
+      "slug": "uniqueone-time-release"
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "beers.batch", 
+    "fields": {
+      "name": "Specialty Draft Only", 
+      "slug": "specialty-draft-only"
+    }
+  }
+]

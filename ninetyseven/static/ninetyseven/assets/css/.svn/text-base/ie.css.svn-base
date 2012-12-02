@@ -1,0 +1,4 @@
+.button { padding: 0;}
+form.homepage-sign-in-form .button {margin-left: 10px;}
+#slider-value {padding-bottom: 5px; line-height: 1; overflow: hidden; display: block; position: absolute; right: 55px;}
+.caps {font-size:1em;}

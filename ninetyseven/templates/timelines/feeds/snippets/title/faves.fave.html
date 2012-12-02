@@ -1,0 +1,5 @@
+{% with object as fave %}
+  {% with fave.content_object as beer %}
+    {{ fave.user.profile.name }} added {{ beer.name }} to {% ifequal fave.user.profile.gender 1 %}his{% endifequal %}{% ifequal fave.user.profile.gender 2 %}her{% endifequal %}{% ifequal fave.user.profile.gender 3 %}their{% endifequal %} {{ fave.type.name }} list.
+  {% endwith %}
+{% endwith %}

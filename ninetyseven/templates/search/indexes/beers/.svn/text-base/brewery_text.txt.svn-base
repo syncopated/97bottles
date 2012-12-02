@@ -1,0 +1,3 @@
+{{ object.name }}
+Created by {{ object.created_by.profile.name }} ({{ object.created_by.username }})
+{{ object.city.full_name }} {{ object.city.get_state_display}} {{ object.city.get_country_display }}

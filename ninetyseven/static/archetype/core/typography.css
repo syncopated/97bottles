@@ -1,0 +1,116 @@
+/* -------------------------------------------------------------- 
+   
+   typography.css
+   * Sets up some sensible default typography.
+      
+-------------------------------------------------------------- */
+ 
+/* Default font settings. 
+   This is all based on a baseline grid of 20px */
+body { 
+  font-size: 13px;
+  line-height: 20px;
+  color: #333; 
+  background: #fff;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-weight: normal;
+}
+ 
+ 
+/* Headings
+-------------------------------------------------------------- */
+ 
+h1,h2,h3,h4,h5,h6 { 
+  font-weight: normal; 
+  color: #666; 
+  margin: 0;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 300;
+  }
+ 
+h1 { font-size: 30px; line-height: 40px; margin: 20px 0; }
+h2 { font-size: 24px; line-height: 30px; padding: 10px 0; }
+h3 { font-size: 18px; line-height: 20px; padding: 5px 0; }
+h4 { font-size: 15px; line-height: 20px; padding: 5px 0; font-family: "Helvetica Neue", Arial, sans-serif;}
+h5 { font-size: 13px; font-weight: bold; }
+h6 { font-size: 11px; font-weight: bold; text-transform: uppercase;}
+ 
+ 
+/* Text elements
+-------------------------------------------------------------- */
+ 
+p           { margin: 0 0 20px 0; }
+
+a:focus, 
+a:hover     { color: #ff3300; }
+a           { color: #ff6600; text-decoration: none; }
+ 
+blockquote  { font-family: Georgia, serif; margin: 20px 0; color: #666; font-style: italic; }
+strong      { font-weight: bold; }
+em,dfn      { font-style: italic; }
+dfn         { font-weight: bold; }
+sup, sub    { line-height: 0; }
+ 
+abbr, 
+acronym     { border-bottom: 1px dotted #666; }
+address     { margin: 0 0 20px 0; font-style: italic; }
+del         { color: #999; }
+ 
+pre,code    { margin: 20px 0; white-space: pre; }
+pre,code,tt { font: 12px Consolas, 'Andale Mono', 'Lucida Console', Monospace; } 
+ 
+/* Lists
+-------------------------------------------------------------- */
+ 
+li ul, 
+li ol       { margin: 0 20px; }
+ul, ol      { margin: 0 0 20px 0; }
+ 
+ul          { list-style-type: disc; }
+ol          { list-style-type: decimal; }
+ 
+dl          { margin: 0 0 20px 0; }
+dl dt       { font-weight: bold; }
+dd          { margin-left: 20px;}
+ 
+ 
+/* Tables
+-------------------------------------------------------------- */
+ 
+table       { margin: 0 0 20px 0; width:100%; }
+th          { font-weight: bold; }
+th,td       { padding: 5px 0 4px 0; border-bottom: 1px solid #dfdfdf;}
+tr.even td  { background: #f4f4f4; }
+tfoot       { font-style: italic; }
+caption     { }
+ 
+ 
+/* Misc classes
+-------------------------------------------------------------- */
+
+.hide       { display: none; }
+.invisible  { visibility: hidden; }
+ 
+.weak       { color: #666; }
+.highlight  { background: #ff0; }
+ 
+.first      { margin-left:0; padding-left:0; }
+.last       { margin-right:0; padding-right:0; }
+.top        { margin-top:0; padding-top:0; }
+.bottom     { margin-bottom:0; padding-bottom:0; }
+
+
+/* Indentation
+------------------------------------------------------------- */
+.dquo { margin-left: -.5em; }
+
+.small {
+  font-size: 0.8333em;
+  line-height: 1.6;
+}
+.caps { 
+  font-variant: small-caps; 
+  text-transform: lowercase; 
+  font-size:1.4em;
+  line-height:1%;
+}

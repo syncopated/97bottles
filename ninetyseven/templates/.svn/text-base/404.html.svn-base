@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Error 404: Not found{% endblock %}
+
+{% block content %}
+  <h3>Error 404</h3>
+  <p>We can't find what you're looking for.</p>
+  <img class="error-image" src="/static/ninetyseven/assets/img/core/404.jpg" alt="racoons" />
+	<p>Try <a href="/search/">searching for it</a>,
+	<form method="get" action="/search/" class="search-form">
+		<label for="search" class="hide">Search: </label><input type="text" name="search" value="" /> 
+		<input type="submit" name="submit" value="Search" class="button">
+	</form>
+	or going back to our <a href="/">home page</a>.</p>
+	
+{% endblock %}

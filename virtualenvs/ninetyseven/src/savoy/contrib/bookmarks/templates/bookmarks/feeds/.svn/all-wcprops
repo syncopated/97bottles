@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/savoy/!svn/ver/1121/trunk/contrib/bookmarks/templates/bookmarks/feeds
+END
+bookmark_title.html
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/savoy/!svn/ver/1121/trunk/contrib/bookmarks/templates/bookmarks/feeds/bookmark_title.html
+END
+bookmark_description.html
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/savoy/!svn/ver/1121/trunk/contrib/bookmarks/templates/bookmarks/feeds/bookmark_description.html
+END

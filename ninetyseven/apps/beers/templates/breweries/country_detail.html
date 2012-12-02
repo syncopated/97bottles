@@ -1,0 +1,31 @@
+{% extends "breweries/base.html" %}
+
+{% block title %}{{ country }}{% endblock %}
+
+{% block content %}
+  {% load beers %}
+  
+  <h3>Breweries in {{ country }}</h3>
+  {% with brewery_list|dictsortreversed:"rating" as brewery_list %}
+    {% autopaginate brewery_list 100 %}
+    {% if not invalid_page %}
+      {% include "breweries/snippets/brewery_table.html" %}
+    {% endif %}
+    {% paginate 4 %}
+  {% endwith %}  
+{% endblock %}
+
+{% block sidebar %}
+  <div class="module">
+    {% ifequal country "United States" %}
+      <h3>By state</h3>
+    {% else %}
+      <h3>By province</h3>
+    {% endifequal %}
+    <ul class="link-list">
+      {% for state in state_list %}
+        <li><a href="{{ state.url }}">{{ state.name }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

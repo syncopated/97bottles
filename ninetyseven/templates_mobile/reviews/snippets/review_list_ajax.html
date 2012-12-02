@@ -1,0 +1,22 @@
+{% for review in review_list|dictsort:"date_created" %}
+<li>
+    {% if review.created_by.profile.avatar %}
+    <img class="user-avatar" src="{{ review.created_by.profile.avatar.url|thumbnail:"33x33" }}" title="{{ review.created_by.profile.name }}'s avatar" style="width: 33.5px; height: 33.5px;" />
+    {% else %}
+    {% with "http://97bottles.com/static/ninetyseven/assets/img/core/default-avatar.png" as default_avatar %}
+    <img class="user-avatar" src="{{ default_avatar|thumbnail:"33x33" }}" title="{{ review.created_by.profile.name }}'s avatar" />
+    {% endwith %}
+    {% endif %}
+        <dl>
+            <dt><strong>Review by:</strong> {{ review.created_by.profile.name|typogrify }}</dt>
+            <dd class="rating">{{review.rating}}</dd>
+            <dd class="date"><strong>Date Reviewed:</strong> {{ review.date_created|date:"N jS, Y \a\t P" }}</dd>
+            <dd class="comment"><strong>Comment:</strong> {{ review.comment|striptags|markdown|typogrify }}</dd>
+            {% ifequal user review.created_by %}
+            {% if not user.is_staff %}
+                <dd class="edit-review"><a href="{% url edit_review review.id %}">Edit</a></dd>
+            {% endif %}
+            {% endifequal %}
+        </dl>
+    </li>
+{% endfor %}

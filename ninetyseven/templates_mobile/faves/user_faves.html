@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}{{ fave_user.username }}'s {{ fave_type.name }} list{% endblock %}
+
+{% block content %}
+    <h2>{{ fave_user.profile.name }}'s</a> {{ fave_type.name }} beers</h2>
+    <ul id="listing">
+        {% for fave in faves %}
+            {% with fave.content_object as beer %}
+            <li class="{% cycle odd,even %}">
+                <a href="{{ beer.get_absolute_url }}">
+                    {% if beer.rating %}<h4 class="ranking">{{ beer.rating }}</h4>{% endif %}
+                    <h3 class="name">{{ beer.name}}</h3>
+                    {% if beer.brewery_name %}<h5 class="brewery">{{ beer.brewery_name }}</h5>{% endif %}
+                </a>
+            </li>
+            {% endwith %}
+        {% endfor %}
+    </ul>
+{% endblock %}

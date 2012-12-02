@@ -1,0 +1,8 @@
+{% extends "beers/base.html" %}
+
+{% block title %}Edit beer{% endblock %}
+
+{% block content %}
+  <h3>Edit your review on {{ beer.name }}</h3>
+  {% include "reviews/review_form.html" %}
+{% endblock %}

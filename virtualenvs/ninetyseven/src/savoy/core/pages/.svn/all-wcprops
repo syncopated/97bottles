@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/savoy/!svn/ver/1314/trunk/core/pages
+END
+admin.py
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/savoy/!svn/ver/1106/trunk/core/pages/admin.py
+END
+managers.py
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/savoy/!svn/ver/1107/trunk/core/pages/managers.py
+END
+middleware.py
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/savoy/!svn/ver/1297/trunk/core/pages/middleware.py
+END
+views.py
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/savoy/!svn/ver/1108/trunk/core/pages/views.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/savoy/!svn/ver/846/trunk/core/pages/__init__.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/savoy/!svn/ver/1105/trunk/core/pages/models.py
+END
+urls.py
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/savoy/!svn/ver/1314/trunk/core/pages/urls.py
+END
+context_processors.py
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/savoy/!svn/ver/846/trunk/core/pages/context_processors.py
+END

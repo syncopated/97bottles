@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/savoy/!svn/ver/1352/trunk/core/geo/utils
+END
+misc.py
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/savoy/!svn/ver/1352/trunk/core/geo/utils/misc.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/savoy/!svn/ver/846/trunk/core/geo/utils/__init__.py
+END
+urban_mapping_client.py
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/savoy/!svn/ver/1188/trunk/core/geo/utils/urban_mapping_client.py
+END

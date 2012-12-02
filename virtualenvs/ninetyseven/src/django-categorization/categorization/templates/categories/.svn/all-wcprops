@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/33/trunk/categorization/templates/categories
+END
+category_detail.html
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/33/trunk/categorization/templates/categories/category_detail.html
+END
+hierarchy_detail.html
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/33/trunk/categorization/templates/categories/hierarchy_detail.html
+END

@@ -1,0 +1,5 @@
+{{ object.name }}
+{{ object.brewery.name }}
+Created by {{ object.created_by.profile.name }} ({{ object.created_by.username }})
+
+{{ object.description }}

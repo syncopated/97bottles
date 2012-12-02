@@ -1,0 +1,19 @@
+{% extends "profiles/base.html" %}
+
+{% block title %}Edit preferences{% endblock %}
+
+{% block content %}
+  <h3>Edit your preferences</h3>
+  <form action="" method="post" enctype="multipart/form-data" class="profile-form">
+    <fieldset>
+      {% for field in preference_form %}
+        {{ field.label_tag }}
+        {{ field }}
+        <label for="{{ field.html_name }}" class="help">{{ field.help_text}}</label>
+        {% if field.errors %}<ul class="error-list">{{ field.errors }}</ul>{% endif %}
+      {% endfor %}
+    </fieldset>
+    <input type="hidden" name="id_user" value="{{ request.user.id }}" id="id_user" />
+    <p><input class="button" type="submit" value="Save preferences" /></p>
+  </form>
+{% endblock %}

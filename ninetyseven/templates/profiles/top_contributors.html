@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Beer lords{% endblock %}
+
+{% block content %}
+  <h3>Beer lords</h3>
+  {% if user_list %}
+    {% include "profiles/snippets/user_list.html" %}
+  {% endif %}
+{% endblock %}
+
+{% block sidebar %}
+	<div class="module">
+		<h3>What are Beer Lords?</h3>
+		<p>Our most amazing, most productive, members. These 97 Bottles masters have perfected the art of reviewing and adding beers. Hang around them and you might just learn something.</p>
+	</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{# This template expects a list of Review objects called "review_list". It returns an HTML table from the list. #}
+
+<table cellspacing="0" class="review-list">
+  <thead>
+    <tr>
+      <th class="review-rating numeric">Rating</th>
+      <th class="beer-name">Name</th>
+      <th class="beer-brewery">Brewery</th>
+      <th class="review-link">&nbsp;</th>
+      {# <th class="beer-date-created">Date added</th> #}
+    </tr>
+  </thead>
+  <tbody>
+    {% for review in review_list|dictsortreversed:"rating" %}
+      <tr>
+        <td class="review-rating numeric">{{ review.rating }}</td>
+        <td class="beer-name"><a href="{{ review.beer.get_absolute_url }}">{{ review.beer.name|typogrify }}</a></td>
+        <td class="beer-brewery"><a href="{{ review.beer.brewery.get_absolute_url }}">{{ review.beer.brewery|typogrify }}</a></td>
+        <td class="review-link"><a href="{{ review.get_absolute_url }}">Read</a></td>
+        {# <td class="review-date-created">{{ review.date_created|date:"N jS, Y" }}</td> #}
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>

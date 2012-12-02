@@ -1,0 +1,7 @@
+{# This template expects a list of Brewery objects called "brewery_list". It returns an HTML definition list from the list. #}
+
+<dl class="brewery-list">
+  {% for brewery in brewery_list %}
+    {% include "breweries/snippets/brewery_list_item.html" %}
+  {% endfor %}
+</dl>

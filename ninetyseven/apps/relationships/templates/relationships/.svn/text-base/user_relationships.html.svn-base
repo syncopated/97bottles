@@ -1,0 +1,41 @@
+{% extends "profiles/base.html" %}
+
+{% block title %}{{ profile.name }}{% endblock %}
+
+{% block content %}
+  {% load relationships %}
+  <h3>{% ifequal profile.user user %}Your{% else %}{{ profile.name }}'s {% endifequal %} drinking buddies</h3>
+  <h4 id="friends">Friends</h4>
+  <p>{% ifequal profile.user user %}You follow them. They follow you. Bam.{% else %}{{ profile.name }} follows them, and they follow {{ profile.name }}.{% endifequal %}</p>
+  {% if friends %}
+    <dl class="user-list">
+      {% for relationship in friends %}
+        {% with relationship.to_user as user %}{% include "profiles/snippets/user_list_item.html" %}{% endwith %}
+      {% endfor %}
+    </dl>
+  {% else %}
+    <p>{{ profile.name }} is not friends with anyone.</p>
+  {% endif %}
+  <h4 id="following">Following</h4>
+  <p>{% ifequal profile.user user %}You follow them, but they don't follow you.{% else %}{{ profile.name }} follows them, but they don't follow {{ profile.name }}.{% endifequal %}</p>
+  {% if following %}
+    <dl class="user-list">
+      {% for relationship in following %}
+        {% with relationship.to_user as user %}{% include "profiles/snippets/user_list_item.html" %}{% endwith %}
+      {% endfor %}
+    </dl>
+  {% else %}
+    <p>{{ profile.name }} is not following anyone.</p>
+  {% endif %}
+  <h4 id="followers">Followers</h4>
+  <p>{% ifequal profile.user user %}They follow you, but you don't follow them. {% else %} They follow {{ profile.name }}, but {{ profile.name }} doesn't follow them.{% endifequal %}</p>
+  {% if followers %}
+    <dl class="user-list">
+      {% for relationship in followers %}
+        {% with relationship.from_user as user %}{% include "profiles/snippets/user_list_item.html" %}{% endwith %}
+      {% endfor %}
+    </dl>
+  {% else %}
+    <p>Nobody is following {% ifequal profile.user user %}you. {% else %}{{ profile.name }}.{% endifequal %}</p>
+  {% endif %}
+{% endblock %}

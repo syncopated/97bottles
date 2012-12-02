@@ -1,0 +1,13 @@
+<dt><strong>Event:</strong> <a href="{{ event.get_first_eventtime.get_absolute_url }}">{{ event.title }}</a></dt>
+<dd><string>Added:</strong> {{ event.date_published|date:"l, F, j, Y \a\t h:iA" }}</dd>  
+{% if event.get_first_eventtime %}
+  {% if event.get_first_eventtime.end_time %}
+    {% ifequal event.get_first_eventtime.start_time.date event.get_first_eventtime.end_time.date %}
+      <dd><string>Occurs:</strong> {{ event.get_first_eventtime.start_time|date:"F jS, Y, f A" }}{% if event.places.all %} in <a href="{{ event.places.all.0.city.get_absolute_url }}">{{ event.places.all.0.city.name }}</a>{% endif %}</dd>
+    {% else %}
+      <dd><string>Occurs:</strong> {{ event.get_first_eventtime.start_time|date:"F jS, Y" }}&ndash;{{ event.get_first_eventtime.end_time|date:"F jS, Y" }}{% if event.places.all %} in <a href="{{ event.places.all.0.city.get_absolute_url }}">{{ event.places.all.0.city.name }}</a>{% endif %}</dd>
+    {% endifequal %}
+  {% else %}
+    <dd><string>Occurs:</strong> {{ event.get_first_eventtime.start_time|date:"F jS, Y, f A" }}{% if event.places.all %} in <a href="{{ event.places.all.0.city.get_absolute_url }}">{{ event.places.all.0.city.name }}</a>{% endif %}</dd>              
+  {% endif %}
+{% endif %}

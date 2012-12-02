@@ -1,0 +1,46 @@
+{% if items %}
+  {% regroup items by timestamp.day as day_list %}
+  {% for day in day_list %}
+    <div class="timeline-day {% if timeline_for %}timeline-for-user{% endif %}">
+      {% if timeline_for %}
+        <h4>{{ day.list.0.timestamp|date:"F jS, Y" }}</h4>
+      {% else %}
+        {% if following_timeline %}
+          <h4><a href="{% url timelines_following_day following_timeline.username,day.list.0.timestamp.year,day.list.0.timestamp|date:"b",day.list.0.timestamp|date:"d" %}">{{ day.list.0.timestamp|date:"F jS, Y" }}</a></h4>
+        {% else %}
+          <h4><a href="{% url timelines_day day.list.0.timestamp.year,day.list.0.timestamp|date:"b",day.list.0.timestamp|date:"d" %}">{{ day.list.0.timestamp|date:"F jS, Y" }}</a></h4>
+        {% endif %}
+      {% endif %}
+      <dl>
+      {% for item in day.list %}
+        {% if item %}
+          {% if not timeline_for %}
+            {% ifchanged item.user %}
+              <dt>
+              {% if item.user.profile.avatar %}
+                <a href="{% url profile_detail item.user.username %}"><img class="user-avatar" src="{{ item.user.profile.avatar.url|thumbnail:"30x30" }}" title="{{ item.user.profile.name }}'s avatar" /></a>
+              {% else %}
+                {% with "http://97bottles.com/static/ninetyseven/assets/img/core/default-avatar.png" as default_avatar %}
+                  <a href="{% url profile_detail item.user.username %}"><img class="user-avatar" src="{{ default_avatar|thumbnail:"30x30" }}" title="{{ item.user.profile.name }}'s avatar" /></a>
+                {% endwith %}
+              {% endif %}
+                <h2>
+                  {% if timeline_for %}You{% else %}<a href="{% url profile_detail item.user.username %}">{{ item.user.profile.name }}{% endif %}</a>
+                  {% with item.user as user %}
+                    {% include "profiles/snippets/follow_link.html" %}
+                  {% endwith %}
+                </h2>
+              </dt>
+            {% endifchanged %}
+          {% endif %}
+          <dd>        
+            {% include "timelines/snippets/timeline-item.html" %}
+          </dd>
+        {% endif %}
+      {% endfor %}
+      </dl>
+    </div>
+  {% endfor %}
+{% else %}
+  <p>There are no activity items.</p>
+{% endif %}

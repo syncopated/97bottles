@@ -1,0 +1,29 @@
+{# This template expects a list of Beer objects called "beer_list". It returns an HTML table from the list. #}
+
+<table cellspacing="0" class="beer-list">
+  <thead>
+    <tr>
+      <th class="beer-rating numeric">Rating</th>
+      <th class="beer-name">Name</th>
+      <th class="beer-brewery">Brewery</th>
+      <th class="beer-num-reviews numeric">Reviews</th>
+      {# <th class="beer-interestingness numeric">Buzz</th> #}
+      <th class="beer-abv numeric">ABV</th>
+      {# <th class="beer-date-created">Date added</th> #}
+      {# <th class="beer-created-by">Added by</th> #}
+      {# <th></th> #}
+      {# <th></th> #}
+      {% if recommendations %}
+        {% ifequal profile.user user %}
+          <th style="white-space: nowrap;">To-drink</th>
+          <th style="white-space: nowrap;">No thanks</th>
+        {% endifequal %}
+      {% endif %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for beer in beer_list %}
+      {% include "beers/snippets/beer_table_row.html" %}
+    {% endfor %}
+  </tbody>
+</table>

@@ -1,0 +1,48 @@
+{% if beer.reviews.all %}
+  <ol class="review-list">
+    {% for review in beer.reviews.all|dictsort:"date_created" %}
+      <li id="review-{{ review.id }}">
+          {% if review.created_by.profile.avatar %}
+	      		<a href="{% url profile_detail review.created_by.username %}" class="review-avatar"><img class="user-avatar" src="{{ review.created_by.profile.avatar.url|thumbnail:"67x67" }}" title="{{ review.created_by.profile.name }}'s avatar" style="width: 67px; height: 67px;" /></a>
+  				{% else %}
+						{% with "http://97bottles.com/static/ninetyseven/assets/img/core/default-avatar.png" as default_avatar %}
+  						<a href="{% url profile_detail review.created_by.username %}" class="review-avatar"><img class="user-avatar" src="{{ default_avatar|thumbnail:"67x67" }}" title="{{ review.created_by.profile.name }}'s avatar" /></a>
+  					{% endwith %}
+				 	{% endif %}
+				 	{% if review.created_by %}
+  				 	{% if review.created_by|IN:top_contributors %}
+              <img class="beer-lord-badge" src="/static/ninetyseven/assets/img/core/beer-lord-badge.png" title="{{ review.created_by.profile.name }} is a Beer Lord!" />
+            {% endif %}
+          {% endif %}
+          
+        <dl>
+          <dt>Review by {{ review.created_by.profile.name|typogrify }}</dt>
+          <dd class="rating"><strong>Rating:</strong> <a href="#review-{{ review.id }}">{{ review.rating }}</a></dd>
+          <dd class="created_by">
+            <h2>
+              <a href="{% url profile_detail review.created_by.username %}">{{ review.created_by.profile.name|typogrify }}</a>
+              {% with review.created_by as user %}
+                {% include "profiles/snippets/follow_link.html" %}
+              {% endwith %}
+            </h2>
+          </dd>
+          <dd class="drank"><em>drank this beer from a {{ review.vessel.name|typogrify }} {% if review.city %} in <a href="{{ review.city.get_absolute_url }}">{{ review.city.us_bias_name }}</a> {% endif %}</em></dd>
+          <dd class="date">{{ review.date_created|date:"N jS, Y \a\t P" }}</dd>
+          <dd class="comment"><strong>Comment:</strong> {{ review.comment|urlizetrunc:50|markdown|typogrify }}</dd>
+          {% tags_for_object review as tag_list %}
+          <dd class="characteristics"><strong>Characteristics:</strong> {% for tag in tag_list %}<a href="/tags/{{ tag|urlencode }}/">{{ tag.name }}</a> {% endfor %}</dd>
+          {% if user.is_staff %}
+            <dd class="edit-review"><a href="{% url edit_review review.id %}">Edit</a></dd>
+          {% endif %}
+          {% ifequal user review.created_by %}
+            {% if not user.is_staff %}
+              <dd class="edit-review"><a href="{% url edit_review review.id %}">Edit</a></dd>
+            {% endif %}
+          {% endifequal %}
+        </dl>
+      </li>
+    {% endfor %}
+  </ol>
+{% else %}
+  <p class="no-reviews">This beer has not yet been reviewed.</p>
+{% endif %}

@@ -1,0 +1,17 @@
+Exception:
+Traceback (most recent call last):
+  File "/home/97bottles/virtualenvs/ninetyseven/lib/python2.5/site-packages/pip-0.4-py2.5.egg/pip.py", line 274, in main
+    self.run(options, args)
+  File "/home/97bottles/virtualenvs/ninetyseven/lib/python2.5/site-packages/pip-0.4-py2.5.egg/pip.py", line 424, in run
+    InstallRequirement.from_line(name, None))
+  File "/home/97bottles/virtualenvs/ninetyseven/lib/python2.5/site-packages/pip-0.4-py2.5.egg/pip.py", line 1286, in from_line
+    return cls(req, comes_from, url=url)
+  File "/home/97bottles/virtualenvs/ninetyseven/lib/python2.5/site-packages/pip-0.4-py2.5.egg/pip.py", line 1242, in __init__
+    req = pkg_resources.Requirement.parse(req)
+  File "/home/97bottles/virtualenvs/ninetyseven/lib/python2.5/site-packages/setuptools-0.6c9-py2.5.egg/pkg_resources.py", line 2469, in parse
+    reqs = list(parse_requirements(s))
+  File "/home/97bottles/virtualenvs/ninetyseven/lib/python2.5/site-packages/setuptools-0.6c9-py2.5.egg/pkg_resources.py", line 2395, in parse_requirements
+    line, p, specs = scan_list(VERSION,LINE_END,line,p,(1,2),"version spec")
+  File "/home/97bottles/virtualenvs/ninetyseven/lib/python2.5/site-packages/setuptools-0.6c9-py2.5.egg/pkg_resources.py", line 2363, in scan_list
+    raise ValueError("Expected "+item_name+" in",line,"at",line[p:])
+ValueError: ('Expected version spec in', 'django-compress=1.0.1', 'at', '=1.0.1')

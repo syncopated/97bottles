@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block body-class %}people{% endblock %}
+
+{% block sidebar %}
+  {% load relationships %}
+  {% load faves %}
+  {% get_relationships_for_user profile.user as relationships %}
+  {% get_faves_for_user profile.user of type favorites as favorites %}
+  {% get_faves_for_user profile.user of type to-dos as todos %}
+  {% get_faves_for_user profile.user of type nasty as nastys %}
+  {% get_faves_for_user profile.user of type no-thanks as nothanks %}
+  <div class="module">
+    <h3>{% ifequal profile.user user %}<a href="{% url profile_detail profile.user.username %}">Your</a>{% else %}<a href="{% url profile_detail profile.user.username %}">{{ profile.name }}</a>'s {% endifequal %} stats</h3>
+    <ul class="link-list secondary-nav">
+      <li><span class="aggregate">{{ relationships.friends|length }}</span> <a rel="me" href="{% url user_relationships profile.user.username %}#friends">Friends</a></li>
+      <li><span class="aggregate">{{ relationships.following|length }}</span> <a rel="me" href="{% url user_relationships profile.user.username %}#following">Following</a></li>
+      <li><span class="aggregate">{{ relationships.followers|length }}</span> <a rel="me" href="{% url user_relationships profile.user.username %}#followers">Followers</a></li>
+      <li><span class="aggregate">{{ profile.user.review_created.count }}</span> <a rel="me" href="{% url user_reviews_added profile.user.username %}">Reviews</a></li>
+      <li><span class="aggregate">{{ profile.user.beer_created.count }}</span> <a rel="me" href="{% url user_beers_added profile.user.username %}">Beers added</a></li>
+      <li><span class="aggregate">{{ favorites|length }}</span> <a rel="me" href="{% with "favorites" as fave_type_slug %}{% url user_faves profile.user.username fave_type_slug %}{% endwith %}">Favorites</a></li>
+      <li><span class="aggregate">{{ todos|length }}</span> <a rel="me" href="{% with "to-dos" as fave_type_slug %}{% url user_faves profile.user.username fave_type_slug %}{% endwith %}">To-drink list</a></li>
+      <li><span class="aggregate">{{ nastys|length }}</span> <a rel="me" href="{% with "nasty" as fave_type_slug %}{% url user_faves profile.user.username fave_type_slug %}{% endwith %}">Nasty list</a></li>
+      <li><span class="aggregate">{{ nothanks|length }}</span> <a rel="me" href="{% with "no-thanks" as fave_type_slug %}{% url user_faves profile.user.username fave_type_slug %}{% endwith %}">No thanks list</a></li>
+      <li><span class="aggregate">{{ profile.user.info.incoming_user_recommendations|length }}</span> <a href="{% url user_beers_recommended profile.user.username %}">Friend's beer recommendations</a></li>
+      {# <li><span class="aggregate">{{ profile.user.info.recommended_beers|length }}</span> <a href="{% url user_beers_recommended profile.user.username %}">Recommended beers</a></li> #}
+    </ul>
+  </div>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% with object as relationship %}
+  {% load relationships %}
+  {% get_relationship relationship.to_user relationship.from_user as is_reciprocal %}
+  followed <a href="{% url profile_detail relationship.to_user.username %}">{{ relationship.to_user.profile.name }}</a>.{% if is_reciprocal %} They are now friends.{% endif %}
+  <span class="timeline-item-timestamp"> {% ifchanged item.timestamp.minute %}{{ item.timestamp|date:"fA"|lower }}{% endifchanged %}</span>
+{% endwith %}
+

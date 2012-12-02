@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}{{ fave_user.username }}'s {{ fave_type.name }} list{% endblock %}
+
+{% block content %}
+  <h3><a href="{% url profile_detail fave_user.username %}">{{ fave_user.profile.name }}'s</a> {{ fave_type.name }} beers</h3>
+  <table cellspacing="0" class="beer-list">
+    <thead>
+      <tr>
+        <th class="beer-rating numeric">Rating</th>
+        <th class="beer-name">Name</th>
+        <th class="beer-brewery">Brewery</th>
+        <th class="beer-num-reviews numeric">Reviews</th>
+        {# <th class="beer-interestingness numeric">Buzz</th> #}
+        <th class="beer-abv numeric">ABV</th>
+        {# <th class="beer-date-created">Date added</th> #}
+        {# <th class="beer-created-by">Added by</th> #}
+      </tr>
+    </thead>
+    <tbody>
+      {% for fave in faves|dictsortreversed:"content_object.rating" %}
+        {% with fave.content_object as beer %}
+          {% include "beers/snippets/beer_table_row.html" %}
+        {% endwith %}
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+{% block sidebar %}
+	{% load relationships %}
+  {% load faves %}
+  
+  {% with fave_user as user %}
+  
+	  {% get_relationships_for_user user as relationships %}
+	  {% get_faves_for_user user of type favorites as favorites %}
+	  {% get_faves_for_user user of type to-dos as todos %}
+	  <div class="module">
+	    <h3><a href="{% url profile_detail user.username %}">{{ user.profile.name }}'s</a> stats</h3>
+	    <ul class="link-list secondary-nav">
+	      <li><span class="aggregate">{{ relationships.friends|length }}</span> <a href="{% url user_relationships user.username %}#friends">Friends</a></li>
+	      <li><span class="aggregate">{{ relationships.following|length }}</span> <a href="{% url user_relationships user.username %}#following">Following</a></li>
+	      <li><span class="aggregate">{{ relationships.followers|length }}</span> <a href="{% url user_relationships user.username %}#followers">Followers</a></li>
+	      <li><span class="aggregate">{{ user.review_created.count }}</span> <a href="{% url user_reviews_added user.username %}">Reviews</a></li>
+	      <li><span class="aggregate">{{ user.beer_created.count }}</span> <a href="{% url user_beers_added user.username %}">Beers added</a></li>
+	      <li><span class="aggregate">{{ favorites|length }}</span> <a href="{% with "favorites" as fave_type_slug %}{% url user_faves user.username fave_type_slug %}{% endwith %}">Favorites</a></li>
+	      <li><span class="aggregate">{{ todos|length }}</span> <a href="{% with "to-dos" as fave_type_slug %}{% url user_faves user.username fave_type_slug %}{% endwith %}">To-drink list</a></li>
+	      <li><span class="aggregate">{{ nasty|length }}</span> <a rel="me" href="{% with "nasty" as fave_type_slug %}{% url user_faves user.username fave_type_slug %}{% endwith %}">Nasty list</a></li>
+        <li><span class="aggregate">{{ nothanks|length }}</span> <a rel="me" href="{% with "no-thanks" as fave_type_slug %}{% url user_faves user.username fave_type_slug %}{% endwith %}">No thanks list</a></li>
+        <li><span class="aggregate">{{ user.info.incoming_user_recommendations|length }}</span> <a href="{% url user_beers_recommended user.username %}">Friend's beer recommendations</a></li>
+        
+	    </ul>
+    
+    {% endwith %}
+  </div>
+  
+{% endblock %}

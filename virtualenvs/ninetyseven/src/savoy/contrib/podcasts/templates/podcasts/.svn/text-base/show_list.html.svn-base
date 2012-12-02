@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}Podcast shows{% endblock %}
+
+{% block content %}
+  {% for show in show_list %}
+    <a href="{% url show_detail show.slug %}">{{ show.title }}</a>
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,11 @@
+  <h4>Search results</h4>
+  {% if city_list %}
+    <ul id="city-search-results">
+      {% for city in city_list|slice:":3" %}
+        <li><a class="add-city-to-form" id="{{ city.id }}" href="{{ city.get_absolute_url }}">{{ city }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no results. Close the window and try changing your search terms.</p>
+  {% endif %}
+  <a href="#" id="close-city-box">Close</a>

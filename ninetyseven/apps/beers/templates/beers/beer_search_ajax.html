@@ -1,0 +1,13 @@
+{% autoescape off %}
+  <h4>Search results</h4>
+  {% if beer_list %}
+    <dl>
+      {% for beer in beer_list %}
+        <dt><a href="{{ beer.get_absolute_url }}">{{ beer.name }}</a></dt>
+        <dd>{{ beer.brewery.name }}</dd>
+      {% endfor %}
+    </dl>
+  {% else %}
+    <p>There are no results.</p>
+  {% endif %}
+{% endautoescape %}

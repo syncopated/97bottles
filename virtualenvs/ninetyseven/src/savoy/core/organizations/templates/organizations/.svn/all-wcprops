@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/savoy/!svn/ver/1235/trunk/core/organizations/templates/organizations
+END
+organization_list.html
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/savoy/!svn/ver/1235/trunk/core/organizations/templates/organizations/organization_list.html
+END
+organization_detail.html
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/savoy/!svn/ver/1235/trunk/core/organizations/templates/organizations/organization_detail.html
+END

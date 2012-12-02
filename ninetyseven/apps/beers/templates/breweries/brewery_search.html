@@ -1,0 +1,20 @@
+{% extends "breweries/base.html" %}
+
+{% block title %}Search breweries{% endblock %}
+
+{% block content %}
+  <h2>Search breweries</h2>
+  {% if brewery_list %}
+    <ul>
+      {% for brewery in brewery_list %}
+        <li><a href="{{ brewery.get_absolute_url }}">{{ brewery.name }}</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <form action="{% url search_breweries %}" method="get" accept-charset="utf-8">
+    <fieldset>
+      <input type="text" name="search" value="" id="search" autocomplete="off">
+    </fieldset>
+    <input type="submit" value="Search" />
+  </form>
+{% endblock %}

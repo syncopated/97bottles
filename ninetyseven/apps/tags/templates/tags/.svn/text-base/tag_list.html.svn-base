@@ -1,0 +1,12 @@
+{% extends "beers/base.html" %}
+
+{% block title %}Tags{% endblock %}
+
+{% block content %}
+  <h2>Tags</h2>
+  <ul>
+    {% for tag in tag_list %}
+      <li><a href="/tags/{{ tag|urlencode }}/">{{ tag }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% if comment_list %}
+  <ol class="comment-list">
+    {% for comment in comment_list %}
+      {% include "comments/comment_list_item.html" %}
+    {% endfor %}
+  </ol>
+  {% else %}
+  <p>There are no comments.</p>
+{% endif %}

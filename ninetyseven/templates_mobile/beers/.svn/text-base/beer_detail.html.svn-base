@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}{{ beer.name }} by {{ beer.brewery.name }}{% endblock %}
+
+{% block body-id %}beer-detail{% endblock %}
+
+{% block content %}
+    {% load reviews %}
+    {% get_beer_review_for_user beer user as current_user_review %}
+    {% if current_user_review %}
+      <div id="already-reviewed">
+          <img src="/static/ninetyseven/assets/mobile/siteimages/caps.png" width="63" height="64" alt="Caps" id="caps">
+        <p>You reviewed this beer on {{ current_user_review.date_created|date:"F j, Y"}}</p>
+      </div>
+    {% endif %}
+    <dl id="beer-meta">
+        <dt><h3>Beer details</h3></dt>
+        <dd class="icon"><img title="Preferred vessel: {{ beer.preferred_vessel }} 
+    Color: {{ beer.color.srm }} SRM" src="{{ beer.vessel_image.image.url|thumbnail:"134" }}" alt="icon" width="89" height="89"/></dd>
+        {% if beer.rating %}<dd class="rating">{{ beer.rating }}</dd>{% endif %}
+        <dd class="name"><h2>{{ beer.name }}</h2></dd>
+        {% if beer.brewery %}<dd class="brewery"><strong>Brewery:</strong> {{ beer.brewery.name }}</dd>{% endif %}
+        {% if beer.variety %}<dd class="variety"><strong>Variety:</strong> {{ beer.variety }}</dd>{% endif %}
+        {% if beer.alcohol_by_volume and beer.alcohol_by_weight %}<dd class="alcohol"><strong>Alcohol:</strong> ABV {{ beer.alcohol_by_volume }}% / ABW {{ beer.alcohol_by_weight }}%</dd>{% endif %}
+        {% if beer.created_by %}<dd class="added-by"><strong>Added by:</strong> {{ beer.created_by.username }}</dd>{% endif %}
+    </dl>
+    
+    <ul id="page-nav" class="rndr">
+        <li id="active"><a id="details-link"  href="#">Details</a></li>
+        <li><a id="reviews-link" href="#">Reviews <em>({{ beer.reviews.count }})</em></a></li>
+        {% if current_user_review %}
+            <li><a id="review-link" href="{% url edit_review current_user_review.id %}">Edit Review</a></li>
+        {% else %}
+            <li><a id="review-link" href="#">Review It</a></li>
+        {% endif %}
+    </ul>
+    
+    <div id="details">
+        {% if beer.description %}
+          {{ beer.description|markdown|typogrify }}
+        {% else %}
+          <p>Oh no! this beer is missing a description.</p>
+        {% endif %}
+    </div>
+    
+    <div id="reviews">
+        {% include "reviews/review_list.html" %}
+    </div>
+    {% load reviews %}
+    {% if not user.is_anonymous %}
+
+        {% if current_user_review %}
+          <div id="review">
+          <p>You've already reviewed this beer (thanks!). If you've had a
+          change of heart, feel free to <a class="get-btn" href="{% url edit_review current_user_review.id %}">edit&nbsp;your review</a>.</p>
+          </div>
+        {% else %}
+            {% render_review_form beer %}
+        {% endif %}
+    {% else %}
+        <div id="review">
+          <p>Halt! You have to be <a href="{% url user_signin %}">signed in</a> to add a review.</p>
+        </div>
+    {% endif %}
+    {% if not user.is_anonymous %}
+    {% load faves %}
+        <ul id="actions" class="rndr">       
+          {% get_fave by user on beer of type favorites as fave %}
+          {% if fave %}
+            <li><a id="favorite-this" class="favoriter" href="{% get_toggle_fave_url beer 'favorites' %}">unfavorite</a></li>
+          {% else %}
+            <li><a id="favorite-this"  class="favoriter" href="{% get_toggle_fave_url beer 'favorites' %}">favorite</a></li>
+          {% endif %}
+          {% get_fave by user on beer of type to-dos as todos %}
+          {% if todos %}
+            <li><a id="todo-this" href="{% get_toggle_fave_url beer 'to-dos' %}" class="todolist" title="Remove this beer from your to-drink list.">un-to-drink</a></li>
+          {% else %}
+            <li><a id="todo-this" href="{% get_toggle_fave_url beer 'to-dos' %}" class="todolist" title="Add this beer to your to-drink list.">to-drink</a></li>
+          {% endif %}
+          {% get_fave by user on beer of type nasty as fave %}
+          {% if fave %}
+            <li><a id="nasty-this" class="nasty" href="{% get_toggle_fave_url beer 'nasty' %}">un-nasty</a></li>
+          {% else %}
+            <li><a id="nasty-this" class="nasty" href="{% get_toggle_fave_url beer 'nasty' %}">nasty</a></li>
+          {% endif %}
+        </ul>
+    {% endif %}
+{% endblock %}

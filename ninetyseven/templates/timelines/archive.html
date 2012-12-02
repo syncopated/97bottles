@@ -1,0 +1,83 @@
+{% extends "timelines/base.html" %}
+
+{% block title %}
+  {% if following_timeline or timeline_for %}
+    {% if following_timeline %}Beer log of people {% ifequal following_timeline user %}you are{% else %}{{ following_timeline.profile.name }} is{% endifequal %} following{% endif %}
+    {% if timeline_for %}Beer log for {{ timeline_for }}{% endif %}
+  {% else %}
+    Beer log 
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+  {% if following_timeline or timeline_for %}
+    {% if following_timeline %}<h3><a href="http://97bottles.com/feeds/beer-log-for-following/{{ following_timeline.username }}/" class="subscribe-icon" title="Subscribe to {{ following_timeline.profile.name }}'s beer log" ><img src="/static/ninetyseven/assets/img/core/rss.png" alt="subscribe" /></a> Beer log of people {% ifequal following_timeline user %}you are{% else %}{{ following_timeline.profile.name }} is{% endifequal %} following</h3>{% endif %}
+    {% if timeline_for %}<h3> <a href="http://97bottles.com/feeds/beer-log-for-person/{{ timeline_for.username }}/" class="subscribe-icon" title="Subscribe to {{ timeline_for.profile.name }}'s beer log" ><img src="/static/ninetyseven/assets/img/core/rss.png" alt="subscribe" /></a>Beer log for {{ timeline_for }}</h3>{% endif %}
+  {% else %}
+    <h3><a href="http://feeds2.feedburner.com/97bottlescomNewestTimelineItems" class="subscribe-icon" title="Subscribe to the latest beer log activity" ><img src="/static/ninetyseven/assets/img/core/rss.png" alt="subscribe" /></a>Beer log</h3>
+  {% endif %}
+
+  {% autopaginate items 30 %}
+  {% if not invalid_page %}
+    {% include "timelines/snippets/timeline_list_grouped_by_day.html" %}
+  {% endif %}
+  {% paginate 4 %}
+{% endblock %}
+
+{% block sidebar %}
+	<div class="module">
+		<h3>What's the beer log?</h3>
+		<p>A play-by-play rundown of what's been happening on 97 Bottles. See beer ratings, who's joined, and more!</p>
+	</div>
+  {% if not user.is_anonymous %}
+    <div class="module">
+      {% if following_timeline or timeline_for %}
+        {% if following_timeline %}
+          {% ifequal following_timeline user %}
+            <h3>Your beer log</h3>
+            <a href="{% url timelines_archive_user username=user.username %}">View your beer log.</a>
+          {% else %}
+            <h3>More beer log!</h3>
+        		<p>View <a href="{% url timelines_archive_user username=user.username %}">your beer log</a>, or view the <a href="{% url timelines_following_archive user.username %}">beer logs of people you're following</a>.</p>
+          {% endifequal %}
+        {% endif %}
+        
+        {% if timeline_for %}
+          {% ifequal timeline_for user %}
+            <h3>Other people's beer logs</h3>
+            <p>View the <a href="{% url timelines_following_archive user.username %}">beer logs of people you're following</a>.</p>
+          {% else %}
+            <h3>More beer log!</h3>
+            <p>View <a href="{% url timelines_archive_user username=user.username %}">your beer log</a>, or view the <a href="{% url timelines_following_archive user.username %}">beer logs of people you're following</a>.</p>
+          {% endifequal %}
+        {% endif %}
+      {% else %}
+        <h3>More beer log!</h3>
+        <p>View <a href="{% url timelines_archive_user username=user.username %}">your beer log</a>, or view the <a href="{% url timelines_following_archive user.username %}">beer logs of people you're following</a>.</p>
+        
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div class="module">
+    <h3>Filter by type</h3>
+    {% include "timelines/snippets/model_chooser.html" %}
+  </div>
+  <div class="module">
+    <h3>Archives</h3>
+    <ul>
+      {% for year in date_list %}
+        {% if timeline_for %}
+          <li><a href="{% url timelines_year_user username=timeline_for.username year=year.year %}">{{ year|date:"Y" }}</a></li>
+        {% else %}
+          {% if following_timeline %}
+            <li><a href="{% url timelines_following_year username=following_timeline.username year=year.year %}">{{ year|date:"Y" }}</a></li>
+          {% else %}
+            <li><a href="{% url timelines_year year.year %}">{{ year|date:"Y" }}</a></li>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

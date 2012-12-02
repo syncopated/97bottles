@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/savoy/!svn/ver/889/trunk/third_party/openid/extensions
+END
+ax.py
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/savoy/!svn/ver/889/trunk/third_party/openid/extensions/ax.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/savoy/!svn/ver/889/trunk/third_party/openid/extensions/__init__.py
+END
+sreg.py
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/savoy/!svn/ver/889/trunk/third_party/openid/extensions/sreg.py
+END
+pape.py
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/savoy/!svn/ver/889/trunk/third_party/openid/extensions/pape.py
+END

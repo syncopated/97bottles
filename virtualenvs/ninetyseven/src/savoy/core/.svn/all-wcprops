@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/savoy/!svn/ver/1375/trunk/core
+END
+constants.py
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/savoy/!svn/ver/1078/trunk/core/constants.py
+END
+slugs.py
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/savoy/!svn/ver/886/trunk/core/slugs.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/savoy/!svn/ver/885/trunk/core/__init__.py
+END
+decorators.py
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/savoy/!svn/ver/859/trunk/core/decorators.py
+END
+fields.py
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/savoy/!svn/ver/1226/trunk/core/fields.py
+END

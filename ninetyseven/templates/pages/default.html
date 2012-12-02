@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block body-class %}pages{% endblock %}
+{% block content %}
+  <h3>{{ page.title }}</h3>
+  <h4>{{ page.subhead }}</h4>
+  {{ page.primary_content_rendered_markup }}
+  {{ page.fine_print_rendered_markup }}
+{% endblock %}
+{% block sidebar %}
+	{% if page.secondary_content %}
+		<div class="module">
+	  	{{ page.secondary_content_rendered_markup }}
+	  </div>
+  {% endif %}
+{% endblock %}

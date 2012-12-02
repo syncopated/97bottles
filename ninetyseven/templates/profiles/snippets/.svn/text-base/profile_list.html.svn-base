@@ -1,0 +1,7 @@
+{# This template expects a list of Profile objects called "profile_list". It returns an HTML definition list from the list. #}
+
+<dl class="user-list">
+  {% for profile in profile_list %}
+    {% include "profiles/snippets/profile_list_item.html" %}
+  {% endfor %}
+</dl>

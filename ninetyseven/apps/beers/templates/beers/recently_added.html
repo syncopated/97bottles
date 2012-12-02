@@ -1,0 +1,10 @@
+{% extends "beers/base.html" %}
+
+{% block title %}Recently added beers{% endblock %}
+
+{% block content %}
+  
+  <h3>Recently added beers</h3>
+  {% include "beers/snippets/beer_table.html" %}
+
+{% endblock %}

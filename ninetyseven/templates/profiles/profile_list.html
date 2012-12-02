@@ -1,0 +1,27 @@
+{% extends "profiles/base.html" %}
+
+{% block title %}People{% endblock %}
+
+{% block content %}
+  <h2>Users</h2>
+  <ul>
+  {% load relationships %}
+  {% for profile in profile_list %}
+    <li>
+      <a href="{{ profile.get_absolute_url }}">{{ profile.name }}</a>
+      {% ifnotequal user profile.user %}
+        {% get_relationship user profile.user as relationship %}
+        {% if relationship %}
+          (you are following. <a href="{% url relationship_follow_unfollow profile.user.id %}">stop</a>?)
+        {% else %}
+          (<a href="{% url relationship_follow_unfollow profile.user.id %}">follow</a>)
+        {% endif %}
+      {% else %}
+      (this is you)
+      {% endifnotequal %}
+    </li>
+  {% endfor %}
+  </ul>
+{% endblock %}
+
+{% block sidebar %}{% endblock %}

@@ -1,0 +1,10 @@
+[
+  {
+    "model" : "faves.favetype",
+    "pk" : 1,
+    "fields" : {
+      "name" : "Favorite",
+      "slug" : "favorites"
+    }
+  }
+]

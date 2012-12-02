@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Sign In{% endblock %}
+{% block content %}
+<div id="signin-box" class="rndr">
+  {% if form2.errors %}
+  <div id="error-box">
+      <p>Please correct errors below:</p>
+      <ul>
+          {% if form2.username.errors %} 
+          <li>{{ form1.username.errors|join:", " }}</li>
+          {% endif %}
+          {% if form2.password.errors %} 
+          <li>{{ form1.password.errors|join:", " }}</li>
+          {% endif %}
+      </ul>
+  </div>
+    {% endif %}
+    <form name="fauth" action="{% url user_signin %}" method="post" class="sign-in-form">
+        {{ form2.next }}
+        <dl>
+            <dt><label for="id_username">Username</label></dt>
+            <dd>{{ form2.username }}</dd>
+            <dt><label for="id_password">Password</label></dt>
+            <dd>{{ form2.password }}</dd>
+        </dl>
+        <p><input type="submit" name="blogin" class="rndr button" value="Sign in"></p>
+		  <p class="more"><a href="{% url auth_password_reset %}">Forgot your password?</a></p>
+    </form>
+    <form name="fopenid" action="{% url user_signin %}" method="post" class="sign-in-form">
+        {{ form1.next }}
+            <dl>
+                <dt><label for="id_openid_url">OpenId</label></dt>
+                <dd>{{ form1.openid_url }}</dd>
+            </dl>
+            <p><input name="bsignin" class="rndr button" id="post" type="submit" value="Sign in using OpenID"></p>
+    </form>
+</div>
+{% endblock %}
+
+{% block search-wrapper %}{% endblock %}

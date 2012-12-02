@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block body-class %}brewery{% endblock %}
+
+{% block sidebar %}
+  {% if not user.is_anonymous %}
+	  <div class="module light addbeer">
+	    <h4><a href="{% url add_beer %}">Add or search for beers</a></h4>
+	  </div>
+	{% endif %}
+{% endblock %}

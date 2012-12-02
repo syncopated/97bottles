@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+
+{% block title %}Registration complete{% endblock %}
+
+{% block content %}
+  <h3>Thank you</h3>
+  <p>An email has been sent to you. You need to click link in it to activate your account.</p>
+{% endblock %}

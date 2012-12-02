@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block title %}Activation complete{% endblock %}
+
+{% block content %}
+  <h3>Activation</h3>
+  <p>Sweet. Your account is now activated! Head over to the <a href="/">homepage</a> to get started.</p>
+{% endblock %}

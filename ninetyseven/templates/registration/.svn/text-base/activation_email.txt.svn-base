@@ -1,0 +1,5 @@
+Yo!
+
+Thanks for your registration at 97 Bottles, almost certainly the world's most fun beer review site. To activate your account, click on the link below:
+
+http://97bottles.com{% url registration_activate activation_key %}

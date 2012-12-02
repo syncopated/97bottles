@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Projects for {{ day|date:"F, jS, Y" }}{% endblock %}
+
+{% block content %}
+  <h2>Projects for {{ day|date:"F, jS, Y" }}</h2>
+  <ul>
+    {% for project in project_list %}
+      <li><a href="{{ prject.get_absolute_url }}">{{ project.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

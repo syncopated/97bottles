@@ -1,0 +1,4 @@
+{% with object as profile %}
+  has joined the site   
+  <span class="timeline-item-timestamp"> {% ifchanged item.timestamp.minute %}{{ item.timestamp|date:"fA"|lower }}{% endifchanged %}</span>
+{% endwith %}

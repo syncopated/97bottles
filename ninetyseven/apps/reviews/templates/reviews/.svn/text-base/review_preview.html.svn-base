@@ -1,0 +1,14 @@
+{% extends "beers/base.html" %}
+
+{% block title %}
+  Review preview
+{% endblock %}
+
+{% block content %}
+  {% if review_form.errors %}
+    <h3>There were errors in your submission</h3>
+  {% else %}
+    <h3>Preview your review</h3>
+  {% endif %}
+  {% include "reviews/review_form.html" %}
+{% endblock %}

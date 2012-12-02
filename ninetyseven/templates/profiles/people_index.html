@@ -1,0 +1,69 @@
+{% extends "profiles/base.html" %}
+
+{% block title %}People{% endblock %}
+
+{% block layout-wrapper %}
+  {% load beers %}
+  {% load reviews %}
+  
+  <div class="container" style="clear: both;">
+
+    <div class="column span-7 append-1">
+      <div class="module">
+        <h3>Beer lords</h3>
+        {% with top_contributors as user_list %}
+          {% include "profiles/snippets/user_list.html" %}
+        {% endwith %}
+        <p class="more"><a href="{% url top_contributors %}">More beer lords</a></p>
+      </div>
+    </div>
+    <div class="column span-8 append-1">
+      <div class="module">
+        <h3>Noobs</h3>
+        {% with noobs as user_list %}
+          {% include "profiles/snippets/user_list.html" %}
+        {% endwith %}
+        <p class="more"><a href="{% url new_users %}">More noobs</a></p>
+      </div>
+
+    </div>
+    <div class="column span-7 last">
+      {% if not user.is_anonymous %}
+	      <div class="module">
+	        <h3>Find your Twitter friends</h3>
+	        <form action="/find_friends/twitter/" method="get" accept-charset="utf-8" class="sidebar-form">
+	          <fieldset>
+	            <input type="username" name="username" value="" id="username">
+	            <label for="search" class="help">Enter your twitter username.</label>
+	            <input type="submit" value="Search" class="button" />
+	          </fieldset>
+	        </form>
+	      </div>
+	      <div class="floating-logo-wrapper"><div class="floating-logo-left"></div></div>
+	      
+	      {% if user.info.similar_users %}
+	        <div class="module">
+	          <h3>Users like you</h3>
+	          {% with profile.user.info.similar_users|slice:":7" as user_list %}
+	            {% include "profiles/snippets/user_list.html" %}
+	          {% endwith %}
+	        </div>
+	      {% else %}
+	        <div class="module">
+	          <h3>Users like you</h3>
+	          <p>Hey! Want to find people who like the same beers as you do? Get crackin! Review beers so we can build a profile of what you like. Besides allowing us to pair you with similar users, it'll let us recommend beers for you!</p>
+	        </div>
+	      {% endif %}
+      {% else %}
+      	<div class="module">
+      		<h3>Join 97 Bottles!</h3>
+      		<p><a href="{% url registration_register %}">Sign up today</a> to start reviewing, sharing and learning about beer like these <a href="{% url top_contributors %}">Beer Lords</a> and <a href="{% url new_users %}">Noobs</a>.</p>
+      	</div>
+      	<div class="floating-logo-wrapper"><div class="floating-logo-left"></div></div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block sidebar %}{% endblock %}

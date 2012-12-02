@@ -1,0 +1,4 @@
+{% with object as review %}
+  <a href="{{ review.get_absolute_url }}" class="rating">{{ review.rating }}</a> rating given to <a href="{{ review.beer.get_absolute_url }}">{{ review.beer.name }}</a>{# , by <a href="{{ brewery.get_absolute_url }}">{{ review.beer.brewery.name }}</a>, #}.
+  <span class="timeline-item-timestamp"> {% ifchanged item.timestamp.minute %}{{ item.timestamp|date:"fA"|lower }}{% endifchanged %}</span>
+{% endwith %}

@@ -1,0 +1,8 @@
+{% extends "profiles/base.html" %}
+
+{% block title %}Reviews added by {{ user.profile.name }}{% endblock %}
+
+{% block content %}
+  <h3>Reviews added by {{ profile.name }}</h3>
+  {% include "reviews/snippets/review_table.html" %}
+{% endblock %}

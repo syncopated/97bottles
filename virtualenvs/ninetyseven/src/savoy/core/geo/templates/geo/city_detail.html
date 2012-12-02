@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}{{ city.full_name }}{% endblock %}
+
+{% block content %}
+  <h2>{{ city.full_name }}</h2>
+  <ul>
+  {% for item in city.items  %}
+    <li><a href="{{ item.get_absolute_url }}">{{ item }}</a></li>
+  {% endfor %}
+  </ul>
+
+{% endblock %}

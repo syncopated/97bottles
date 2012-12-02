@@ -1,0 +1,27 @@
+{% if not user.is_anonymous %}
+  <form id="review" class="review-form" action="{% if review %}{% url edit_review review.id %}{% else %}{% url post_review %}{% endif %}" method="post">
+        <dl>
+      {% for field in review_form %}
+        {% ifnotequal field.name 'city'  %}
+          <dt><label for="id_{{ field.html_name }}" class="{% if field.field.required %}required {% endif %}">{% if field.field.required %}<span class="required-asterisk">*</span>{% endif %}{{ field.label }}</label></dt>
+          <dd>{{ field }}</dd>
+          <dd class="help"><label for="{{ field.html_name }}" class="help">{{ field.help_text}}</label></dd>
+          {% if field.errors %}
+            {{ field.errors }}
+          {% endif %}
+        {% endifnotequal %}
+      {% endfor %}
+        <dt><label for="city-search">City</label></dt>
+        <dd><input type="text" name="city-search" value="{% if review.city %}{{ review.city }}{% else %}{% if user.profile.city %}{{ user.profile.city }}{% endif %}{% endif %}" id="city-search" autocomplete="off" /></dd>
+        <dd class="help"><label class="help">Enter the name of the city</label></dd>
+      </dl>
+      <input type="hidden" id="id_review-city" name="review-city" value="{% if review.city %}{{ review.city.id }}{% else %}{% if user.profile.city %}{{ user.profile.city.id }}{% endif %}{% endif %}" />
+    <input type="hidden" name="beer" value="{{ beer.id }}" id="id_beer" />
+    <input type="submit" class="button" id="post" name="post" value="{% if review %}Edit{% else %}Post{% endif %}" /><br />
+  </form>
+{% else %}
+  <div id="review">
+    <p>Halt! You have to be <a href="{% url user_signin %}">signed in</a> to add a review.</p>
+    <p>Don't have an account? <a href="/pages/contact/">Ask us for an invite</a>!</p>
+  </div>
+{% endif %}

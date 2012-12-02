@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Recommended Beers{% endblock %}
+
+{% block content %}
+    {% load faves %}
+    <h2>Recommended Beers by your friends</h2>
+  {% if user_recommendations or recommended_beers_by_users or recommended_beers_by_tag %}
+    {% if user_recommendations %}
+        <ul id="listing">
+            {% for recommendation in user_recommendations|slice:":4" %}
+            <li class="{% cycle odd,even %}">
+                <a href="{{ recommendation.beer.get_absolute_url }}">{% if recommendation.beer.rating %}<h4 class="ranking">{{recommendation.beer.rating}}</h4>{% endif %}
+                    <h3 class="name">{{ recommendation.beer.name }}</h3>
+                {% if recommendation.beer.brewery_name %}<h5 class="brewery">{{ recommendation.beer.brewery_name }}</h5>{% endif %}</a>
+                <p>This beer was recommended by {{ recommendation.from_user.profile.name }} </p>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+      <p>You have no friend recommendations</p>
+    {% endif %}
+    {% if recommended_beers_by_users %}
+    <h2> Recommended Beers by similar users</h2>
+    <p>The beers below are recommended to {% ifequal user profile.user %}you{% else %}{{ profile.name }}{% endifequal %} based on {% ifequal user profile.user %}your{% else %}{{ profile.name }}'s{% endifequal %} reviews and flags and their relationship to other users of 97 Bottles. In short, people who liked the beers {% ifequal user profile.user %}you{% else %}{{ profile.name }}{% endifequal %} liked were also fans of these.</p>
+        <ul id="listing">
+            {% with recommended_beers_by_users|slice:":3" as beer_list %}
+            {% for beer in beer_list %}
+            <li class="{% cycle odd,even %}">
+                <a href="{{ beer.get_absolute_url }}">{% if beer.rating %}<h4 class="ranking">{{beer.rating}}</h4>{% endif %}
+                    <h3 class="name">{{ beer.name }}</h3>
+                {% if beer.brewery_name %}<h5 class="brewery">{{ beer.brewery_name }}</h5>{% endif %}</a>
+            </li>
+            {% endfor %}
+            {% endwith %}
+        </ul>
+    {% endif %}
+    {% if recommended_beers_by_tags %}
+    <h2>Recommended Beers by characteristics</h2>
+          <p>The beers below are recommended to {% ifequal user profile.user %}you{% else %}{{ profile.name }}{% endifequal %} based on the characteristics of the beers {% ifequal user profile.user %}you{% else %}{{ profile.name }}{% endifequal %} liked. To put it simply, if {% ifequal user profile.user %}you{% else %}{{ profile.name }}{% endifequal %} liked beers which have a coffee flavor, you should find more coffee-flavored beers below.</p>
+        <ul id="listing">
+            {% with recommended_beers_by_tags|slice:":3" as beer_list %}
+            {% for beer in beer_list %}
+            <li class="{% cycle odd,even %}">
+                <a href="{{ beer.get_absolute_url }}">{% if beer.rating %}<h4 class="ranking">{{beer.rating}}</h4>{% endif %}
+                    <h3 class="name">{{ beer.name }}</h3>
+                {% if beer.brewery_name %}<h5 class="brewery">{{ beer.brewery_name }}</h5>{% endif %}</a>
+            </li>
+            {% endfor %}
+            {% endwith %}
+        </ul>
+    {% endif %}
+  {% else %}
+    <p>You have no recommendations</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "breweries/base.html" %}
+
+{% block title %}Edit brewery{% endblock %}
+
+{% block content %}
+  <h3>Edit {{ brewery.name }}</h3>
+  <form class="add-beer-form" action="" method="post">
+    <fieldset>
+      <legend>Edit brewery</legend>
+      {% for field in brewery_form %}
+        <label for="id_{{ field.html_name }}" class="{% if field.field.required %}required {% endif %}">{{ field.label }}</label>
+        {{ field }}
+        <label for="id_{{ field.html_name }}" class="help">{{ field.help_text}}</label>
+        {% if field.errors %}{{ field.errors }}{% endif %}
+      {% endfor %}
+    </fieldset>
+    <fieldset>
+      <legend>Submit form</legend>
+      <input type="submit" name="sumbit" value="Edit brewery" class="button" id="sumbit" />
+    </fieldset>
+  </form>
+{% endblock %}

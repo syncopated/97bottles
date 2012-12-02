@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/savoy/!svn/ver/889/trunk/third_party/openid/test/data
+END
+trustroot.txt
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/savoy/!svn/ver/889/trunk/third_party/openid/test/data/trustroot.txt
+END
+openid-1.2-consumer-sqlitestore.db
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/savoy/!svn/ver/889/trunk/third_party/openid/test/data/openid-1.2-consumer-sqlitestore.db
+END
+example-xrds.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/savoy/!svn/ver/889/trunk/third_party/openid/test/data/example-xrds.xml
+END
+test1-discover.txt
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/savoy/!svn/ver/889/trunk/third_party/openid/test/data/test1-discover.txt
+END
+test1-parsehtml.txt
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/savoy/!svn/ver/889/trunk/third_party/openid/test/data/test1-parsehtml.txt
+END
+accept.txt
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/savoy/!svn/ver/889/trunk/third_party/openid/test/data/accept.txt
+END

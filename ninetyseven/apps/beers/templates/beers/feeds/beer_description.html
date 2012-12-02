@@ -1,0 +1,32 @@
+{% autoescape off %}
+  <h2>{{ obj.name|typogrify }}</h2>
+  {% if obj.description %}
+    {{ obj.description|urlizetrunc:35|markdown|typogrify }}
+  {% else %}
+    <p>Oh no! this beer is missing a description. Help us by <a href="http://97bottles.com/{% url edit_beer obj.id %}">adding one</a>.</p>
+  {% endif %}
+  <dl>
+    <dt>Details</dt>
+    {% if obj.rating %}<dd class="rating"><strong>Rating:</strong> {{ obj.rating }}</dd>{% endif %}
+    {% if obj.brewery %}<dd class="brewery"><strong>Brewery:</strong> <a href="http://97bottles.com/{{ obj.brewery.get_absolute_url }}">{{ obj.brewery.name|typogrify }}</a></dd>{% endif %}
+    {% if obj.variety %}
+      <dd class="variety">
+        <strong>Variety:</strong>
+        {% for category in obj.variety.all_parent_categories %}
+          <a href="http://97bottles.com/{% url category_detail category.path %}">{{ category.name }}</a> &middot;
+        {% endfor %}
+        <a href="http://97bottles.com/{% url category_detail obj.variety.path %}">{{ obj.variety.name }}</a>
+      </dd>
+    {% endif %}
+    {% if obj.alcohol_by_volume and obj.alcohol_by_weight %}<dd class="alcohol"><strong>Alcohol:</strong> ABV {{ obj.alcohol_by_volume }}% / ABW {{ obj.alcohol_by_weight }}%</dd>{% endif %}
+    {% if obj.ibu %}<dd class="ibu"><strong>IBU:</strong> {{ obj.ibu }}</dd>{% endif %}
+    {% if obj.created_by %}<dd class="added-by">Added by <a href="http://97bottles.com/{% url profile_detail obj.created_by.username %}">{{ obj.created_by.profile.name|typogrify }}</a></dd>{% endif %}
+    {% if obj.updated_by %}<dd class="added-by">Last updated by <a href="http://97bottles.com/{% url profile_detail obj.updated_by.username %}">{{ obj.updated_by.profile.name|typogrify }}</a></dd>{% endif %}
+    {% if obj.characteristics %}
+      {% tags_for_object obj as tag_list %}
+      <dd class="characteristics">
+        {% for tag in tag_list %}<a href="http://97bottles.com/tags/{{ tag|urlencode }}/">{{ tag.name }}</a> {% endfor %}
+      <dd>
+    {% endif %}
+  </dl>
+{% endautoescape %}

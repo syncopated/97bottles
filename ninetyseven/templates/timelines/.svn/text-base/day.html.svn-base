@@ -1,0 +1,41 @@
+{% extends "timelines/base.html" %}
+
+{% block title %}Beer log: {{ day|date:"F jS, Y"}}{% if timeline_for %} for {{ timeline_for }}{% endif %}{% endblock %}
+
+{% block content %}
+  <h3>Timeline: {{ day|date:"F jS, Y"}}{% if timeline_for %} for {{ timeline_for }}{% endif %}</h3>
+  {% autopaginate items 30 %}
+  {% if items %}
+    <div class="timeline-day">
+      <dl>
+	      {% for item in items %}
+	        {% if not timeline_for %}
+	        	{% ifchanged item.user %}
+	        		<dt>
+		        		{% if item.user.profile.avatar %}
+		        			<a href="{% url profile_detail item.user.username %}"><img class="user-avatar" src="{{ item.user.profile.avatar.url|thumbnail:"30x30" }}" title="{{ item.user.profile.name }}'s avatar" /></a>
+		        		{% else %}
+									{% with "http://97bottles.com/static/ninetyseven/assets/img/core/default-avatar.png" as default_avatar %}
+		        				<a href="{% url profile_detail item.user.username %}"><img class="user-avatar" src="{{ default_avatar|thumbnail:"30x30" }}" title="{{ item.user.profile.name }}'s avatar" /></a>
+		        			{% endwith %}
+		        		{% endif %}
+		        		<h2><a href="{% url profile_detail item.user.username %}">{{ item.user.profile.name }}</a></h2>
+	        		</dt>
+	        	{% endifchanged %}
+	        {% endif %}
+	        <dd>{% include "timelines/snippets/timeline-item.html" %}</dd>
+	      {% endfor %}
+      </dl>
+    </div>
+  {% else %}
+    <p>There are no items from this day.</p>
+  {% endif %}
+  {% paginate 4 %}
+{% endblock %}
+
+{% block sidebar %}
+  <div class="module">
+    <h3>Filter by type</h3>
+    {% include "timelines/snippets/model_chooser.html" %}  
+  </div>
+{% endblock %}
