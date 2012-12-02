@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/savoy/!svn/ver/1238/trunk/core/profiles
+END
+admin.py
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/savoy/!svn/ver/886/trunk/core/profiles/admin.py
+END
+managers.py
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/savoy/!svn/ver/1207/trunk/core/profiles/managers.py
+END
+views.py
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/savoy/!svn/ver/1076/trunk/core/profiles/views.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/savoy/!svn/ver/846/trunk/core/profiles/__init__.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/savoy/!svn/ver/1083/trunk/core/profiles/models.py
+END
+urls.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/savoy/!svn/ver/886/trunk/core/profiles/urls.py
+END
+forms.py
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/savoy/!svn/ver/1077/trunk/core/profiles/forms.py
+END

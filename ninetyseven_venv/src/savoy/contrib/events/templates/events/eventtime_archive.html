@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Events{% endblock %}
+
+{% block content %}
+  <h2>Events</h2>
+  <ul>
+    {% for eventtime in latest %}
+      <li><a href="{{ eventtime.get_absolute_url }}">{{ eventtime.event.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}
+
+{% block sidebar %}
+  <h3>Archives</h3>
+  <ul>
+    {% for year in date_list %}
+      <li><a href="{% url eventtime_index %}{{ year|date:"Y" }}/">{{ year|date:"Y" }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

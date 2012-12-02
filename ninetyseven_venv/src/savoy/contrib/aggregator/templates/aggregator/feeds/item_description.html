@@ -1,0 +1,7 @@
+{% autoescape off %}
+
+{% with obj.content_object as item %}
+  {% render_template_for item in "aggregator/feeds/snippets/" %}
+{% endwith %}
+
+{% endautoescape %}

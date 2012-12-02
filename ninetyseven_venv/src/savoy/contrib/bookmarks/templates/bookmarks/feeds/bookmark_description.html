@@ -1,0 +1,7 @@
+{% autoescape off %}
+
+{{ obj.description|typogrify|markdown }}
+
+<a href="{{ obj.url }}">Visit site</a> ({{ obj.url }})
+
+{% endautoescape %}

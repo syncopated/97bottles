@@ -1,0 +1,58 @@
+[
+  {
+      "pk": 1,
+      "model": "portfolio.medium",
+      "fields": {
+          "name": 'Web',
+          "slug": 'web'
+      }
+  },
+  {
+      "pk": 2,
+      "model": "portfolio.medium",
+      "fields": {
+          "name": 'Mobile',
+          "slug": 'mobile'
+      }
+  },
+  {
+      "pk": 3,
+      "model": "portfolio.medium",
+      "fields": {
+          "name": 'Print',
+          "slug": 'print'
+      }
+  },
+  {
+      "pk": 1,
+      "model": "portfolio.discipline",
+      "fields": {
+          "name": 'Visual design',
+          "slug": 'visual-design'
+      }
+  },
+  {
+      "pk": 2,
+      "model": "portfolio.discipline",
+      "fields": {
+          "name": 'Interaction design',
+          "slug": 'interaction-design'
+      }
+  },
+  {
+      "pk": 3,
+      "model": "portfolio.discipline",
+      "fields": {
+          "name": '(X)HTML markup',
+          "slug": 'html'
+      }
+  },
+  {
+      "pk": 4,
+      "model": "portfolio.discipline",
+      "fields": {
+          "name": 'CSS',
+          "slug": 'css'
+      }
+  },
+]

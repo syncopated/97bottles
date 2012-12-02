@@ -1,0 +1,7 @@
+<li>
+  {% if item.is_flickr_favorite %}
+    <strong>Flickr favorite:</strong> <a href="{{ item.get_absolute_url }}">{{ item.title }}</a>
+  {% else %}
+    <strong>Photo:</strong> <a href="{{ item.get_absolute_url }}">{{ item.title }}</a>
+  {% endif %}
+</li>

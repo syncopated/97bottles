@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/savoy/!svn/ver/1214/trunk/contrib/aggregator/templates/aggregator/snippets
+END
+model_chooser.html
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/savoy/!svn/ver/1121/trunk/contrib/aggregator/templates/aggregator/snippets/model_chooser.html
+END
+default.html
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/savoy/!svn/ver/1214/trunk/contrib/aggregator/templates/aggregator/snippets/default.html
+END
+calendar.html
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/savoy/!svn/ver/1208/trunk/contrib/aggregator/templates/aggregator/snippets/calendar.html
+END

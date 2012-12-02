@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}{{ episode.title|smartypants }}{% endblock %}
+
+{% block page-title %}
+  <h2>{{ episode.title|typogrify }}</h2>
+{% endblock %}
+
+{% block content %}
+  {{ episode.summary|markdown|typogrify }}
+{% endblock %}

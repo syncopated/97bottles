@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Tags{% endblock %}
+
+{% block content %}
+
+<h2>Tags</h2>
+
+<p>Total items tagged: {{ tagged_item_count }}</p>
+
+<ul>
+  {% for tag in tag_list|dictsortreversed:"items.count" %}
+    <li><a href="/tags/{{ tag.name }}">{{ tag.name }}</a> ({{ tag.items.count }})</li>
+  {% endfor %}
+</ul>
+{% endblock %}

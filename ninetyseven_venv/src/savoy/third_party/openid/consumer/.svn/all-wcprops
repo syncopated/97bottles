@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/savoy/!svn/ver/889/trunk/third_party/openid/consumer
+END
+consumer.py
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/savoy/!svn/ver/889/trunk/third_party/openid/consumer/consumer.py
+END
+discover.py
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/savoy/!svn/ver/889/trunk/third_party/openid/consumer/discover.py
+END
+html_parse.py
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/savoy/!svn/ver/889/trunk/third_party/openid/consumer/html_parse.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/savoy/!svn/ver/889/trunk/third_party/openid/consumer/__init__.py
+END

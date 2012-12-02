@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/savoy/!svn/ver/1200/trunk/contrib/statuses/templates/statuses/feeds
+END
+status_title.html
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/savoy/!svn/ver/1200/trunk/contrib/statuses/templates/statuses/feeds/status_title.html
+END
+status_description.html
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/savoy/!svn/ver/1200/trunk/contrib/statuses/templates/statuses/feeds/status_description.html
+END

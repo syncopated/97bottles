@@ -1,0 +1,7 @@
+{% autoescape off %}
+
+{{ obj.intro_rendered_markup }}
+{{ obj.body_rendered_markup }}
+{{ obj.body_extended_rendered_markup }}
+
+{% endautoescape %}

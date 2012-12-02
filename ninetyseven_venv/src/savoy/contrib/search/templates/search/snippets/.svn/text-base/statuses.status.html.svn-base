@@ -1,0 +1,2 @@
+<dt><strong>Status:</strong> <a href="{{ status.get_absolute_url }}">{{ status.body }}</a></dt>
+<dd>{{ status.date_published|date:"l, F, j, Y \a\t h:iA" }}</dd>

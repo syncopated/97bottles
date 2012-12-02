@@ -1,0 +1,11 @@
+You're receiving this e-mail because you (or someone using your email address) is attempting to create an account at {{ site.name }}.
+
+To verify your e-mail address and continue the registration process, please click the link below:
+
+http://{{ site.domain }}/accounts/activate/{{ activation_key }}/
+
+If you didn't request this, you don't need to do anything; you won't receive any more email from us, and the account will expire automatically in {{ expiration_days }} days.
+
+
+Thanks,
+The {{ site.name }} team

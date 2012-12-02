@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/savoy/!svn/ver/1166/trunk/contrib/statuses/importers
+END
+twttr_friends.py
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/savoy/!svn/ver/885/trunk/contrib/statuses/importers/twttr_friends.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/savoy/!svn/ver/846/trunk/contrib/statuses/importers/__init__.py
+END
+twttr.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/savoy/!svn/ver/1166/trunk/contrib/statuses/importers/twttr.py
+END

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}{{ organization.full_name }}{% endblock %}
+
+{% block content %}
+  <h2>{{ organization.full_name }}</h2>
+  {{ organization.description }}
+  <h3>Locations</h3>
+  {% for place in organization.locations.all %}
+    <address>
+      {% if place.address1 %}{{ place.address1 }}<br />{% endif %}
+      {% if place.address2 %}{{ place.address2 }}<br />{% endif %}
+      {% if place.city %}{{ city.full_name }}{% if place.zip_code %}{{ place.zip_code }}{% endif %}<br />{% endif %}
+    </address>
+  {% endfor %}
+{% endblock %}

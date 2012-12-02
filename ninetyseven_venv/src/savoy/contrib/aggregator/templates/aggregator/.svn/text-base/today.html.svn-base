@@ -1,0 +1,3 @@
+{% extends "aggregator/day.html" %}
+
+{% block title %}Today{% endblock %}

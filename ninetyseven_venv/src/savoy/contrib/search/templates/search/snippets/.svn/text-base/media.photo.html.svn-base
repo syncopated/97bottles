@@ -1,0 +1,3 @@
+<dt><strong>Photo{% if photo.is_flickr_favorite %} favorite{% endif %}:</strong> <a href="{{ photo.get_absolute_url }}">{{ photo.title }}</a></dt>
+{% if photo.is_flickr_favorite %}<dd>by <a href="http://flickr.com/people/{{ photo.flickr_photo.owner.nsid }}">{{ photo.flickr_photo.owner }}</a></dd>{% endif %}
+<dd>{{ photo.date_published|date:"l, F, j, Y \a\t h:iA" }}</dd>

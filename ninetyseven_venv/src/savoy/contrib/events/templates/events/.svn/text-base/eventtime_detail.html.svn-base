@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}{{ eventtime.event.title|typogrify }}{% endblock %}
+
+{% block content %}
+  <h2>{{ eventtime.event.title|typogrify }}</h2>
+  <h3>{{ eventtime.start_time|date:"F jS, Y" }} at {{ eventtime.start_time|date:"P" }}</h3>
+  {{ eventtime.event.description|markdown|typogrify }}
+  
+  <h2>Comments</h2>
+  {% display_comment_list eventtime %}
+  
+  <h3>Add a comment</h3>
+  {% display_comment_form eventtime %}
+{% endblock %}

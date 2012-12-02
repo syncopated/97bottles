@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/savoy/!svn/ver/1373/trunk/core/geo
+END
+admin.py
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/savoy/!svn/ver/1296/trunk/core/geo/admin.py
+END
+managers.py
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/savoy/!svn/ver/1345/trunk/core/geo/managers.py
+END
+views.py
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/savoy/!svn/ver/1221/trunk/core/geo/views.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/savoy/!svn/ver/900/trunk/core/geo/__init__.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/savoy/!svn/ver/1373/trunk/core/geo/models.py
+END
+urls.py
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/savoy/!svn/ver/886/trunk/core/geo/urls.py
+END

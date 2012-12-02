@@ -1,0 +1,5 @@
+{% autoescape off %}
+
+{{ obj.body|striptags|fix_ampersands|urlize|markdown|typogrify }}
+
+{% endautoescape %}

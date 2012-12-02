@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/public/!svn/ver/12/tags/elementtree-1.2.6-20050316/elementtree
+END
+ElementTree.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/public/!svn/ver/12/tags/elementtree-1.2.6-20050316/elementtree/ElementTree.py
+END
+SgmlopXMLTreeBuilder.py
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/public/!svn/ver/12/tags/elementtree-1.2.6-20050316/elementtree/SgmlopXMLTreeBuilder.py
+END
+TidyTools.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/public/!svn/ver/12/tags/elementtree-1.2.6-20050316/elementtree/TidyTools.py
+END
+HTMLTreeBuilder.py
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/public/!svn/ver/12/tags/elementtree-1.2.6-20050316/elementtree/HTMLTreeBuilder.py
+END
+ElementInclude.py
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/public/!svn/ver/12/tags/elementtree-1.2.6-20050316/elementtree/ElementInclude.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/public/!svn/ver/12/tags/elementtree-1.2.6-20050316/elementtree/__init__.py
+END
+SimpleXMLTreeBuilder.py
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/public/!svn/ver/12/tags/elementtree-1.2.6-20050316/elementtree/SimpleXMLTreeBuilder.py
+END
+TidyHTMLTreeBuilder.py
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/public/!svn/ver/12/tags/elementtree-1.2.6-20050316/elementtree/TidyHTMLTreeBuilder.py
+END
+ElementPath.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/public/!svn/ver/12/tags/elementtree-1.2.6-20050316/elementtree/ElementPath.py
+END
+SimpleXMLWriter.py
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/public/!svn/ver/12/tags/elementtree-1.2.6-20050316/elementtree/SimpleXMLWriter.py
+END
+XMLTreeBuilder.py
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/public/!svn/ver/12/tags/elementtree-1.2.6-20050316/elementtree/XMLTreeBuilder.py
+END

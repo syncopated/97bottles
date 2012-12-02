@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Entries for {{ month|date:"F, Y" }}{% endblock %}
+
+{% block content %}
+  <h2>{{ blog.title }}: Entries for {{ month|date:"F, Y" }}</h2>
+  {% for entry in entry_list %}
+    {% get_comment_list for entry as comment_list %}
+    <h3><a href="{{ entry.get_absolute_url }}">{{ entry.title|typogrify }}</a></h3>
+    <p>{{ entry.date_published|date:"m.d.Y" }}, <a href="{{ entry.get_absolute_url }}#comments">{{ comment_list|length }} Comment{{ comment_list|length|pluralize }}</a>, <a href="{{ entry.posted_from.get_absolute_url }}">{{ entry.posted_from.name }}</a></p>
+    {{ entry.summary_rendered_markup }}
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Comments for {{ month|date:"F, Y" }}{% endblock %}
+
+{% block content %}
+  <h2>Comments for {{ month|date:"F, Y" }}</h2>
+  <ul>
+    {% for comment in comment_list %}
+      <li><a href="{{ comment.parent_object.get_absolute_url }}#{{ comment.id }}">{{ comment.author_name }}</a> on <a href="{{ comment.parent_object.get_absolute_url }}">{{ comment.parent_object }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

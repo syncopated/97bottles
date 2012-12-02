@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Projects{% endblock %}
+
+{% block content %}
+  <h2>Projects</h2>
+  <ul>
+    {% for project in projects %}
+      <li><a href="{{ project.get_absolute_url }}">{{ project.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}
+
+{% block sidebar %}
+  <h3>Archives</h3>
+  <ul>
+    {% for year in date_list %}
+      <li><a href="{% url project_index %}{{ year|date:"Y" }}/">{{ year|date:"Y" }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

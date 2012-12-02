@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Photos for {{ month|date:"F, Y" }}{% endblock %}
+
+{% block content %}
+  <h2>Photos for {{ month|date:"F, Y" }}</h2>
+  <ul>
+    {% for photo in photo_list %}
+      <li><a href="{{ photo.get_absolute_url }}">{{ photo.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

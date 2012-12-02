@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Episodes for {{ day|date:"F, jS, Y" }}{% endblock %}
+
+{% block content %}
+  <h2>Episodes for {{ day|date:"F, jS, Y" }}</h2>
+  <ul>
+    {% for episode in episode_list %}
+      <li><a href="{{ episode.get_absolute_url }}">{{ episode.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

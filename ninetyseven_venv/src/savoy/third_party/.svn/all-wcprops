@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/savoy/!svn/ver/1355/trunk/third_party
+END
+mdx_footnotes.py
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/savoy/!svn/ver/953/trunk/third_party/mdx_footnotes.py
+END
+upcoming_api.py
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/savoy/!svn/ver/1339/trunk/third_party/upcoming_api.py
+END
+EXIF.py
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/savoy/!svn/ver/1102/trunk/third_party/EXIF.py
+END
+akismet.py
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/savoy/!svn/ver/859/trunk/third_party/akismet.py
+END
+titlecase.py
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/savoy/!svn/ver/1065/trunk/third_party/titlecase.py
+END
+textile.py
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/savoy/!svn/ver/802/trunk/third_party/textile.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/savoy/!svn/ver/765/trunk/third_party/__init__.py
+END
+feedparser.py
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/savoy/!svn/ver/772/trunk/third_party/feedparser.py
+END
+twitter.py
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/savoy/!svn/ver/791/trunk/third_party/twitter.py
+END
+markdown.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/savoy/!svn/ver/1309/trunk/third_party/markdown.py
+END
+ascii_dammit.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/savoy/!svn/ver/872/trunk/third_party/ascii_dammit.py
+END
+smartypants.py
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/savoy/!svn/ver/792/trunk/third_party/smartypants.py
+END
+BeautifulSoup.py
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/savoy/!svn/ver/764/trunk/third_party/BeautifulSoup.py
+END
